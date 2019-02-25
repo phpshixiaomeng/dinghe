@@ -9,7 +9,7 @@
                     <!--Featured Title Start-->
                     <div class="featured-title">
                         <h2>特色游戏S</h2>
-                        <a href="#">查看所有游戏S</a>
+                        <a href="games">查看所有游戏S</a>
                     </div>
                     <!--Featured Title End-->
                 </div>

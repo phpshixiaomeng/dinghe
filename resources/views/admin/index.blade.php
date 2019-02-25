@@ -13,6 +13,7 @@
 </head>
     <frameset rows="50,*" cols="*" frameborder="no" border="0" framespacing="0">
     <frame src="admin_assets/houtai/top.blade.php" name="topFrame" scrolling="no">
+
         <frameset cols="225,*" name="btFrame" frameborder="NO" border="0" framespacing="0">
             <frame src="admin_assets/houtai/left.blade.php" noresize name="menu" scrolling="yes">
                 <frame src="admin_assets/houtai/hy_list.blade.php" class="frame_r" noresize name="main" scrolling="yes">

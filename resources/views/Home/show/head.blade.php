@@ -18,9 +18,13 @@
     <link rel="stylesheet" href="assets/css/plugins.css">
     <link rel="stylesheet" href="assets/css/helper.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="assets/css/styler.css" rel="stylesheet" type="text/css">
+
+
     <!-- Modernizr JS -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
-</head>
+    <script src="assets/js/jquery-3.1.1.min.js"></script>
+ </head>
 
 <body>
 
@@ -73,8 +77,10 @@
 
                                         <li><a href="bizhi">精美壁纸</a></li>
                                         <li><a href="zhifu">付款</a></li>
-                                        <li><a href="login">登录</a></li>
-                                        <li><a href="zhuce">注册</a></li>
+
+
+                                        <!-- <li><a href="login/tuichu">退出</a></li> -->
+
                                     </ul>
                                 </li>
                                 <li><a href="contact">联系</a></li>
@@ -87,8 +93,14 @@
                     <div class="col-12 col-md-9 order-md-2 order-lg-3 col-lg-3">
                         <div class="header-right-wrap">
                             <ul>
+                            <?php
+                            session_start();
+                            if(empty($_SESSION)){ ?>
                                 <li><a href="login">登录</a></li>
                                 <li><a href="zhuce">注册</a></li>
+                            <?php }else{ ?>
+                                <li><a href="javascript:if(confirm('确实要退出吗?'))location='http://www.dingding.com/login/tui'">退出</a></li>
+                                <?php } ?>
                                 <li class="header-search"><a class="header-search-toggle" href="#"><i class="icofont-search-2"></i></a>
                                     <div class="header-search-form">
                                         <form action="#">
@@ -130,7 +142,7 @@
                             <div class="hero-content">
                                 <h1>巫师3</h1>
                                 <h2>冒险开始在这里</h2>
-                                <a class="df-btn" href="#">现在去买</a>
+                                <a class="df-btn" href="gamesnews">现在去买</a>
                             </div>
                             <!--Hero Content end-->
 
@@ -149,7 +161,7 @@
                             <div class="hero-content">
                                 <h1>巫师3</h1>
                                 <h2>冒险开始在这里</h2>
-                                <a class="df-btn" href="#">现在去买</a>
+                                <a class="df-btn" href="gamesnews">现在去买</a>
                             </div>
                             <!--Hero Content end-->
 
@@ -275,7 +287,7 @@
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/main.js"></script>
-
+<script src="assets/js/vendor/Choices.js"></script>
 </body>
 
 </html>
