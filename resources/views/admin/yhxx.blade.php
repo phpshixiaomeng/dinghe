@@ -189,7 +189,7 @@
                 $pass = $('#password').val();
                 $repass = $('repassword').val();
                 if($name =='' || $pass=='' || $repass == ''){
-                    alert('用户名不能为空');
+                    alert('用户名密码不能为空');
                     return false;
                 }
             });
