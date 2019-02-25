@@ -119,7 +119,7 @@
 
                 var iname = $(this).val();
                 // alert(iname);
-                var url = 'http://www.addhao.com/yhxx/'+iname;
+                var url = 'http://www.dingding.com/yhxx/'+iname;
                 $.get(url,function(res){
                      if (res == 1) {
                         $('#yonghu').addClass('fail');
@@ -135,7 +135,7 @@
                         $('#password').attr('disabled',false);
                         $('#repassword').attr('disabled',false);
                     }
-                });               
+                });
             });
 
                 //验证密码不为空与正则
@@ -159,8 +159,8 @@
                         $('#sub').attr({'disabled':'disabled'});
                     }
 
-                }); 
-              
+                });
+
                 $('#repassword').blur(function() {
                     $pass = $('#password').val();
                     if ($(this).val() == '') {
