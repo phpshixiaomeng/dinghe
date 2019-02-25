@@ -3,6 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Ping</title>
     <link rel="stylesheet" type="text/css" href="admin_assets/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="admin_assets/css/common.css" />
@@ -12,6 +13,8 @@
     @section('function')
     @show
     </script>
+    @section('style')
+    @show
     </head>
     <body onLoad="Resize();">
     @section('content')

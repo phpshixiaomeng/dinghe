@@ -28,6 +28,9 @@ Route::resource('bokelist','Home\BokeListController');//博客
 Route::resource('bizhi','Home\BizhiController');//壁纸
 Route::resource('zhifu','Home\ZhifuController');//用户支付
 Route::resource('contact','Home\ContactController');//联系我们
+
+
+// 登录中间件组
 //后台模板路由
 Route::resource('/admin','admin\IndexController');//后台主页模板
 Route::resource('/hy_list','admin\HylistController');//后台会议列表
@@ -58,4 +61,12 @@ Route::resource('/bdcx','admin\BdcxController');//数据库补丁程序
 Route::resource('/gnxk','admin\GnxkController');//功能许可
 Route::resource('/cqxt','admin\CqxtController');//重启MCU
 Route::resource('/tcxt','admin\TcxtController');//退出系统
-Route::resource('/adminlg','admin\LoginController');//登录系统
+
+// 登录系统
+Route::get('adminlg','admin\LoginController@index');
+Route::post('adminlg/login','admin\LoginController@login');
+
+
+
+
+
