@@ -25,12 +25,13 @@
                 <a href=""><img src="Assets/images/logo.png" alt=""/></a>
             </div>
             <div class="login_m">
-                <form action="" method="post">
+                <form action="/adminlg/login" method="post">
+                    {{ csrf_field() }}
                     <ul>
                         <li class="wz">用户名</li>
-                        <li><input name="" type="text"></li>
+                        <li><input name="name" type="text"></li>
                         <li class="wz">密码</li>
-                        <li><input name="" type="password"></li>
+                        <li><input name="password" type="password"></li>
                         <li class="wz">语言</li>
                         <li class="language">
                             <div class="lang">
@@ -47,7 +48,7 @@
                             </ul>
                         </li>
                         <li class="l_btn">
-                            <a href="">登录</a>
+                            <input type="submit" value="登录" style="background-color: #43A8F6;color:white;">
                         </li>
                     </ul>
                 </form>
