@@ -40,12 +40,14 @@ class LoginController extends Controller
     //用户登录验证
     // echo 1111;
     // exit;
+        $_POST['password']=md5($_POST['password']);
 
     $res=DB::table('home_users')->where($_POST)->first();
     if($res){
         // session(['key'=>'1']);
-            session_start();
+            if(!session_id()) session_start();
             $_SESSION=$_POST;
+
         echo 1;
     }else{
         echo 2;

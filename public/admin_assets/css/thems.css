@@ -90,19 +90,7 @@
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
 }
-.btn{
-	display:inline-block;
-	*display:inline;
-	zoom:1;
-	width:76px;
-	height:36px;
-	text-align:center;
-	line-height:36px;
-	color:#000;
-	vertical-align:middle;
-	background:url(../images/btn1.png) no-repeat;
-	margin-left:5px;
-}
+
 .list_hy{
 	background:#FFF;
 	margin-top:8px;
@@ -349,7 +337,7 @@
 .ping li.ping_m{
 	width:100%;
 	border-top:1px solid #dedede;
-	min-height:300px; 
+	min-height:300px;
 }
 .ping li.ping_m span{
 	padding-top:15px;
@@ -545,7 +533,7 @@
 }
 /*高级配置*/
 /*新建会议*/
-/*数据备份*/ 
+/*数据备份*/
 .sjbf .sjbf_a , .sjbf .sjbf_b{
 	width:100%;
 	height:145px;
@@ -556,7 +544,7 @@
 	margin-top:10px;
 }
 .sjbf .sjbf_a{
-	border-bottom:1px solid #dedede; 
+	border-bottom:1px solid #dedede;
 }
 .sjbf .sjbf_a .tip{
 	height:30px;
@@ -728,7 +716,7 @@
 	height:30px;
 	line-height:30px;
 	vertical-align:middle;
-} 
+}
 .gzrj .riqi input{
 	width:90px;
 	height:24px;
@@ -811,7 +799,7 @@
 .login .bg_img img{
 	width:1920px;
 	height:720px;
-	
+
 }
 .login .logo{
 	width:261px;

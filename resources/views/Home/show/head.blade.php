@@ -8,22 +8,22 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Place favicon.ico in the root directory -->
-    <link href="assets/images/favicon.ico" type="img/x-icon" rel="shortcut icon">
+    <link href="/assets/images/favicon.ico" type="img/x-icon" rel="shortcut icon">
     <!-- All css files are included here. -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/qanto.css">
-    <link rel="stylesheet" href="assets/css/bauhaus93.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/icofont.min.css">
-    <link rel="stylesheet" href="assets/css/plugins.css">
-    <link rel="stylesheet" href="assets/css/helper.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link href="assets/css/styler.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/qanto.css">
+    <link rel="stylesheet" href="/assets/css/bauhaus93.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/icofont.min.css">
+    <link rel="stylesheet" href="/assets/css/plugins.css">
+    <link rel="stylesheet" href="/assets/css/helper.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link href="/assets/css/styler.css" rel="stylesheet" type="text/css">
 
 
     <!-- Modernizr JS -->
-    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
-    <script src="assets/js/jquery-3.1.1.min.js"></script>
+    <script src="/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="/assets/js/jquery-3.1.1.min.js"></script>
  </head>
 
 <body>
@@ -39,7 +39,7 @@
                     <!--Logo start-->
                     <div class="col-12 col-md-3 col-lg-3 order-md-1 order-lg-1 mt-20 mb-20">
                         <div class="logo">
-                            <a href="index.html"><img src="assets/images/logo.png" alt=""></a>
+                            <a href="/home"><img src="/assets/images/logo.png" alt=""></a>
                         </div>
                     </div>
                     <!--Logo end-->
@@ -48,7 +48,7 @@
                    <div class="col-lg-6 col-12 order-md-3 order-lg-2 d-flex justify-content-center">
                         <nav class="main-menu menu-style-2">
                             <ul>
-                                <li><a href="home">首页</a>
+                                <li><a href="/home">首页</a>
                                     <!-- <ul class="sub-menu"> -->
                                         <!-- <li><a href="index.html">首页 One</a></li> -->
                                         <!-- <li><a href="index-2.html">首页 Two</a></li>
@@ -58,32 +58,34 @@
                                         <li><a href="index-landing.html">首页 Landing</a></li> -->
                                     <!-- </ul> -->
                                 </li>
-                                <li><a href="games">游戏</a>
+                                <li><a href="/home/games">游戏</a>
                                     <ul class="sub-menu">
-                                        <li><a href="games">游戏商店</a></li>
-                                        <li><a href="gamesnews">游戏资讯</a></li>
+                                        <li><a href="/home/games">游戏商店</a></li>
+                                        <li><a href="/home/gamesnews">游戏资讯</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="video">影像</a></li>
-                                <li><a href="luntan">论坛</a>
+                                <li><a href="/home/video">影像</a></li>
+
+                                <li><a href="/home/luntan">论坛</a>
                                     <ul class="sub-menu">
-                                        <li><a href="luntan">论坛</a></li>
-                                        <li><a href="luntanfatie">发帖</a></li>
-                                        <li><a href="luntanshaitu">晒图</a></li>
+                                        <li><a href="/home/luntan">论坛</a></li>
+                                        <li><a href="/home/luntanfatie">发帖</a></li>
+                                        <li><a href="/home/luntanshaitu">晒图</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="bokelist">博客</a>
+                                <li><a href="/home/bokelist">博客</a>
                                     <ul class="sub-menu">
 
-                                        <li><a href="bizhi">精美壁纸</a></li>
-                                        <li><a href="zhifu">付款</a></li>
+                                        <li><a href="/home/bizhi">精美壁纸</a></li>
+                                        <li><a href="/home/zhifu">付款</a></li>
 
 
                                         <!-- <li><a href="login/tuichu">退出</a></li> -->
 
                                     </ul>
                                 </li>
-                                <li><a href="contact">联系</a></li>
+                                <li><a href="/home/contact">联系</a></li>
+
                             </ul>
                         </nav>
                     </div>
@@ -94,12 +96,13 @@
                         <div class="header-right-wrap">
                             <ul>
                             <?php
-                            session_start();
+                            if(!session_id()) session_start();
                             if(empty($_SESSION)){ ?>
-                                <li><a href="login">登录</a></li>
-                                <li><a href="zhuce">注册</a></li>
+                                <li><a href="/home/login">登录</a></li>
+                                <li><a href="/home/zhuce">注册</a></li>
                             <?php }else{ ?>
-                                <li><a href="javascript:if(confirm('确实要退出吗?'))location='http://www.dingding.com/login/tui'">退出</a></li>
+                                <li><a href="javascript:if(confirm('确实要退出吗?'))location='http://www.dingding.com/home/zhuce/tui/edit'">退出</a></li>
+                                <li><a href="/home/grxx">个人信息</a></li>
                                 <?php } ?>
                                 <li class="header-search"><a class="header-search-toggle" href="#"><i class="icofont-search-2"></i></a>
                                     <div class="header-search-form">
@@ -133,7 +136,7 @@
     <div class="hero-section section position-relative">
         <div class="hero-slider">
             <!--Hero Item start-->
-            <div class="hero-item hero-item-2" style="background-image: url(assets/images/hero/hero-2.jpg)">
+            <div class="hero-item hero-item-2" style="background-image: url(/assets/images/hero/hero-2.jpg)">
                 <div class="container container-1520">
                     <div class="row">
                         <div class="col-12">
@@ -152,7 +155,7 @@
             </div>
             <!--Hero Item end-->
             <!--Hero Item start-->
-            <div class="hero-item hero-item-2" style="background-image: url(assets/images/hero/hero-3.jpg)">
+            <div class="hero-item hero-item-2" style="background-image: url(/assets/images/hero/hero-3.jpg)">
                 <div class="container container-1520">
                     <div class="row">
                         <div class="col-12">
@@ -192,7 +195,7 @@
                            </form> -->
                        </div>
                        <div class="news-latter-banner-image">
-                           <img src="assets/images/news-latter/news-banner.png" alt="">
+                           <img src="/assets/images/news-latter/news-banner.png" alt="">
                        </div>
                    </div>
                    <!--News Latter Area End-->
@@ -204,8 +207,8 @@
     </div>
     <!--Projects section end-->
 
-    <<!--Footer section start-->
-    <footer class="footer-section style-2 section bg-theme" style="background-image: url(assets/images/bg/footer-bg.jpg)">
+    <!--Footer section start-->
+    <footer class="footer-section style-2 section bg-theme" style="background-image: url(/assets/images/bg/footer-bg.jpg)">
 
         <!--Footer Top start-->
         <div class="footer-top section pt-175 pt-lg-150 pt-md-125 pt-sm-110 pt-xs-40 pb-80 pb-lg-70 pb-md-60 pb-sm-15 pb-xs-40">
@@ -216,7 +219,7 @@
                     <div class="col-xl-3 col-lg-2 col-md-3">
                         <div class="footer-widget">
                             <div class="footer-logo">
-                                <a href="index.html"><img src="assets/images/logo.png" alt=""></a>
+                                <a href="/home"><img src="/assets/images/logo.png" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -266,7 +269,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="copyright text-center">
-                            <p>版权 &copy;2018 <a  href="http://www.17sucai.com">Gilbard</a>. 保留所有权利.</p>
+                            <p>版权 &copy;2018 <a  href="/home">Gilbard</a>. 保留所有权利.</p>
                         </div>
                     </div>
                 </div>
@@ -282,12 +285,12 @@
 <!-- Placed js at the end of the document so the pages load faster -->
 
 <!-- All jquery file included here -->
-<script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
-<script src="assets/js/popper.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/plugins.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/vendor/Choices.js"></script>
+<script src="/assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/plugins.js"></script>
+<script src="/assets/js/main.js"></script>
+<!-- <script src="/assets/js/vendor/Choices.js"></script> -->
 </body>
 
 </html>

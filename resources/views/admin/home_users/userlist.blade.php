@@ -1,3 +1,4 @@
+
 @extends('admin/public/public')
 @section('function')
     $(function() {
@@ -31,11 +32,15 @@
                     <!--当前位置-->
                 </div>
                 <!--查询-->
+                <form action="/admin/userlist" method="get">
                 <div class="search">
-                    <span>按用户信息查询：</span>
-                    <div class="s_text"><input name="" type="text"></div>
-                    <a href="" class="btn">查询</a>
+                    <span>按用户名查询</span>
+
+                    <div class="s_text"><input name="search" type="text"></div>
+                    <input type="submit" class="btn btn-info"  value="搜索">
+                    <span style="float:right; font:18px/1.2 '微软雅黑';margin-right: 100px;margin-top: 20px;" >总共<b style="color:red;" >{{$num}}</b>个用户</span>
                 </div>
+                </form>
                 <!--查询-->
                 <div class="space_hx">&nbsp;</div>
                 <!--列表-->
@@ -48,25 +53,46 @@
                             <th scope="col">用户名</th>
                             <th scope="col">用户手机号</th>
                             <th scope="col">用户状态</th>
+                            <th scope="col">VIP等级</th>
                             <th scope="col">操作</th>
                         </tr>
-                    @foreach($data as $v)
+                    @foreach($user as $v)
                         <tr>
                             <td>{{$i++}}</td>
                             <td>{{$v->id}}</td>
                             <td>{{$v->name}}</td>
                             <td>{{$v->phone}}</td>
-                            <td>{{$v->status}}</td>
-                            <td></td>
+                            @if(($v->status)==0)
+                            <td><font color="green">未冻结</font></td>
+                            @else
+                            <td><font color="red">已冻结</font></td>
+                            @endif
+                            <td>{{$v->user_vip}}</td>
+                            <td><a href="/admin/userlist/{{$v->id}}"><font color="blue">查看详情</font></a>|
+                            @if(($v->status)==0)
+                            <a href="/admin/userlist/{{$v->status}}/edit?id={{$v->id}}" onclick="return confirm('确定要冻结吗?')">
+                            <font color="red">冻结</font>
+                            </a>
+                             @else
+                             <a href="/admin/userlist/{{$v->status}}/edit?id={{$v->id}}">
+                              <font color="green" onclick="return confirm('确定要解冻吗?')">解除冻结</font>
+                            </a>
+                            @endif
+                            </a></td>
                         </tr>
                     @endforeach
+
                     </table>
+
                     <!--列表-->
                     <!--右边底部-->
                 </form>
+
                 <!--右边底部-->
             </div>
             <!--会议列表-->
         </div>
+
     </div>
+{{ $user->appends($request)->links()}}
 @endsection

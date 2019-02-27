@@ -1,3 +1,4 @@
+
 @extends('admin/public/public')
 @section('function')
     $(function() {
@@ -18,24 +19,19 @@
             <!--会议列表-->
             <div class="hy_list">
                 <div class="box_t">
-                    <span class="name">前台用户列表</span>
+                    <span class="name">前台用户详情页</span>
                     <!--当前位置-->
                     <div class="position">
                         <a href=""><img src="../images/icon5.png" alt=""/></a>
                         <a href="">首页</a>
                         <span><img src="../images/icon3.png" alt=""/></span>
-                        <a href="">前台用户管理</a>
+                        <a href="">前台用户详情页</a>
                         <span><img src="../images/icon3.png" alt=""/></span>
                         <a href="">前台用户列表</a>
                     </div>
                     <!--当前位置-->
                 </div>
                 <!--查询-->
-                <div class="search">
-                    <span>按用户信息查询：</span>
-                    <div class="s_text"><input name="" type="text"></div>
-                    <a href="" class="btn">查询</a>
-                </div>
                 <!--查询-->
                 <div class="space_hx">&nbsp;</div>
                 <!--列表-->
@@ -43,23 +39,28 @@
                     <table cellpadding="0" cellspacing="0" class="list_hy">
                         <tr>
 
-                            <th scope="col">用户列</th>
-                            <th scope="col">用户ID</th>
-                            <th scope="col">用户名</th>
-                            <th scope="col">用户手机号</th>
-                            <th scope="col">用户状态</th>
-                            <th scope="col">操作</th>
+                            <th scope="col">用户昵称</th>
+                            <th scope="col">用户性别</th>
+                            <th scope="col">用户简介</th>
+                            <th scope="col">用户头像</th>
+
+
                         </tr>
-                    @foreach($data as $v)
+
                         <tr>
-                            <td>{{$i++}}</td>
-                            <td>{{$v->id}}</td>
-                            <td>{{$v->name}}</td>
-                            <td>{{$v->phone}}</td>
-                            <td>{{$v->status}}</td>
+                            <td>{{$data->nickname}}</td>
+                            @if(($data->sex)==1)
+                            <td>男</td>
+                            @elseif(($data->sex)==0)
+                            <td>女</td>
+                            @else
                             <td></td>
+                            @endif
+                            <td>{{$data->profile}}</td>
+                            <td><img src="/touxiang/public/{{$data->pic}}" alt="暂无头像请上传" width="60" height="60"></td>
+
                         </tr>
-                    @endforeach
+
                     </table>
                     <!--列表-->
                     <!--右边底部-->
