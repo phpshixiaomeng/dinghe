@@ -67,10 +67,10 @@
                 </div>
                 <ul class="erji">
                     <li>
-                        <span><a href="admin/game" target="main">游戏信息</a></span>
+                        <span><a href="/admin/game" target="main">游戏信息</a></span>
                     </li>
                     <li>
-                        <span><a href="admin/game/create" target="main">添加游戏</a></span>
+                        <span><a href="/admin/game/create" target="main">添加游戏</a></span>
                     </li>
                 </ul> 
             </li>

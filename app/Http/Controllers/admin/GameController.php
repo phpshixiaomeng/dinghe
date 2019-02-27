@@ -15,7 +15,7 @@ class GameController extends Controller
     public function index()
     {
         //
-        return view('Admin/gamelb');
+        return view('Admin/game/gamelb');
     }
 
     /**
@@ -26,7 +26,7 @@ class GameController extends Controller
     public function create()
     {
         //
-        return view('Admin/gametj');
+        return view('Admin/game/gametj');
     }
 
     /**
