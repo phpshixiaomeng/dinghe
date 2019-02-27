@@ -90,19 +90,6 @@
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
 }
-.btn{
-	display:inline-block;
-	*display:inline;
-	zoom:1;
-	width:76px;
-	height:36px;
-	text-align:center;
-	line-height:36px;
-	color:#000;
-	vertical-align:middle;
-	background:url(../images/btn1.png) no-repeat;
-	margin-left:5px;
-}
 .list_hy{
 	background:#FFF;
 	margin-top:8px;

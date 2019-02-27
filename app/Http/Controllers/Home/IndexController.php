@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Home\Cates;
+use DB;
 
 class IndexController extends Controller
 {
@@ -14,7 +16,9 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('Home/index');
+        $game_nav = DB::table('cates')->where('name','类型')->first();
+        $game_child = Cates::where('pid',$game_nav->id)->get();
+        return view('Home/index',['game_child'=>$game_child]);
     }
 
     /**

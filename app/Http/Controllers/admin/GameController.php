@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class DlpzController extends Controller
+class GameController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class DlpzController extends Controller
      */
     public function index()
     {
-        return view('admin/dlpz');
+        //
+        return view('Admin/gamelb');
     }
 
     /**
@@ -25,6 +26,7 @@ class DlpzController extends Controller
     public function create()
     {
         //
+        return view('Admin/gametj');
     }
 
     /**

@@ -56,6 +56,9 @@
                                 </li>
                                 <li><a href="games">游戏</a>
                                     <ul class="sub-menu">
+                                        @foreach($game_child as $k=>$v)
+                                         <li><a href="#">{{ $v->name }}</a></li>
+                                        @endforeach
                                         <li><a href="games">游戏商店</a></li>
                                         <li><a href="gamesnews">游戏资讯</a></li>
                                     </ul>
