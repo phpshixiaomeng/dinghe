@@ -43,6 +43,7 @@ class LoginController extends Controller
         $_POST['password']=md5($_POST['password']);
 
     $res=DB::table('home_users')->where($_POST)->first();
+    if(($res->status)==0){
     if($res){
         // session(['key'=>'1']);
             if(!session_id()) session_start();
@@ -52,7 +53,9 @@ class LoginController extends Controller
     }else{
         echo 2;
     }
-
+}else{
+        echo 3;
+}
     // exit;
 
 

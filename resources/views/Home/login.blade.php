@@ -97,9 +97,11 @@ $("form").submit(function(){
             if(res==1){
                 alert('登录成功');
                 window.location.href='http://www.dingding.com/home';//登录成功跳到首页
-            }else{
+            }else if(res==2){
                 alert('登录失败/账号或密码错误');
                 $('#password').val('');
+            }else{
+                alert('您的账号已被冻结');
             }
                 // if(res==1){
                 //     alert('登录成功');
