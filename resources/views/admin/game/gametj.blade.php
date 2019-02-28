@@ -109,11 +109,14 @@
                                 </div>
                             </li>
 
-                            <li class="clearfix" style="height:200px;">
+                            <li class="clearfix" style="height:400px;">
                                 <span class="title">游戏详情：</span>
                                 <div class="li_r">
-                                    <textarea name="game_xq" style="width:190px;height:200px;">{{ old('game_xq') }}</textarea>
-                                    <i>*</i>
+                                    <!-- 加载编辑器的容器 -->
+                                    <script id="abc" name="game_xq" type="text/plain">
+                                       {{ old('game_xq') }}
+                                    </script>
+                                    <!-- <textarea name="game_xq" style="width:190px;height:200px;"></textarea> -->
                                 </div>
                             </li>
 
@@ -131,4 +134,17 @@
             <!--会议列表-->
         </div>
     </div>
+    <!-- 配置文件 -->
+
+    <script type="text/javascript" src="/utf8-php/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+
+    <script type="text/javascript" src="/utf8-php/ueditor.all.js"></script>
+    <!-- 实例化编辑器 -->
+
+    <script type="text/javascript">
+        var ue = UE.getEditor('abc', {
+            autoHeightEnabled:false,
+        });
+    </script>
 @endsection

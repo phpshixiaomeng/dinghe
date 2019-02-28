@@ -15,11 +15,12 @@ class GameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-
-        return view('Admin/game/gamelb');
+        // 搜索加分页
+        $search = $request->input('search','');
+        $games_data = Games::where('name','like','%'.$search.'%')->select('*',DB::raw("concat(name,',',id) as paths"))->orderBy('paths','asc')->paginate(7);
+        return view('Admin/game/gamelb',['games_data'=>$games_data,'request'=> $request->all()]);
     }
 
     /**
@@ -46,8 +47,7 @@ class GameController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        
+    {        
         // 检查是否有文件上传
         if($request->hasFile('game_img')) {
             // 创建文件上传对象
@@ -72,9 +72,28 @@ class GameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function shan($id)
+    {
+
+        $res = Games::destroy($id);
+        if($res){
+            return redirect('admin/game')->with('success','删除成功');
+        }else{
+            return back()->with('error','删除失败');
+        }
+
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
         //
+        $tk = Games::where('id',$id)->first();
+        return $tk->game_xq;
     }
 
     /**
@@ -85,7 +104,19 @@ class GameController extends Controller
      */
     public function edit($id)
     {
-        //
+        // 游戏的修改
+        // dump($id);
+        $games = Games::where('id',$id)->first();
+        // dump($games->name);
+        // 获取分类数据
+        $cates_data = Cates::select('*',DB::raw("concat(path,',',id) as paths"))->orderBy('paths','asc')->get();
+        // dump($cates_data);
+        foreach($cates_data as $k=>$v){
+            $n = substr_count($v->path,',');
+            $cates_data[$k]->name = str_repeat('|----',$n).$v->name;
+        }
+
+        return view('Admin/game/gamexg',['cates_data'=>$cates_data,'games'=>$games]);
     }
 
     /**
@@ -98,6 +129,13 @@ class GameController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $data = $request->except('_token','_method');
+        $res = DB::table('games')->where('id',$id)->update($data);
+        if($res){
+            return redirect('admin/game')->with('success','修改成功');
+        }else{
+            return back()->with('error','修改失败');
+        }
     }
 
     /**

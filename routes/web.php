@@ -169,6 +169,7 @@ Route::resource('admin/tjfl','admin\TjflController');
 
 
 // 添加游戏 ------ 游戏列表
+Route::get('admin/game/delete/{id}','admin\GameController@shan');
 Route::resource('admin/game','admin\GameController');
 
 
