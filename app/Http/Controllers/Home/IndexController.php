@@ -9,6 +9,13 @@ use DB;
 
 class IndexController extends Controller
 {
+
+    public static function  getGameCates()
+    {
+        $game_nav = DB::table('cates')->where('name','类型')->first();
+        $game_child = Cates::where('pid',$game_nav->id)->get();
+        return $game_child;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,9 +23,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $game_nav = DB::table('cates')->where('name','类型')->first();
-        $game_child = Cates::where('pid',$game_nav->id)->get();
-        return view('Home/index',['game_child'=>$game_child]);
+        return view('Home/index');
     }
 
     /**

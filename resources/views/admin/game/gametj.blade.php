@@ -36,7 +36,7 @@
                 </div>
                 <div class="space_hx">&nbsp;</div>
                 <!--终端列表-->
-                <form action="/tjfl" method="post" enctype="multipart/form-data">
+                <form action="/admin/game" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }} 
                     <div class="xjhy">
                         <!--基本配置-->
@@ -45,23 +45,28 @@
                             <li class="clearfix">
                                 <span class="title">游戏名称：</span>
                                 <div class="li_r">
-                                    <input name="name" type="text">
+                                    <input name="name" type="text" value="{{ old('name') }}">
                                     <i>*</i>
                                 </div>
                             </li>
                             
-                             <li class="clearfix">
-                                <span class="title">游戏价格：</span>
-                                <div class="li_r">
-                                    <input name="game_jg" type="text">
-                                    <i>*</i>
+                            <li class="clearfix">
+                                <span class="title">所属类型：</span>
+                                <div class="li_r xial">
+                                    <div class="xial_w xial_l">
+                                        <select name="game_zt" style="width:190px;height:27;">
+                                            @foreach($cates_data as $k=>$v)
+                                            <option value="{{ $v->id }}">{{ $v->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                             </li>
 
-                            <li class="clearfix">
-                                <span class="title">游戏配置：</span>
+                             <li class="clearfix">
+                                <span class="title">游戏价格：</span>
                                 <div class="li_r">
-                                    <input name="game_pz" type="text">
+                                    <input name="game_jg" type="text" value="{{ old('game_jg') }}">
                                     <i>*</i>
                                 </div>
                             </li>
@@ -69,7 +74,7 @@
                             <li class="clearfix">
                                 <span class="title">游戏销量：</span>
                                 <div class="li_r">
-                                    <input name="game_xl" type="text">
+                                    <input name="game_xl" type="text" value="{{ old('game_xl') }}">
                                     <i>*</i>
                                 </div>
                             </li>
@@ -77,7 +82,7 @@
                             <li class="clearfix">
                                 <span class="title">游戏库存：</span>
                                 <div class="li_r">
-                                    <input name="game_kc" type="text">
+                                    <input name="game_kc" type="text" value="{{ old('game_kc') }}">
                                     <i>*</i>
                                 </div>
                             </li>
@@ -98,7 +103,7 @@
                                     <div class="xial_w xial_l">
                                         <select name="game_zt" style="width:190px;height:27;">
                                             <option value="0">上架</option>
-                                            <option value="0">下架</option>
+                                            <option value="1">下架</option>
                                         </select>
                                     </div>
                                 </div>
@@ -107,7 +112,7 @@
                             <li class="clearfix" style="height:200px;">
                                 <span class="title">游戏详情：</span>
                                 <div class="li_r">
-                                    <textarea name="game_xq" style="width:190px;height:200px;"></textarea>
+                                    <textarea name="game_xq" style="width:190px;height:200px;">{{ old('game_xq') }}</textarea>
                                     <i>*</i>
                                 </div>
                             </li>
