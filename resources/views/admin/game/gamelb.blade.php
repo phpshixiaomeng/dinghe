@@ -155,7 +155,13 @@
                             <td style="text-align: center">{{ $v->game_jg }}</td>
                             <td style="text-align: center">{{ $v->game_xl }}</td>
                             <td style="text-align: center">{{ $v->game_kc }}</td>
-                            <td style="text-align: center">{{ $v->game_zt }}</td>
+                            <td style="text-align: center">
+                                @if($v->game_zt == 0)
+                                <a href="/admin/game/display/{{ $v->id }}" class="btn btn-warning">下架</a>
+                                @else
+                                <a href="/admin/game/display/{{ $v->id }}" class="btn btn-info">上架</a>
+                                @endif
+                            </td>
                             <td style="text-align: center"><img src="/uploads/{{ $v->game_img }}" style="width:50px;height:50px;"></td>
                             <td style="text-align: center"><a class="btn btn-info" onclick="show({{ $v->id }})">游戏详情</a></td>
                             <td style="text-align: center">

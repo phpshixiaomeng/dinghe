@@ -148,4 +148,24 @@ class GameController extends Controller
     {
         //
     }
+
+    /**
+     *  前台上下架
+     */
+    public function display($id)
+    {
+        // dump($id);
+        
+        $xianshi = DB::table('games')->where('id',$id)->first();
+        // dump($xianshi->game_zt);
+        if($xianshi->game_zt == 0){
+            $xianshi->game_zt = 1;
+            $dd = DB::table('games')->where('id',$id)->update(['game_zt'=>$xianshi->game_zt]);
+            return redirect('admin/game')->with('success','修改成功');
+        }else{
+            $xianshi->game_zt = 0;
+            $dd = DB::table('games')->where('id',$id)->update(['game_zt'=>$xianshi->game_zt]);
+            return redirect('admin/game')->with('success','修改成功');
+        }
+    }
 }
