@@ -77,3 +77,37 @@ Route::resource('admin/game','admin\GameController');
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//友情链接模块
+Route::get('/admin/link/status/{id}/{status}','admin\LinkController@status');
+Route::post('/admin/link/del','admin\LinkController@del');
+Route::post('/admin/link/upload','admin\LinkController@upload');
+Route::resource('/admin/link','admin\LinkController');
+//广告模块
+Route::get('/admin/ads/put/{id}','admin\AdsController@put');
+Route::get('/admin/ads/top/{id}','admin\AdsController@top');
+Route::post('/admin/ads/del','admin\AdsController@del');
+Route::post('/admin/ads/upload','admin\AdsController@upload');
+Route::resource('/admin/ads','admin\AdsController');

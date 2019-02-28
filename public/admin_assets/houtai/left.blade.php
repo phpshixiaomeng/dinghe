@@ -108,6 +108,51 @@
                 </ul>
 
             </li>
+            <li class="now">
+                <div class="nav_m">
+                    <span><a>友情链接管理</a></span>
+                    <i>&nbsp;</i>
+                </div>
+                <ul class="erji">
+                    <li>
+                        <span><a href="/admin/link" target="main">查看友情链接</a></span>
+                    </li>
+                    <li>
+                        <span><a href="/admin/link/create" target="main">添加友情链接</a></span>
+                    </li>
+                </ul>
+            </li>
+            <li class="now">
+                <div class="nav_m">
+                    <span><a>广告管理</a></span>
+                    <i>&nbsp;</i>
+                </div>
+                <ul class="erji">
+                    <li>
+                        <span><a href="/admin/ads" target="main">查看广告</a></span>
+                    </li>
+                    <li>
+                        <span><a href="/admin/ads/create" target="main">添加广告</a></span>
+                    </li>
+                </ul>
+            </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             <li>
                 <div class="nav_m">
