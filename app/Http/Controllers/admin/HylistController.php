@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use DB;
+
 class HylistController extends Controller
 {
     /**
@@ -12,18 +12,9 @@ class HylistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-
-     $search = $request->input('search','');
-        $data = DB::table('home_users')->where('name','like','%'.$search.'%')->orderBy('id','asc')->paginate(1);
-        if($search == ''){
-            $select = DB::table('home_users')->get();
-            $num = count($select);
-        }else{
-            $num = count($data);
-        }
-        return view('admin.home_users.userlist',['user'=>$data,'request'=> $request->all(),'num'=>$num,'i'=>1]);
+        return view('admin/hy_list');
     }
 
     /**
@@ -55,12 +46,7 @@ class HylistController extends Controller
      */
     public function show($id)
     {
-        $data=DB::table('users_details')->where('user_id',$id)->first();
-        if($data){
-        return view('admin/home_users/xiangqing',['data'=>$data]);
-    }
-
-
+        //
     }
 
     /**
@@ -71,14 +57,7 @@ class HylistController extends Controller
      */
     public function edit($id)
     {
-
-        if($id==0){
-        DB::table('home_users')->where('id',$_GET['id'])->update(['status'=>1]);
-        return back();
-    }else{
-        DB::table('home_users')->where('id',$_GET['id'])->update(['status'=>0]);
-        return back();
-    }
+        //
     }
 
     /**

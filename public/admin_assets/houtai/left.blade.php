@@ -30,6 +30,7 @@
 <body>
     <div id="left_ctn">
         <ul class="sidenav">
+
             <li class="now">
                 <div class="nav_m">
                     <span><a>前台用户管理</a></span>
@@ -40,14 +41,65 @@
                         <span><a href="/admin/userlist" target="main">前台用户列表</a></span>
                     </li>
                 </ul>
-            </li>
-              <li class="now">
+            <li>
+             <li class="now">
                 <div class="nav_m">
-                    <span><a>网站信息管理</a></span>
+                    <span><a>管理员信息</a></span>
                     <i>&nbsp;</i>
                 </div>
                 <ul class="erji">
                     <li>
+                        <span><a href="/admin/hy_list" target="main">管理员信息</a></span>
+                    </li>
+                    <li>
+                        <span><a href="/admin/yhxx" target="main">添加管理员</a></span>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="now">
+                <div class="nav_m">
+                    <span><a>分类信息</a></span>
+                    <i>&nbsp;</i>
+                </div>
+                <ul class="erji">
+                    <li>
+                        <span><a href="/admin/tjfl" target="main">分类信息</a></span>
+                    </li>
+                    <li>
+                        <span><a href="/admin/tjfl/create" target="main">添加分类</a></span>
+
+                    </li>
+                </ul>
+            </li>
+
+
+
+            <li class="now">
+                <div class="nav_m">
+                    <span><a>游戏信息</a></span>
+
+                    <i>&nbsp;</i>
+                </div>
+              <ul class="erji">
+                <li>
+                        <span><a href="/admin/game" target="main">游戏信息</a></span>
+                    </li>
+                    <li>
+                        <span><a href="/admin/game/create" target="main">添加游戏</a></span>
+                    </li>
+                </ul>
+
+            </li>
+            <li class="now">
+                    <div class="nav_m">
+                    <span><a>网站信息管理</a></span>
+
+            </div>
+
+                <ul class="erji">
+                    <li>
+
                         <span><a href="/admin/website" target="main">查看网站信息</a></span>
                     </li>
                     <li>
@@ -61,7 +113,10 @@
                 <div class="nav_m">
                     <span><a href="/tcxt" target="_blank">退出系统</a></span>
                 </div>
+
+
             </li>
+
         </ul>
     </div>
 </body>

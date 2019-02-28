@@ -39,7 +39,7 @@
             <!--会议列表-->
             <div class="hy_list">
                 <div class="box_t">
-                    <span class="name">用户信息</span>
+                    <span class="name">添加管理员</span>
                     <!--当前位置-->
                     <div class="position">
                         <a href=""><img src="Assets/images/icon5.png" alt=""/></a>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="space_hx">&nbsp;</div>
                 <!--终端列表-->
-                <form action="/yhxx" method="post">
+                <form action="/admin/yhxx" method="post">
                     {{ csrf_field() }}
                     <div class="xjhy">
                         <!--基本配置-->
@@ -119,7 +119,9 @@
 
                 var iname = $(this).val();
                 // alert(iname);
-                var url = 'http://www.dingding.com/yhxx/'+iname;
+
+                var url = 'http://www.dingding.com/admin/yhxx/'+iname;
+
                 $.get(url,function(res){
                      if (res == 1) {
                         $('#yonghu').addClass('fail');

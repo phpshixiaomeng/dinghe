@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Home\Cates;
-use DB;
 
-class IndexController extends Controller
+class GameController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +14,8 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $game_nav = DB::table('cates')->where('name','类型')->first();
-        $game_child = Cates::where('pid',$game_nav->id)->get();
-        return view('Home/index',['game_child'=>$game_child]);
+        //
+        return view('Admin/game/gamelb');
     }
 
     /**
@@ -29,6 +26,7 @@ class IndexController extends Controller
     public function create()
     {
         //
+        return view('Admin/game/gametj');
     }
 
     /**

@@ -8,8 +8,13 @@
     <link rel="stylesheet" type="text/css" href="/admin_assets/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="/admin_assets/css/common.css" />
     <link rel="stylesheet" type="text/css" href="/admin_assets/css/thems.css">
+<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="/admin_assets/bootstrap-3.3.7-dist/css/bootstrap.css">
      <script type="text/javascript" src="/admin_assets/js/jquery-1.8.3.min.js"></script>
+=======
+    <link rel="stylesheet" type="text/css" href="/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="/admin_assets/js/jquery-1.8.3.min.js"></script>
+>>>>>>> origin/cui
     <script type="text/javascript">
     @section('function')
     @show

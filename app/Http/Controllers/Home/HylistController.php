@@ -4,21 +4,26 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Home\Cates;
 use DB;
-
-class IndexController extends Controller
+class HylistController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $game_nav = DB::table('cates')->where('name','类型')->first();
-        $game_child = Cates::where('pid',$game_nav->id)->get();
-        return view('Home/index',['game_child'=>$game_child]);
+
+     $search = $request->input('search','');
+        $data = DB::table('home_users')->where('name','like','%'.$search.'%')->orderBy('id','asc')->paginate(1);
+        if($search == ''){
+            $select = DB::table('home_users')->get();
+            $num = count($select);
+        }else{
+            $num = count($data);
+        }
+        return view('admin.home_users.userlist',['user'=>$data,'request'=> $request->all(),'num'=>$num,'i'=>1]);
     }
 
     /**
@@ -50,7 +55,12 @@ class IndexController extends Controller
      */
     public function show($id)
     {
-        //
+        $data=DB::table('users_details')->where('user_id',$id)->first();
+        if($data){
+        return view('admin/home_users/xiangqing',['data'=>$data]);
+    }
+
+
     }
 
     /**
@@ -61,7 +71,14 @@ class IndexController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        if($id==0){
+        DB::table('home_users')->where('id',$_GET['id'])->update(['status'=>1]);
+        return back();
+    }else{
+        DB::table('home_users')->where('id',$_GET['id'])->update(['status'=>0]);
+        return back();
+    }
     }
 
     /**

@@ -42,24 +42,29 @@
                 <form action="" method="post">
                     <table cellpadding="0" cellspacing="0" class="list_hy">
                         <tr>
-
-                            <th scope="col">用户列</th>
-                            <th scope="col">用户ID</th>
-                            <th scope="col">用户名</th>
-                            <th scope="col">用户手机号</th>
-                            <th scope="col">用户状态</th>
-                            <th scope="col">操作</th>
+                        <th class="xz" scope="col">选择</th>
+                            <th scope="col">
+                                <div>管理员名<a href="" class="up">&nbsp;</a><a href="" class="down">&nbsp;</a></div>
+                            </th>
+                            <th class="zt" scope="col">
+                                <div>状态<a href="" class="up">&nbsp;</a><a href="" class="down">&nbsp;</a></div>
+                            </th>
+                            <th scope="col" style="text-align: center">增加时间</th>
+                            <th scope="col" style="text-align: center">修改时间</th>
+                            <th scope="col" style="text-align: center">管理员类型</th>
+                            <th scope="col" style="text-align: center">操作</th>
                         </tr>
-                    @foreach($data as $v)
                         <tr>
-                            <td>{{$i++}}</td>
-                            <td>{{$v->id}}</td>
-                            <td>{{$v->name}}</td>
-                            <td>{{$v->phone}}</td>
-                            <td>{{$v->status}}</td>
-                            <td></td>
+                            <td class="xz"><input name="" type="checkbox" value=""></td>
+                            <td style="text-align: center">ip64/1</td>
+                            <td style="text-align: center">-</td>
+                            <td style="text-align: center">2012-10-11 13:28</td>
+                            <td style="text-align: center">永久会议</td>
+                            <td style="text-align: center">-</td>
+                            <td style="text-align: center"><a href="#" class="btn" style="color: red;">删除</a><a href="#" class="btn" style="color: #FFA500;">编辑</a></td>
                         </tr>
-                    @endforeach
+
+
                     </table>
                     <!--列表-->
                     <!--右边底部-->

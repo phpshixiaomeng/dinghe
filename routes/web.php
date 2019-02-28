@@ -14,7 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
 //前台页面路由
+
 
 Route::get('/home','Home\IndexController@index');//主页路由
 Route::resource('/home/login','Home\LoginController');//登陆路由
@@ -35,20 +37,41 @@ Route::resource('/home/zhifu','Home\ZhifuController');//用户支付
 Route::resource('/home/contact','Home\ContactController');//联系我们
 
 
-// 登录中间件组
+
+
+
+
 //后台模板路由
+
 Route::get('/admin','admin\IndexController@index');//后台主页模板
-Route::resource('/admin/userlist','admin\HylistController');//管理员信息列表
+Route::resource('/admin/userlist','Home\HylistController');//前台用户信息列表
 Route::resource('/admin/website','admin\WebsiteController');//网站信息路由
 
 
 //
-Route::resource('/yhxx','admin\YhxxController');//添加管理员
+
 
 
 // 登录系统
 Route::get('adminlg','admin\LoginController@index');
 Route::post('adminlg/login','admin\LoginController@login');
+
+// 添加管理员
+Route::resource('admin/yhxx','admin\YhxxController');
+
+// 管理员信息列表
+Route::resource('admin/hy_list','admin\HylistController');
+
+
+// 添加分类 ------ 分类列表
+Route::get('admin/tjfl/display/{id}','admin\TjflController@display');
+Route::get('admin/tjfl/create/{id}','admin\TjflController@create');
+Route::resource('admin/tjfl','admin\TjflController');
+
+
+
+// 添加游戏 ------ 游戏列表
+Route::resource('admin/game','admin\GameController');
 
 
 
