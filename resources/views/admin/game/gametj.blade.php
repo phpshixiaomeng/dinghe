@@ -54,7 +54,7 @@
                                 <span class="title">所属类型：</span>
                                 <div class="li_r xial">
                                     <div class="xial_w xial_l">
-                                        <select name="game_zt" style="width:190px;height:27;">
+                                        <select name="cid" style="width:190px;height:27;">
                                             @foreach($cates_data as $k=>$v)
                                             <option value="{{ $v->id }}">{{ $v->name }}</option>
                                             @endforeach

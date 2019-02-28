@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Cates;
 use App\Models\Admin\Games;
+use App\Models\Admin\Gamecates;
 use DB;
 
 class GameController extends Controller
@@ -47,7 +48,8 @@ class GameController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {        
+    {   
+    
         // 检查是否有文件上传
         if($request->hasFile('game_img')) {
             // 创建文件上传对象
@@ -57,8 +59,18 @@ class GameController extends Controller
             return back();
         }
         $data = $request->except('_token');
+        $cid = intval($data['cid']);
+        unset($data['cid']);
         $data['game_img'] = $file_name;
-        $res = DB::table('Games')->insert($data);
+
+        $gid = DB::table('Games')->insertGetId($data);
+
+        $game_cates = new Gamecates;
+        $game_cates->gid = $gid;
+        $game_cates->cid = $cid;
+        $res = $game_cates->save();
+        
+
         if($res){
             return redirect('/admin/game')->with('success','添加成功');
         } else {
