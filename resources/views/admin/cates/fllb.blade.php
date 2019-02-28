@@ -44,7 +44,7 @@
                 <div class="space_hx">&nbsp;</div>
                 <!--列表-->
                 <form action="" method="post">
-                    <table cellpadding="0" cellspacing="0" class="list_hy">
+                    <table class="table table-hover">
                         <tr>
                             <th class="xz" scope="col">选择</th>
                             <th scope="col" style="text-align: center">ID</th>

@@ -65,8 +65,6 @@
                                         @endforeach
                                         <li><a href="games">游戏商店</a></li>
                                         <li><a href="gamesnews">游戏资讯</a></li>
-
-
                                     </ul>
                                 </li>
                                 <li><a href="/home/video">影像</a></li>

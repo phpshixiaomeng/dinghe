@@ -109,7 +109,7 @@
                 <div class="space_hx">&nbsp;</div>
                 <!--列表-->
                 <form action="" method="post">
-                    <table cellpadding="0" cellspacing="0" class="list_hy">
+                    <table class="table table-hover">
                         <tr>
                             <th class="xz" scope="col" >选择</th>
                             <th style="text-align: center;width:100px;">游戏名称</th>
@@ -134,7 +134,7 @@
                             <td style="text-align: center">-</td>
                             <td style="text-align: center"><a href="#" class="btn" style="color: red;">删除</a><a href="#" class="btn" style="color: #FFA500;">编辑</a></td>
                         </tr>
- 
+
                     </table>
                     <!--列表-->
                     <!--右边底部-->

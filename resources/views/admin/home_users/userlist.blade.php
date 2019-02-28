@@ -45,8 +45,8 @@
                 <div class="space_hx">&nbsp;</div>
                 <!--列表-->
                 <form action="" method="post">
-                    <table cellpadding="0" cellspacing="0" class="list_hy">
-                        <tr>
+                    <table class="table table-hover">
+                         <tr>
 
                             <th scope="col">用户列</th>
                             <th scope="col">用户ID</th>
@@ -83,10 +83,10 @@
                     @endforeach
 
                     </table>
-
+                </form>
                     <!--列表-->
                     <!--右边底部-->
-                </form>
+
 
                 <!--右边底部-->
             </div>

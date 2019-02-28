@@ -61,7 +61,7 @@
                              <li class="clearfix">
                                 <span class="title">网站信息：</span>
                                 <div class="li_r">
-                                    <input id="link_url" name="message" value="" type="text" placeholder=""l>
+                                    <input id="link_url" name="information" value="" type="text" placeholder="">
                                 </div>
                             </li>
 

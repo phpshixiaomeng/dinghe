@@ -36,7 +36,7 @@
                 <div class="space_hx">&nbsp;</div>
                 <!--列表-->
                 <form action="" method="post">
-                    <table cellpadding="0" cellspacing="0" class="list_hy">
+                    <table class="table table-hover">
                         <tr>
 
                             <th scope="col">用户昵称</th>

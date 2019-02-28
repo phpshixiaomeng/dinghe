@@ -13,9 +13,19 @@ class WebsiteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.websiteinformation.list');
+        $search = $request->input('search','');
+        $data = DB::table('websites')->where('title','like','%'.$search.'%')->orderBy('id','asc')->paginate(1);
+        if($search == ''){
+            $select = DB::table('websites')->get();
+            $num = count($select);
+        }else{
+            $num = count($data);
+        }
+        return view('admin.websiteinformation.list',['user'=>$data,'request'=> $request->all(),'num'=>$num,'i'=>1]);
+
+
     }
 
     /**
@@ -37,8 +47,12 @@ class WebsiteController extends Controller
     public function store(Request $request)
     {
         // echo 1;
-        $res=DB::table('websites')->insert($_POST);
-        echo $res;
+        $data=$request->except('_token');
+        $res=DB::table('websites')->insert($data);
+        if($res==1){
+        echo  "<script>alert('1')</script>";
+        return view('admin.websiteinformation.list');
+        }
     }
 
     /**
