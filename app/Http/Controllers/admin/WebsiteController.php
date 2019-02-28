@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 class WebsiteController extends Controller
 {
@@ -35,7 +36,9 @@ class WebsiteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // echo 1;
+        $res=DB::table('websites')->insert($_POST);
+        echo $res;
     }
 
     /**

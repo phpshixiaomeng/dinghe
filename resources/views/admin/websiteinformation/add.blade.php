@@ -38,43 +38,33 @@
                     <input  id="img" name="image" style="display: none;" type="file" onchange="upload()">
                 </form>
                 <!--终端列表-->
-                <form action="/admin/link" method="post" enctype="multipart/form-data">
+                <form action="/admin/website" method="post">
                     <div class="xjhy">
                         <!--基本配置-->
-                         @if (count($errors) > 0)
-                        <div style="background: pink; text-align:left;font-size:18px;">
-                            @foreach ($errors->all() as $error)
-                                <p style="margin-left:5px;">{{ $error }}</p>
-                            @endforeach
-                        </div>
-                        @endif
+
+
                         {{ csrf_field() }}
                         <ul class="hypz">
                             <li class="clearfix">
                                 <span class="title">网站版本号：</span>
                                 <div class="li_r">
-                                    <input name="lname" value="{{ old('lname') }}" type="text">
+                                    <input name="title" value="" type="text">
                                 <div id="url"></div>
                                 </div>
                             </li>
                             <li class="clearfix">
                                 <span class="title">网站描述：</span>
                                 <div class="li_r">
-                                    <input id="link_url" name="url" value="{{ old('url') }}" type="text">
+                                    <input id="link_url" name="description" value="" type="text">
                                 </div>
                             </li>
                              <li class="clearfix">
                                 <span class="title">网站信息：</span>
                                 <div class="li_r">
-                                    <input id="link_url" name="url" value="{{ old('url') }}" type="text" placeholder="请填写详细地址(包含http://)"l>
+                                    <input id="link_url" name="message" value="" type="text" placeholder=""l>
                                 </div>
                             </li>
-                            <li class="clearfix">
-                            <span class="title">网站LOGO：</span>
 
-
-
-                            </li>
                             <li class="clearfix">
 
                             </li>
@@ -94,25 +84,7 @@
     </div>
 
 <script type="text/javascript">
-    function upload()
-    {
 
-         $.ajax({
-            url: '/admin/link/upload',
-            type: 'POST',
-            data: new FormData($('#images')[0]),
-            processData: false,
-            contentType: false,
-            dataType:"json",
-            success : function(data) {
-                // console.log(data);
-                if(data.msg == 'success'){
-                    $('#thumb').attr('src','/uploads/'+data.path);
-                    $('#img_thumb').val(data.path);
-                }
-            }
-        });
-    }
 
 
 

@@ -29,7 +29,7 @@
                 <div class="search">
                     <span >按照名字查询</span>
                     <div class="s_text"><input name="search" type="text"></div>
-                    <input type="submit"  value="搜索">
+                    <input type="submit" class="btn btn-info" value="搜索">
                     <span style="float:right; font:18px/1.2 '微软雅黑';margin-right: 100px;margin-top: 20px;" >总共<b style="color:red;" ></b>条友情链接</span>
                 </div>
             </form>
@@ -45,7 +45,6 @@
 
             <table style = "width:97%" cellpadding="0" cellspacing="0" class="list_hy">
                 <tr>
-                    <th class="xz" scope="col">选择</th>
                     <th scope="col">友情链接名</th>
                     <th scope="col">友情链接地址</th>
                     <th scope="col">友情链接缩略图</th>
@@ -85,10 +84,10 @@
                     </div>
                 <div class="r_foot" style="margin-bottom: 30px">
                     <div class="r_foot_m">
-                        <span>
+                   <!--      <span>
                             <input id="qx" name="" type="checkbox" value="">
                             <em>全部选中</em>
-                        </span>
+                        </span> -->
                         <span style="width:100px;">
                             <form method="post" id="qdel" action="/admin/link/del">
                                 {{ csrf_field() }}
