@@ -13,12 +13,20 @@ class IndexController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
      */
-    public function index()
+    public static function  getGameCates()
     {
         $game_nav = DB::table('cates')->where('name','类型')->first();
         $game_child = Cates::where('pid',$game_nav->id)->get();
-        return view('Home/index',['game_child'=>$game_child]);
+        return $game_child;
+    }
+
+
+    public function index()
+    {
+
+        return view('Home/index');
     }
 
     /**
