@@ -15,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        View::share('common_game_child',IndexController::getGameCates());
 
     }
 

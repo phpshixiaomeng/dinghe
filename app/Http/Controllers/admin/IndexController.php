@@ -14,7 +14,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('admin/index',['data'=>'dameng']);
+        return view('admin/index');
     }
 
     /**

@@ -15,7 +15,12 @@ class IndexController extends Controller
      * @return \Illuminate\Http\Response
      *
      */
-
+    public static function  getGameCates()
+    {
+        $game_nav = DB::table('cates')->where('name','类型')->first();
+        $game_child = Cates::where('pid',$game_nav->id)->get();
+        return $game_child;
+    }
 
     public function index()
     {
