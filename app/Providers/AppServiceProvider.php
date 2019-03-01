@@ -17,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
         //
         View::share('common_game_child',IndexController::getGameCates());
 
+
         View::share('common_websites',IndexController::webSite());
 
 

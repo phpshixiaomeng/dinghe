@@ -17,6 +17,7 @@ class IndexController extends Controller
      */
     public static function  getGameCates()
     {
+
         $game_nav = DB::table('cates')->where('name','类型')->first();
         if($game_nav){
             $game_child = Cates::where('pid',$game_nav->id)->get();
@@ -47,6 +48,7 @@ class IndexController extends Controller
     }
     public function index()
     {
+
 
 
 

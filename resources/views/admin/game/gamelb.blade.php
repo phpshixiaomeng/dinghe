@@ -82,59 +82,98 @@
 </style>
 @endsection
 @section('content')
+<script type="text/javascript">
+    layui.use(['layer', 'form'], function(){
+      var layer = layui.layer
+      ,form = layui.form;
+      
+    });
+</script>
+
     <div id="right_ctn">
         <div class="right_m">
             <!--会议列表-->
-            <div class="hy_game">
+            <div class="hy_list">
                 <div class="box_t">
-                    <span class="name">游戏列表</span>
+                    <span class="name">分类列表</span>
                     <!--当前位置-->
                     <div class="position">
                         <a href=""><img src="../images/icon5.png" alt=""/></a>
                         <a href="">首页</a>
                         <span><img src="../images/icon3.png" alt=""/></span>
-                        <a href="">游戏管理</a>
+                        <a href="">分类管理</a>
                         <span><img src="../images/icon3.png" alt=""/></span>
-                        <a href="">游戏列表</a>
+                        <a href="">分类列表</a>
                     </div>
                     <!--当前位置-->
                 </div>
                 <!--查询-->
-                <div class="search">
-                    <span>按游戏名称查询：</span>
-                    <div class="s_text"><input name="" type="text"></div>
-                    <a href="" class="btn">查询</a>
-                </div>
+                <form action="/admin/tjfl" method="get">
+                    <div class="search">
+                        <span>按分类名称查询：</span>
+                        <div class="s_text">
+                            <input name="search" type="text" value="{{ $request['search'] or '' }}" placeholder="请输入搜索的关键字">
+                        </div>
+                            <button type="submit" class="btn btn-info">搜索</button>
+                    </div>
+                </form>
                 <!--查询-->
+
+                @if (session('success'))
+                <div id="alert" class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span id="button" aria-hidden="true">&times;</span></button>
+                    <strong>{{ session('success') }}</strong>
+                </div>
+                @endif
+                @if (session('error'))
+                    <div id="alert" class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span id="button" aria-hidden="true">&times;</span></button>
+                        <strong>{{ session('error') }}</strong>
+                    </div>
+                @endif
+
                 <div class="space_hx">&nbsp;</div>
                 <!--列表-->
                 <form action="" method="post">
                     <table class="table table-hover">
                         <tr>
-                            <th class="xz" scope="col" >选择</th>
-                            <th style="text-align: center;width:100px;">游戏名称</th>
-                            <th scope="col" style="text-align: center;">游戏价格</th>
-                            <th scope="col" style="text-align: center;">游戏详情</th>
-                            <th scope="col" style="text-align: center">游戏配置</th>
+                            <th class="xz" scope="col">选择</th>
+                            <th scope="col" style="text-align: center">游戏名称</th>
+                            <th scope="col" style="text-align: center">游戏价格</th>
                             <th scope="col" style="text-align: center">游戏销量</th>
                             <th scope="col" style="text-align: center">游戏库存</th>
                             <th scope="col" style="text-align: center">是否上架</th>
                             <th scope="col" style="text-align: center">游戏图片</th>
+                            <th scope="col" style="text-align: center">游戏详情</th>
                             <th scope="col" style="text-align: center">操作</th>
                         </tr>
+
+                       @foreach($games_data as $k=>$v)
                         <tr>
                             <td class="xz"><input name="" type="checkbox" value=""></td>
-                            <td style="text-align: center">ip64/1</td>
-                            <td style="text-align: center">-</td>
-                            <td style="text-align: center">2012-10-11 13:28</td>
-                            <td style="text-align: center">永久会议</td>
-                            <td style="text-align: center">-</td>
-                            <td style="text-align: center">-</td>
-                            <td style="text-align: center">-</td>
-                            <td style="text-align: center">-</td>
-                            <td style="text-align: center"><a href="#" class="btn" style="color: red;">删除</a><a href="#" class="btn" style="color: #FFA500;">编辑</a></td>
+                            <td style="text-align: center">{{ $v->name }}</td>
+                            <td style="text-align: center">{{ $v->game_jg }}</td>
+                            <td style="text-align: center">{{ $v->game_xl }}</td>
+                            <td style="text-align: center">{{ $v->game_kc }}</td>
+                            <td style="text-align: center">
+                                @if($v->game_zt == 0)
+                                <a href="/admin/game/display/{{ $v->id }}" class="btn btn-warning">下架</a>
+                                @else
+                                <a href="/admin/game/display/{{ $v->id }}" class="btn btn-info">上架</a>
+                                @endif
+                            </td>
+                            <td style="text-align: center"><img src="/uploads/{{ $v->game_img }}" style="width:50px;height:50px;"></td>
+                            <td style="text-align: center"><a class="btn btn-info" onclick="show({{ $v->id }})">游戏详情</a></td>
+                            <td style="text-align: center">
+                                <a href="/admin/game/delete/{{ $v->id }}" class="btn btn-danger" onclick="return confirm('确定要删除吗?')">删除</a>
+                                <a href="/admin/game/{{ $v->id }}/edit" class="btn btn-warning">修改</a>
+                            </td>
                         </tr>
+<<<<<<< HEAD
 
+=======
+                        @endforeach
+>>>>>>> origin/cui
                     </table>
                     <!--列表-->
                     <!--右边底部-->
@@ -144,18 +183,12 @@
                     <input name="" type="checkbox" value="">
                     <em>全部选中</em>
                 </span>
-                            <a href="" class="btn">删除</a>
-                            <a href="" class="btn">刷新</a>
+                            <input type="submit" value="删除" class="btn btn-danger">
+                            <a href="" class="btn btn-info">刷新</a>
                             <!--分页-->
-                            <div class="page">
+                            <div style="float:right;margin-right:100px;margin-top: -17px;">
                                 <a href="" class="prev"><img src="../images/icon7.png" alt=""/></a>
-                                <a class="now">1</a>
-                                <a href="">2</a>
-                                <a href="">3</a>
-                                <a href="">4</a>
-                                <a href="">5</a>
-                                <a href="">6</a>
-                                <a href="" class="next"><img src="../images/icon8.png" alt=""/></a>
+                               {{ $games_data->appends($request)->links() }}
                             </div>
                             <!--分页-->
                         </div>
@@ -166,4 +199,18 @@
             <!--会议列表-->
         </div>
     </div>
+    <script type="text/javascript">
+        function show(id)
+        {
+            //iframe层
+            layer.open({
+              type: 2,
+              title: '游戏详情',
+              shadeClose: true,
+              shade: 0.8,
+              area: ['500px', '90%'],
+              content: '/admin/game/'+id //iframe的url
+            }); 
+        }
+    </script>
 @endsection

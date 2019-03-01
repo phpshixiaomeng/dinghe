@@ -25,7 +25,6 @@
     <script src="/assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="/assets/js/jquery-3.1.1.min.js"></script>
  </head>
-
 <body>
 
 <div id="main-wrapper">
@@ -60,7 +59,9 @@
                                 </li>
                                 <li><a href="/home/games">游戏</a>
                                     <ul class="sub-menu">
+
                                         @if($common_game_child)
+
                                         @foreach($common_game_child as $k=>$v)
                                          <li><a href="#">{{ $v->name }}</a></li>
                                         @endforeach
@@ -233,15 +234,13 @@
                         <div class="footer-widget">
                             <div class="footer-social">
                                <span>跟随我们:</span>
-<<<<<<< HEAD
 
-=======
                                 <ul>
                                     @foreach($common_link as $kkk=>$vvv)
                                     <li><a href="{{ $vvv->url }}"><img style="width :40px;height: 40px;" src="uploads/{{ $vvv->image }}" alt=""></a></li>
                                     @endforeach
                                 </ul>
->>>>>>> origin/weishao
+
                             </div>
                         </div>
                     </div>

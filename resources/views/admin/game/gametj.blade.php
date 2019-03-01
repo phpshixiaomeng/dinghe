@@ -36,8 +36,13 @@
                 </div>
                 <div class="space_hx">&nbsp;</div>
                 <!--终端列表-->
+<<<<<<< HEAD
                 <form action="/tjfl" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
+=======
+                <form action="/admin/game" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }} 
+>>>>>>> origin/cui
                     <div class="xjhy">
                         <!--基本配置-->
                         <ul class="hypz">
@@ -45,23 +50,37 @@
                             <li class="clearfix">
                                 <span class="title">游戏名称：</span>
                                 <div class="li_r">
-                                    <input name="name" type="text">
+                                    <input name="name" type="text" value="{{ old('name') }}">
                                     <i>*</i>
                                 </div>
                             </li>
+<<<<<<< HEAD
 
                              <li class="clearfix">
                                 <span class="title">游戏价格：</span>
                                 <div class="li_r">
                                     <input name="game_jg" type="text">
                                     <i>*</i>
+=======
+                            
+                            <li class="clearfix">
+                                <span class="title">所属类型：</span>
+                                <div class="li_r xial">
+                                    <div class="xial_w xial_l">
+                                        <select name="cid" style="width:190px;height:27;">
+                                            @foreach($cates_data as $k=>$v)
+                                            <option value="{{ $v->id }}">{{ $v->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+>>>>>>> origin/cui
                                 </div>
                             </li>
 
-                            <li class="clearfix">
-                                <span class="title">游戏配置：</span>
+                             <li class="clearfix">
+                                <span class="title">游戏价格：</span>
                                 <div class="li_r">
-                                    <input name="game_pz" type="text">
+                                    <input name="game_jg" type="text" value="{{ old('game_jg') }}">
                                     <i>*</i>
                                 </div>
                             </li>
@@ -69,7 +88,7 @@
                             <li class="clearfix">
                                 <span class="title">游戏销量：</span>
                                 <div class="li_r">
-                                    <input name="game_xl" type="text">
+                                    <input name="game_xl" type="text" value="{{ old('game_xl') }}">
                                     <i>*</i>
                                 </div>
                             </li>
@@ -77,7 +96,7 @@
                             <li class="clearfix">
                                 <span class="title">游戏库存：</span>
                                 <div class="li_r">
-                                    <input name="game_kc" type="text">
+                                    <input name="game_kc" type="text" value="{{ old('game_kc') }}">
                                     <i>*</i>
                                 </div>
                             </li>
@@ -98,17 +117,20 @@
                                     <div class="xial_w xial_l">
                                         <select name="game_zt" style="width:190px;height:27;">
                                             <option value="0">上架</option>
-                                            <option value="0">下架</option>
+                                            <option value="1">下架</option>
                                         </select>
                                     </div>
                                 </div>
                             </li>
 
-                            <li class="clearfix" style="height:200px;">
+                            <li class="clearfix" style="height:400px;">
                                 <span class="title">游戏详情：</span>
                                 <div class="li_r">
-                                    <textarea name="game_xq" style="width:190px;height:200px;"></textarea>
-                                    <i>*</i>
+                                    <!-- 加载编辑器的容器 -->
+                                    <script id="abc" name="game_xq" type="text/plain">
+                                       {{ old('game_xq') }}
+                                    </script>
+                                    <!-- <textarea name="game_xq" style="width:190px;height:200px;"></textarea> -->
                                 </div>
                             </li>
 
@@ -126,4 +148,17 @@
             <!--会议列表-->
         </div>
     </div>
+    <!-- 配置文件 -->
+
+    <script type="text/javascript" src="/utf8-php/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+
+    <script type="text/javascript" src="/utf8-php/ueditor.all.js"></script>
+    <!-- 实例化编辑器 -->
+
+    <script type="text/javascript">
+        var ue = UE.getEditor('abc', {
+            autoHeightEnabled:false,
+        });
+    </script>
 @endsection
