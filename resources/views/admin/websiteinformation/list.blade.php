@@ -32,13 +32,25 @@
                     <!--当前位置-->
                 </div>
                 <!--查询-->
+                    @if (session('success'))
+                <div id="alert" class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span id="button" aria-hidden="true">&times;</span></button>
+                    <strong>{{ session('success') }}</strong>
+                </div>
+            @endif
+            @if (session('error'))
+                <div id="alert" class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span id="button" aria-hidden="true">&times;</span></button>
+                    <strong>{{ session('error') }}</strong>
+                </div>
+            @endif
                 <form action="/admin/website" method="get">
                 <div class="search">
-                    <span>按用户名查询</span>
+                    <span>按网站标题查询</span>
 
                     <div class="s_text"><input name="search" type="text"></div>
                     <input type="submit" class="btn btn-info"  value="搜索">
-                    <span style="float:right; font:18px/1.2 '微软雅黑';margin-right: 100px;margin-top: 20px;" >总共<b style="color:red;" >{{$num}}</b>个用户</span>
+                    <span style="float:right; font:18px/1.2 '微软雅黑';margin-right: 100px;margin-top: 20px;" >总共<b style="color:red;" >{{$num}}</b>个网站信息</span>
                 </div>
                 </form>
                 <!--查询-->
@@ -47,11 +59,13 @@
                 <form action="" method="post">
                     <table class="table table-hover">
                          <tr>
-
+                            <th scope="col">ID</th>
                             <th scope="col">网站版本号</th>
                             <th scope="col">网站描述</th>
                             <th scope="col">网站信息</th>
+                            <th scope="col">状态</th>
                             <th scope="col">操作</th>
+
                         </tr>
                     @foreach($user as $v)
                         <tr>
@@ -59,9 +73,23 @@
                             <td>{{$v->title}}</td>
                             <td>{{$v->description}}</td>
                             <td>{{$v->information}}</td>
+                            @if($v->status==1)
+                            <td><font color="green">正在使用中...</font></td>
+                            @else
+                            <td><font color="red">禁用中</font></td>
+                            @endif
                             <td>
-                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                                更改
+                            @if($v->status==1)
+                            <button type="button" class="btn btn-danger" data-toggle="modal" >
+                               <a href="/admin/website/{{$v->id}}/edit?sta=0">禁用</a>
+                            </button>
+                            @else
+                             <button type="button" class="btn btn-info" data-toggle="modal" >
+                               <a href="/admin/website/{{$v->id}}/edit?sta=1">使用</a>
+                            </button>
+                            @endif
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal" >
+                              <a href="/admin/website/{{$v->id}}" onclick="return confirm('确定要删除吗?')">删除</a>
                             </button>
                             </td>
 

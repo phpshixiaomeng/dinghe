@@ -16,7 +16,7 @@ class WebsiteController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search','');
-        $data = DB::table('websites')->where('title','like','%'.$search.'%')->orderBy('id','asc')->paginate(1);
+        $data = DB::table('websites')->where('title','like','%'.$search.'%')->orderBy('id','asc')->paginate(5);
         if($search == ''){
             $select = DB::table('websites')->get();
             $num = count($select);
@@ -50,8 +50,8 @@ class WebsiteController extends Controller
         $data=$request->except('_token');
         $res=DB::table('websites')->insert($data);
         if($res==1){
-        echo  "<script>alert('1')</script>";
-        return view('admin.websiteinformation.list');
+        // echo "<script>alert('添加成功')</script>";
+        return redirect('/admin/website')->with('success','添加成功');
         }
     }
 
@@ -63,7 +63,11 @@ class WebsiteController extends Controller
      */
     public function show($id)
     {
-        //
+        // echo 1;
+        $res=DB::table('websites')->where('id',$id)->delete();
+        if($res){
+            return redirect('/admin/website')->with('success','删除成功');
+        }
     }
 
     /**
@@ -74,7 +78,26 @@ class WebsiteController extends Controller
      */
     public function edit($id)
     {
-        //
+
+
+        $res=DB::table('websites')->where('status',$_GET['sta'])->first();
+        if($_GET['sta']==1){
+                $a=0;
+            }else{
+                $a=1;
+            }
+        if($res){
+
+            DB::table('websites')->where('status',$_GET['sta'])->update(['status'=>$a]);
+            DB::table('websites')->where('id',$id)->update(['status'=>$_GET['sta']]);
+            return redirect('/admin/website')->with('success','使用成功');
+        }else{
+
+
+            $cz=DB::table('websites')->where('id','=',$id)->update(['status' =>$_GET['sta']]);
+
+            return redirect('/admin/website')->with('success','使用成功');
+        }
     }
 
     /**

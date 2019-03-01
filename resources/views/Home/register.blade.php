@@ -122,7 +122,7 @@
 
 //ajax短信提交
     var phone=$('#phone').val();
-    var url="http://www.dingding.com/zhuce/create?phone="+phone;
+    var url="http://www.dingding.com/home/zhuce/create?phone="+phone;
      $.ajaxSetup({
             headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
             });
@@ -142,7 +142,7 @@
 
 
 
-    $a=3;//秒数
+    $a=60;//秒数
     var zz=setInterval(function(){
     if($a==0){
     clearInterval(zz);
@@ -285,7 +285,7 @@ $("#password").blur(function(){
                 'phone':phone,
                 'ma':duanxin
             };
-            var url='http://www.dingding.com/zhuce';
+            var url='http://www.dingding.com/home/zhuce';
             $.ajaxSetup({
             headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
             });

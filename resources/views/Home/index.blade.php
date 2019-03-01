@@ -38,6 +38,21 @@
                         <div class="single-featured img-full">
                             <a href="#"><img src="assets/images/feature/feature-slide-4.jpg" alt=""></a>
                         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </div>
                 </div>
             </div>

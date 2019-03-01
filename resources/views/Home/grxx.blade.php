@@ -19,7 +19,7 @@
                             <div class="row" style="background-color:RGB(3,22,52);">
 
                               <font color="white">用户头像:</font> <div class="col-md-12 col-24 mb-60">
-                                    <label for="touxiang"><img src="/touxiang/public/{{$data2->pic}}" alt="暂无头像请上传" width="120" height="120"></label>
+                                    <label for="touxiang"><img src="/uploads/public/{{$data2->pic}}" alt="暂无头像请上传" width="120" height="120"></label>
 
 
                                 </div>

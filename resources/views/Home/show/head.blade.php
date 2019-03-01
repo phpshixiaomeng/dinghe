@@ -98,15 +98,15 @@
                     <div class="col-12 col-md-9 order-md-2 order-lg-3 col-lg-3">
                         <div class="header-right-wrap">
                             <ul>
-                            <?php
-                            if(!session_id()) session_start();
-                            if(empty($_SESSION)){ ?>
+
+                           <?php if(!session_id()) session_start();?>
+                            @if(empty($_SESSION))
                                 <li><a href="/home/login">登录</a></li>
                                 <li><a href="/home/zhuce">注册</a></li>
-                            <?php }else{ ?>
+                            @else
                                 <li><a href="javascript:if(confirm('确实要退出吗?'))location='http://www.dingding.com/home/zhuce/tui/edit'">退出</a></li>
                                 <li><a href="/home/grxx">个人信息</a></li>
-                                <?php } ?>
+                            @endif
                                 <li class="header-search"><a class="header-search-toggle" href="#"><i class="icofont-search-2"></i></a>
                                     <div class="header-search-form">
                                         <form action="#">
@@ -250,12 +250,7 @@
                         <div class="footer-widget">
                             <div class="footer-social">
                                <span>跟随我们:</span>
-                                <ul>
-                                    <li><a href="#"><i class="icofont-facebook"></i></a></li>
-                                    <li><a href="#"><i class="icofont-twitter"></i></a></li>
-                                    <li><a href="#"><i class="icofont-instagram"></i></a></li>
-                                    <li><a href="#"><i class="icofont-youtube-play"></i></a></li>
-                                </ul>
+
                             </div>
                         </div>
                     </div>
@@ -272,7 +267,9 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="copyright text-center">
-                            <p>版权 &copy;2018 <a  href="/home">Gilbard</a>. 保留所有权利.</p>
+                            <p>版权:{{$common_websites->title}}|<a  href="/home">Gilbard</a>. {{$common_websites->description}}.
+                            |联系方式:{{$common_websites->information}}
+                            </p>
                         </div>
                     </div>
                 </div>

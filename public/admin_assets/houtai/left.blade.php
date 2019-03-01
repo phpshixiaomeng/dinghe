@@ -138,6 +138,165 @@
             </li>
 
 
+            <li class="now">
+                <div class="nav_m">
+                    <span><a>轮播图管理</a></span>
+                    <i>&nbsp;</i>
+                </div>
+                <ul class="erji">
+                    <li>
+                        <span><a href="/admin/lunbo" target="main">查看轮播图片</a></span>
+                    </li>
+                    <li>
+                        <span><a href="/admin/lunbo/create" target="main">添加轮播图</a></span>
+                    </li>
+                </ul>
+            </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

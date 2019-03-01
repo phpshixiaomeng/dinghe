@@ -22,6 +22,14 @@ class IndexController extends Controller
         return $game_child;
     }
 
+
+    public static function  webSite()
+    {
+        $game_nav = DB::table('websites')->where('status','1')->first();
+
+        return $game_nav;
+    }
+
     public function index()
     {
 

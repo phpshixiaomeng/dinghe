@@ -37,7 +37,7 @@
                 <div class="space_hx">&nbsp;</div>
                 <!--终端列表-->
                 <form action="/tjfl" method="post" enctype="multipart/form-data">
-                    {{ csrf_field() }} 
+                    {{ csrf_field() }}
                     <div class="xjhy">
                         <!--基本配置-->
                         <ul class="hypz">
@@ -49,7 +49,7 @@
                                     <i>*</i>
                                 </div>
                             </li>
-                            
+
                              <li class="clearfix">
                                 <span class="title">游戏价格：</span>
                                 <div class="li_r">

@@ -46,6 +46,10 @@ Route::resource('/home/contact','Home\ContactController');//联系我们
 Route::get('/admin','admin\IndexController@index');//后台主页模板
 Route::resource('/admin/userlist','Home\HylistController');//前台用户信息列表
 Route::resource('/admin/website','admin\WebsiteController');//网站信息路由
+Route::post('/admin/lunbo/upload','admin\LunboController@upload');//图片缩略图
+Route::post('/admin/lunbo/del','admin\LunboController@del');//图片缩略图
+Route::get('/admin/lunbo/status/{id}/{status}','admin\LunboController@status');//轮播图片禁用解禁
+Route::resource('/admin/lunbo','admin\LunboController');//轮播图路由
 
 
 //
