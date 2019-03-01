@@ -72,6 +72,12 @@
                     <li>
                         <span><a href="/admin/game/create" target="main">添加游戏</a></span>
                     </li>
+                    <li>
+                        <span><a href="/admin/highpei" target="main">配置列表</a></span>
+                    </li>
+                    <li>
+                        <span><a href="/admin/highpei/create" target="main">添加配置信息</a></span>
+                    </li>
                 </ul> 
             </li>
 
