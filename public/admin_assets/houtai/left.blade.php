@@ -88,6 +88,7 @@
                     <li>
                         <span><a href="/admin/game/create" target="main">添加游戏</a></span>
                     </li>
+
                 </ul>
 
             </li>
@@ -165,6 +166,24 @@
                         <span><a href="/admin/zixun/create" target="main">添加资讯</a></span>
                     </li>
                 </ul>
+            </li>
+            <li class="now">
+                <div class="nav_m">
+                    <span><a>配置信息</a></span>
+
+                    <i>&nbsp;</i>
+                </div>
+
+              <ul class="erji">
+                 <li>
+                        <span><a href="/admin/highpei" target="main">配置列表</a></span>
+                    </li>
+                    <li>
+                        <span><a href="/admin/highpei/create" target="main">添加配置信息</a></span>
+                    </li>
+
+                </ul>
+
             </li>
 
 
@@ -437,13 +456,7 @@
 
 
 
-            <li>
-                <div class="nav_m">
-                    <span><a href="/tcxt" target="_blank">退出系统</a></span>
-                </div>
 
-
-            </li>
 
         </ul>
     </div>

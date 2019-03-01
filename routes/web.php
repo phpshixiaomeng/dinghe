@@ -169,12 +169,15 @@ Route::resource('/admin/lunbo','admin\LunboController');//轮播图路由
 
 
 
+
 // 登录系统
 Route::get('adminlg','admin\LoginController@index');
 Route::post('adminlg/login','admin\LoginController@login');
 
+
 // 添加管理员
 Route::resource('admin/yhxx','admin\YhxxController');
+
 
 // 管理员信息列表
 Route::resource('admin/hy_list','admin\HylistController');
@@ -186,11 +189,19 @@ Route::get('admin/tjfl/create/{id}','admin\TjflController@create');
 Route::resource('admin/tjfl','admin\TjflController');
 
 
-
 // 添加游戏 ------ 游戏列表
 Route::get('admin/game/display/{id}','admin\GameController@display');
 Route::get('admin/game/delete/{id}','admin\GameController@shan');
 Route::resource('admin/game','admin\GameController');
+
+// 添加游戏配置
+Route::get('admin/highpei/display/{id}','admin\PeizrController@display');
+Route::get('admin/highpei/delete/{id}','admin\PeizrController@shan');
+Route::resource('admin/highpei','admin\PeizrController');
+
+
+
+
 
 
 
