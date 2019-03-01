@@ -56,7 +56,7 @@
                             <li class="clearfix">
                                 <span class="title">游戏名字：</span>
                                 <div class="li_r">
-                                    <input  name="gname" value="{{ old('gname') }}" type="text" placeholder="请准确的填写游戏名字"l>
+                                    <input  name="gname" value="{{ old('gname') }}" type="text" placeholder="请准确的填写游戏名字">
                                 </div>
                             </li>
                             <li class="clearfix">

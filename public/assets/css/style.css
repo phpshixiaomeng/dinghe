@@ -4,10 +4,10 @@
     Version: 1.0
 
 -----------------------------------------------------------------------------------
-    
+
     CSS INDEX
     ===================
-	
+
     01. Theme default CSS
     02. Header CSS
     03. Hero CSS
@@ -139,7 +139,7 @@ ul {
 img {
   max-width: 100%; }
 
-/*-- 
+/*--
     - Plugin CSS Customize
 -----------------------------------------*/
 .nice-select {
@@ -158,7 +158,7 @@ img {
   .note-editable {
     height: 200px !important; } }
 
-/*-- 
+/*--
     - Common Classes
 -----------------------------------------*/
 .fix {
@@ -260,7 +260,7 @@ img {
 .mbYTP_wrapper {
   z-index: -9 !important; }
 
-/*-- 
+/*--
     - Input Placeholder
 -----------------------------------------*/
 input:-moz-placeholder, textarea:-moz-placeholder {
@@ -297,7 +297,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .bg-black {
   background-color: #081b1f !important; }
 
-/*-- 
+/*--
     - Tab Content & Pane Fix
 ------------------------------------------*/
 .tab-content {
@@ -315,10 +315,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
       opacity: 1;
       overflow: visible; }
 
-/*-- 
+/*--
     - Main Wrapper
 ------------------------------------------*/
-/*-- 
+/*--
     - Section Title
 ------------------------------------------*/
 .section-title {
@@ -388,7 +388,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
       margin-left: auto;
       margin-right: 0; }
 
-/*-- 
+/*--
     - Button
 ------------------------------------------*/
 .df-btn {
@@ -426,7 +426,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
         left: -6px;
         top: -6px; } }
 
-/*-- 
+/*--
     - Page Banner Section
 ------------------------------------------*/
 .page-banner-section {
@@ -712,7 +712,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     .page-breadcrumb li a:hover {
       color: #f64140; }
 
-/*-- 
+/*--
     - Page Pagination
 ------------------------------------------*/
 .page-pagination {
@@ -1581,7 +1581,7 @@ header.header.header-static {
 .hero-content {
   text-align: center; }
   .hero-content h1 {
-    font-size: 100px;
+    font-size: 40px;
     line-height: 90px;
     font-weight: 300;
     font-family: "Bauhaus 93";
@@ -1589,21 +1589,21 @@ header.header.header-static {
     text-shadow: -6px 4px 1px #252525; }
     @media only screen and (min-width: 1200px) and (max-width: 1499px) {
       .hero-content h1 {
-        font-size: 90px; } }
+        font-size: 40px; } }
     @media only screen and (min-width: 992px) and (max-width: 1199px) {
       .hero-content h1 {
-        font-size: 80px;
+        font-size: 40px;
         line-height: 80px; } }
     @media only screen and (min-width: 768px) and (max-width: 991px) {
       .hero-content h1 {
-        font-size: 50px;
+        font-size: 40px;
         line-height: 50px; } }
     @media only screen and (max-width: 767px) {
       .hero-content h1 {
-        font-size: 36px;
+        font-size: 40px;
         line-height: 45px; } }
   .hero-content h2 {
-    font-size: 100px;
+    font-size: 40px;
     line-height: 90px;
     font-weight: 300;
     font-family: "Bauhaus 93";
@@ -1611,18 +1611,18 @@ header.header.header-static {
     text-shadow: -6px 4px 1px #252525; }
     @media only screen and (min-width: 1200px) and (max-width: 1499px) {
       .hero-content h2 {
-        font-size: 90px; } }
+        font-size: 40px; } }
     @media only screen and (min-width: 992px) and (max-width: 1199px) {
       .hero-content h2 {
-        font-size: 80px;
+        font-size: 40px;
         line-height: 80px; } }
     @media only screen and (min-width: 768px) and (max-width: 991px) {
       .hero-content h2 {
-        font-size: 50px;
+        font-size: 40px;
         line-height: 50px; } }
     @media only screen and (max-width: 767px) {
       .hero-content h2 {
-        font-size: 36px;
+        font-size: 40px;
         line-height: 45px; } }
   .hero-content .df-btn {
     background-color: #ffffff;

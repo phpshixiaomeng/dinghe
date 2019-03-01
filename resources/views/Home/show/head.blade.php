@@ -60,9 +60,11 @@
                                 </li>
                                 <li><a href="/home/games">游戏</a>
                                     <ul class="sub-menu">
+                                        @if($common_game_child)
                                         @foreach($common_game_child as $k=>$v)
                                          <li><a href="#">{{ $v->name }}</a></li>
                                         @endforeach
+                                        @endif
                                         <li><a href="games">游戏商店</a></li>
                                         <li><a href="gamesnews">游戏资讯</a></li>
                                     </ul>
@@ -139,42 +141,23 @@
     <div class="hero-section section position-relative">
         <div class="hero-slider">
             <!--Hero Item start-->
-            <div class="hero-item hero-item-2" style="background-image: url(/assets/images/hero/hero-2.jpg)">
+
+            @foreach($common_ads as $kk=>$vv)
+            <div class="hero-item hero-item-2" style="background-image: url(/uploads/{{ $vv->image }})">
                 <div class="container container-1520">
                     <div class="row">
                         <div class="col-12">
-
-                            <!--Hero Content start-->
                             <div class="hero-content">
-                                <h1>巫师3</h1>
-                                <h2>冒险开始在这里</h2>
-                                <a class="df-btn" href="gamesnews">现在去买</a>
+                                <h1 style="font-size: 50px; font-family:'微软雅黑' ;">{{ $vv->gname  }}</h1>
+                                <h2 style="font-size: 50px; font-family:'微软雅黑' ;">{{ $vv->title  }}</h2>
+                                <a class="df-btn" href="">现在购买</a>
                             </div>
-                            <!--Hero Content end-->
-
                         </div>
                     </div>
                 </div>
             </div>
-            <!--Hero Item end-->
-            <!--Hero Item start-->
-            <div class="hero-item hero-item-2" style="background-image: url(/assets/images/hero/hero-3.jpg)">
-                <div class="container container-1520">
-                    <div class="row">
-                        <div class="col-12">
+            @endforeach
 
-                            <!--Hero Content start-->
-                            <div class="hero-content">
-                                <h1>巫师3</h1>
-                                <h2>冒险开始在这里</h2>
-                                <a class="df-btn" href="gamesnews">现在去买</a>
-                            </div>
-                            <!--Hero Content end-->
-
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!--Hero Item end-->
         </div>
     </div>
@@ -250,7 +233,15 @@
                         <div class="footer-widget">
                             <div class="footer-social">
                                <span>跟随我们:</span>
+<<<<<<< HEAD
 
+=======
+                                <ul>
+                                    @foreach($common_link as $kkk=>$vvv)
+                                    <li><a href="{{ $vvv->url }}"><img style="width :40px;height: 40px;" src="uploads/{{ $vvv->image }}" alt=""></a></li>
+                                    @endforeach
+                                </ul>
+>>>>>>> origin/weishao
                             </div>
                         </div>
                     </div>
