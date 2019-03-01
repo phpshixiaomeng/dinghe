@@ -45,6 +45,9 @@ class LunboController extends Controller
      */
     public function store(Request $request)
     {
+
+
+
         $data=$request->except('_token');
         $res=DB::table('lunbotus')->insert($data);
         if($res){
@@ -126,10 +129,10 @@ class LunboController extends Controller
                 $name=$request->file('image');
                 $zname=$name->extension();
                 $fname=time()+rand('111','999').'.'.$zname;
-                $file_name = $name->storeAs('links',$fname);
+                $file_name = $name->storeAs('lunbotu',$fname);
                 $arr = [
                     'msg'=>'success',
-                    'path'=>'links/'.$fname,
+                    'path'=>'lunbotu/'.$fname,
                 ];
             }else{
                 $arr = [

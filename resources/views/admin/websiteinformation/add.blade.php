@@ -32,7 +32,18 @@
                 </div>
 
                 <div class="space_hx">&nbsp;</div>
-
+                 @if (session('success'))
+                <div id="alert" class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span id="button" aria-hidden="true">&times;</span></button>
+                    <strong>{{ session('success') }}</strong>
+                </div>
+            @endif
+            @if (session('error'))
+                <div id="alert" class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span id="button" aria-hidden="true">&times;</span></button>
+                    <strong>{{ session('error') }}</strong>
+                </div>
+            @endif
                 <form id="images">
                     {{csrf_field()}}
                     <input  id="img" name="image" style="display: none;" type="file" onchange="upload()">
@@ -48,20 +59,20 @@
                             <li class="clearfix">
                                 <span class="title">网站版本号：</span>
                                 <div class="li_r">
-                                    <input name="title" value="" type="text">
+                                    <input name="title" value="{{old('title')}}" type="text">
                                 <div id="url"></div>
                                 </div>
                             </li>
                             <li class="clearfix">
                                 <span class="title">网站描述：</span>
                                 <div class="li_r">
-                                    <input id="link_url" name="description" value="" type="text">
+                                    <input id="link_url" name="description" value="{{old('description')}}" type="text">
                                 </div>
                             </li>
                              <li class="clearfix">
                                 <span class="title">网站信息：</span>
                                 <div class="li_r">
-                                    <input id="link_url" name="information" value="" type="text" placeholder="">
+                                    <input id="link_url" name="information" value="" type="text" value="{{old('information')}}">
                                 </div>
                             </li>
 

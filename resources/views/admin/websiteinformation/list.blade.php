@@ -80,17 +80,17 @@
                             @endif
                             <td>
                             @if($v->status==1)
-                            <button type="button" class="btn btn-danger" data-toggle="modal" >
-                               <a href="/admin/website/{{$v->id}}/edit?sta=0">禁用</a>
-                            </button>
+
+                               <a href="/admin/website/{{$v->id}}/edit?sta=0" class="btn btn-danger">禁用</a>
+
                             @else
-                             <button type="button" class="btn btn-info" data-toggle="modal" >
-                               <a href="/admin/website/{{$v->id}}/edit?sta=1">使用</a>
-                            </button>
+
+                               <a href="/admin/website/{{$v->id}}/edit?sta=1" class="btn btn-info">使用</a>
+
                             @endif
-                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal" >
-                              <a href="/admin/website/{{$v->id}}" onclick="return confirm('确定要删除吗?')">删除</a>
-                            </button>
+
+                              <a href="/admin/website/{{$v->id}}" onclick="return confirm('确定要删除吗?')" class="btn btn-warning">删除</a>
+
                             </td>
 
                         </tr>

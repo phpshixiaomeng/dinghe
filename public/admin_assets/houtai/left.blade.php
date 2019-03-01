@@ -152,6 +152,20 @@
                     </li>
                 </ul>
             </li>
+            <li class="now">
+                <div class="nav_m">
+                    <span><a>游戏资讯管理</a></span>
+                    <i>&nbsp;</i>
+                </div>
+                <ul class="erji">
+                    <li>
+                        <span><a href="/admin/zixun" target="main">查看资讯列表</a></span>
+                    </li>
+                    <li>
+                        <span><a href="/admin/zixun/create" target="main">添加资讯</a></span>
+                    </li>
+                </ul>
+            </li>
 
 
 

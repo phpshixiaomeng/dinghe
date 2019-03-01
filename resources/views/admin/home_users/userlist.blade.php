@@ -68,15 +68,23 @@
                             <td><font color="red">已冻结</font></td>
                             @endif
                             <td>{{$v->user_vip}}</td>
-                            <td><a href="/admin/userlist/{{$v->id}}"><font color="blue">查看详情</font></a>|
+                            <td><a href="/admin/userlist/{{$v->id}}" class="btn btn-info"><font color="white">查看详情</font></a>
                             @if(($v->status)==0)
-                            <a href="/admin/userlist/{{$v->status}}/edit?id={{$v->id}}" onclick="return confirm('确定要冻结吗?')">
-                            <font color="red">冻结</font>
+
+                            <a href="/admin/userlist/{{$v->status}}/edit?id={{$v->id}}" onclick="return confirm('确定要冻结吗?')" class="btn btn-danger">
+                            <font color="white">
+                            冻结
+                            </font>
                             </a>
+
                              @else
-                             <a href="/admin/userlist/{{$v->status}}/edit?id={{$v->id}}">
-                              <font color="green" onclick="return confirm('确定要解冻吗?')">解除冻结</font>
+
+                             <a href="/admin/userlist/{{$v->status}}/edit?id={{$v->id}}" onclick="return confirm('确定要解冻吗?')" class="btn btn-warning">
+                            <font color="white">
+                             解除冻结
+                            </font>
                             </a>
+
                             @endif
                             </a></td>
                         </tr>

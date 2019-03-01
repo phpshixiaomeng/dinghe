@@ -46,6 +46,15 @@ class WebsiteController extends Controller
      */
     public function store(Request $request)
     {
+        $p1=$request->filled('title');
+
+        $p2=$request->filled('description');
+        $p3=$request->filled('information');
+        if($p1!=1 || $p2!=1 || $p3!=1){
+        $request->flashExcept('_token');
+        return redirect('admin/website/create')->with('error','有值为空,添加失败');
+        }
+
         // echo 1;
         $data=$request->except('_token');
         $res=DB::table('websites')->insert($data);

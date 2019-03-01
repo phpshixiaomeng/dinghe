@@ -67,7 +67,7 @@
                                         @endforeach
                                         @endif
                                         <li><a href="games">游戏商店</a></li>
-                                        <li><a href="gamesnews">游戏资讯</a></li>
+
                                     </ul>
                                 </li>
                                 <li><a href="/home/video">影像</a></li>
@@ -76,10 +76,9 @@
                                     <ul class="sub-menu">
                                         <li><a href="/home/luntan">论坛</a></li>
                                         <li><a href="/home/luntanfatie">发帖</a></li>
-                                        <li><a href="/home/luntanshaitu">晒图</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="/home/bokelist">博客</a>
+                                <li><a href="/home/bokelist">游戏资讯</a>
                                     <ul class="sub-menu">
 
                                         <li><a href="/home/bizhi">精美壁纸</a></li>
@@ -233,7 +232,7 @@
                     <div class="col-xl-3 col-lg-4 col-md-12">
                         <div class="footer-widget">
                             <div class="footer-social">
-                               <span>跟随我们:</span>
+                               <span>友情链接:</span>
 
                                 <ul>
                                     @foreach($common_link as $kkk=>$vvv)

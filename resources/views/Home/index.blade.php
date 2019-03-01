@@ -17,30 +17,66 @@
             <div class="row no-gutters">
                 <div class="col-12">
                     <div class="featured-slide">
-                        <div class="single-featured img-full">
-                            <a href="#"><img src="assets/images/feature/feature-slide-1.jpg" alt=""></a>
-                        </div>
-                        <div class="single-featured img-full">
-                            <a href="#"><img src="assets/images/feature/feature-slide-2.jpg" alt=""></a>
-                        </div>
-                        <div class="single-featured img-full">
-                            <a href="#"><img src="assets/images/feature/feature-slide-3.jpg" alt=""></a>
-                        </div>
-                        <div class="single-featured img-full">
-                            <a href="#"><img src="assets/images/feature/feature-slide-4.jpg" alt=""></a>
-                        </div>
-                        <div class="single-featured img-full">
-                            <a href="#"><img src="assets/images/feature/feature-slide-5.jpg" alt=""></a>
-                        </div>
-                        <div class="single-featured img-full">
-                            <a href="#"><img src="assets/images/feature/feature-slide-6.jpg" alt=""></a>
-                        </div>
-                        <div class="single-featured img-full">
-                            <a href="#"><img src="assets/images/feature/feature-slide-4.jpg" alt=""></a>
-                        </div>
 
 
 
+                        @foreach($data as $val)
+                        <div class="single-featured img-full">
+                            <a href="{{$val->gname}}"><img src="/uploads/{{ $val->image }}" alt="" ></a>
+                        </div>
+                        @endforeach
+                        @if($num==3)
+                        <div class="single-featured img-full">
+                            <img src="assets/images/feature/zanwu.jpg" alt="" >
+                        </div>
+                        <div class="single-featured img-full">
+                           <img src="assets/images/feature/zanwu.jpg" alt="">
+                        </div>
+                        @endif
+                        @if($num==2)
+
+                        <div class="single-featured img-full">
+                           <img src="assets/images/feature/zanwu.jpg" alt="">
+                        </div>
+                        <div class="single-featured img-full">
+                            <img src="assets/images/feature/zanwu.jpg" alt="">
+                        </div>
+                        <div class="single-featured img-full">
+                           <img src="assets/images/feature/zanwu.jpg" alt="">
+                        </div>
+                        @endif
+                        @if($num==1)
+                        <div class="single-featured img-full">
+                            <img src="assets/images/feature/zanwu.jpg" alt="">
+                        </div>
+                        <div class="single-featured img-full">
+                           <img src="assets/images/feature/zanwu.jpg" alt="">
+                        </div>
+                        <div class="single-featured img-full">
+                            <img src="assets/images/feature/zanwu.jpg" alt="">
+                        </div>
+                        <div class="single-featured img-full">
+                           <img src="assets/images/feature/zanwu.jpg" alt="">
+                        </div>
+                        @endif
+                        @if($num==0)
+                        <div class="single-featured img-full">
+                            <img src="assets/images/feature/zanwu.jpg" alt="">
+                        </div>
+                        <div class="single-featured img-full">
+                           <img src="assets/images/feature/zanwu.jpg" alt="">
+                        </div>
+                        <div class="single-featured img-full">
+                            <img src="assets/images/feature/zanwu.jpg" alt="">
+                        </div>
+                        <div class="single-featured img-full">
+                           <img src="assets/images/feature/zanwu.jpg" alt="">
+                        </div>
+                        <div class="single-featured img-full">
+                           <img src="assets/images/feature/zanwu.jpg" alt="">
+                        </div>
+
+                        @endif
 
 
 

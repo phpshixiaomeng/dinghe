@@ -13,6 +13,7 @@
         //$('.list_hy').css('width',search_w+'px');
     });
 @endsection
+
 @section('content')
     <div id="right_ctn">
         <div class="right_m">
@@ -43,6 +44,7 @@
                             <th scope="col">用户性别</th>
                             <th scope="col">用户简介</th>
                             <th scope="col">用户头像</th>
+                            <th scope="col">操作</th>
 
 
                         </tr>
@@ -57,7 +59,9 @@
                             <td></td>
                             @endif
                             <td>{{$data->profile}}</td>
-                            <td><img src="/touxiang/public/{{$data->pic}}" alt="暂无头像请上传" width="60" height="60"></td>
+                            <td><img src="/uploads/public/{{$data->pic}}" alt="暂无头像请上传" width="60" height="60"></td>
+
+                            <td><a href="/admin/userlist" class="btn btn-info"><font color="white">返回用户列表</font></a></td>
 
                         </tr>
 

@@ -48,11 +48,12 @@ class IndexController extends Controller
     }
     public function index()
     {
+        $num=DB::table('lunbotus')->where('status',1)->count();
+        $data=DB::table('lunbotus')->where('status',1)->get();
 
 
 
-
-        return view('Home/index');
+        return view('Home/index',['num'=>$num,'data'=>$data,'i'=>1]);
     }
 
     /**

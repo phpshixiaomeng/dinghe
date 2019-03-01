@@ -113,7 +113,7 @@
   </div>
   <div class="form-group">
     <label for="exampleInputFile">上传头像
-    <img src="/touxiang/public/{{$data2->pic}}"  alt="暂无头像请上传" width="120" height="120">
+    <img src="/uploads/public/{{$data2->pic}}"  alt="暂无头像请上传" width="120" height="120">
     </label>
     <input type="file" id="exampleInputFile" name="file" hidden>
 
