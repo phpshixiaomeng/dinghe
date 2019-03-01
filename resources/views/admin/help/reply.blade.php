@@ -20,23 +20,26 @@
             <!--会议列表-->
             <div class="hy_list">
                 <div class="box_t">
-                    <span class="name">修改广告</span>
+                    <span class="name">修改友情链接</span>
                     <!--当前位置-->
                     <div class="position">
                         <a href=""><img src="/admin_assets/images/icon5.png" alt=""/></a>
                         <a href="">首页</a>
                         <span><img src="/admin_assets/images/icon3.png" alt=""/></span>
-                        <a href="">修改广告</a>
+                        <a href="">修改友情链接</a>
                     </div>
                     <!--当前位置-->
                 </div>
                 <form id="images">
                     {{csrf_field()}}
                     <input  id="img" name="image" style="display: none;" type="file" onchange="upload()">
+
                 </form>
                 <div class="space_hx">&nbsp;</div>
                 <!--终端列表-->
-                <form action="/admin/ads/{{ $data->id }}" method="post" enctype="multipart/form-data">
+
+                <form action="/admin/link/{{ $data->id }}" method="post" enctype="multipart/form-data">
+
                     <div class="xjhy">
                         @if (count($errors) > 0)
                             <div id="alert" class="alert alert-danger alert-dismissible" role="alert">
@@ -56,22 +59,31 @@
                         {{ method_field('PUT') }}
                         <ul class="hypz">
                             <li class="clearfix">
-                                <span class="title">游戏名字：</span>
+                                <span class="title">友情链接名字：</span>
                                 <div class="li_r">
-                                    <input name="gname" value="{{ $data->gname }}" type="text" placeholder="请准确的填写游戏名字">
+                                    <input name="lname" value="{{ $data->lname }}" type="text">
                                 <div id="url"></div>
                                 </div>
                             </li>
                             <li class="clearfix">
-                                <span class="title">广告标题：</span>
+                                <span class="title">友情链接地址：</span>
                                 <div class="li_r">
-                                    <input name="title" value="{{ $data->title }}" type="text">
+                                    <input name="url" value="{{ $data->url }}" type="text">
                                 </div>
                             </li>
                             <input id="img_thumb" type="hidden" name="image" value="{{ $data->image }}">
+                            <li class="clearfix">
+                                <span class="title">是否显示：</span>
+                                <div class="li_r">
+                                    <select name="status">
+                                        <option value="0">选我显示</option>
+                                        <option value="1">选我不显示</option>
+                                    </select>
+                                </div>
+                            </li>
                             <label style="margin-left:150px;margin-top:20px;" for="img" ><img id="thumb" style="width:100px;height:100px;" src="/uploads/{{ $data->image }}" alt=""></label>
                             <li class="tj_btn">
-                                <input class="btn btn-info" style="margin-left:200px;" type="submit" value="提交">
+                               <input class="btn btn-info" style="margin-left:200px;" type="submit" value="提交">
                             </li>
                         </ul>
                         <!--基本配置-->
@@ -82,11 +94,12 @@
             <!--会议列表-->
         </div>
     </div>
-<script type="text/javascript">
+    <script type="text/javascript">
     function upload()
     {
-        $.ajax({
-            url: '/admin/ads/upload',
+
+         $.ajax({
+            url: '/admin/link/upload',
             type: 'POST',
             data: new FormData($('#images')[0]),
             processData: false,

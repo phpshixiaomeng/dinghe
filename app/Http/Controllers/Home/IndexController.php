@@ -18,12 +18,28 @@ class IndexController extends Controller
     public static function  getGameCates()
     {
         $game_nav = DB::table('cates')->where('name','类型')->first();
-        $game_child = Cates::where('pid',$game_nav->id)->get();
-        return $game_child;
+        if($game_nav){
+            $game_child = Cates::where('pid',$game_nav->id)->get();
+            return $game_child;
+        }else{
+            $game_child = null;
+            return $game_child;
+        }
     }
-
+    public static function  ads()
+    {
+        $ads = DB::table('ads')->where('put','>','0')->orderBy('put','desc')->get();
+        return $ads;
+    }
+    public static function  link()
+    {
+        $links = DB::table('links')->paginate(3);
+        return $links;
+    }
     public function index()
     {
+
+
 
         return view('Home/index');
     }

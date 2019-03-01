@@ -7,6 +7,23 @@ use App\Http\Controllers\Controller;
 use DB;
 class LinkController extends Controller
 {
+    public static function deldir(){
+        $dh = opendir('../public/uploads/cache');
+        while(($d = readdir($dh)) !== false){
+            if($d == '.' || $d == '..'){
+                continue;
+            }
+            $tmp = '../public/uploads/cache/'.$d;
+            if(!is_dir($tmp)){
+                unlink($tmp);
+            }else{
+                deldir($tmp);
+            }
+        }
+        closedir($dh);
+        rmdir('../public/uploads/cache');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -57,7 +74,15 @@ class LinkController extends Controller
         ]);
 
         $data = $request->except('_token');
+        $file = '../public/uploads/'.$data['image'];
+        $image =  explode("/",$data['image']);
+        $newfile = '../public/uploads/links/'.$image[1];
+        if(!copy($file,$newfile)){
+            return back()->with('error', '添加失败,请刷新后重新添加');
+        }
+        $data['image'] = 'links/'.$image[1];
         $res = DB::table('links')->insert($data);
+        self::deldir();
         if($res){
             return redirect('/admin/link')->with('success', '添加成功');
         }else{
@@ -123,10 +148,19 @@ class LinkController extends Controller
                 return back()->with('error', '内容未修改');
             }
         }else{
-            $image = $arr->image;
-            $path = '../public/uploads/'.$image;
+            $file = '../public/uploads/'.$data['image'];
+            $image =  explode("/",$data['image']);
+            $newfile = '../public/uploads/links/'.$image[1];
+            if(!copy($file,$newfile)){
+                return back()->with('error', '添加失败,请刷新后重新添加');
+            }
+            $data['image'] = 'links/'.$image[1];
+            //删除原来的图片
+            $images = $arr->image;
+            $path = '../public/uploads/'.$images;
             unlink($path);
             $res = DB::table('links')->where('id',$id)->update($data);
+            self::deldir();
             if($res){
                 return redirect('/admin/link')->with('success', '修改成功');
             }else{
@@ -154,21 +188,8 @@ class LinkController extends Controller
         }else{
             return back()->with('error', '删除未成功');
         }
-
-
     }
-    public function status($id,$status)
-    {
-        $data['status'] = $status;
-        $res = DB::table('links')->where('id',$id)->update($data);
-        if($res && $status==1 ){
-            return redirect('/admin/link')->with('error', '审核已禁用');
-        }elseif($res && $status==0 ){
-            return redirect('/admin/link')->with('success', '审核已通过');
-        }else{
-            return back()->with('error', '修改失败请刷新重试');
-        }
-    }
+
     public function del(Request $request)
     {
         $data= $request->input('delid');
@@ -187,6 +208,7 @@ class LinkController extends Controller
         $message = '批量删除'.$i.'条';
         return back()->with('success', "$message");
     }
+
     public function upload(Request $request)
     {
         $type = $_FILES['image']['name'];
@@ -199,7 +221,7 @@ class LinkController extends Controller
             ];
         }elseif($request->hasFile('image'))
             {
-                $file_name = $request->file('image')->store('links');
+                $file_name = $request->file('image')->store('cache');
                 $arr = [
                     'msg'=>'success',
                     'path'=>$file_name,
@@ -213,4 +235,18 @@ class LinkController extends Controller
 
         return json_encode($arr);
     }
+
+    public function status($id,$status)
+    {
+        $data['status'] = $status;
+        $res = DB::table('links')->where('id',$id)->update($data);
+        if($res && $status==1 ){
+            return redirect('/admin/link')->with('error', '审核已禁用');
+        }elseif($res && $status==0 ){
+            return redirect('/admin/link')->with('success', '审核已通过');
+        }else{
+            return back()->with('error', '修改失败请刷新重试');
+        }
+    }
+
 }

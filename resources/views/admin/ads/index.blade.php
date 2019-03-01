@@ -76,11 +76,11 @@
                         @elseif($val->put ==1)
                         <a style="float:left" href="/admin/ads/top/{{ $val->id }}" class="btn btn-success">置顶投放</a>
                         <a style="float:left margin-left" href="/admin/ads/put/{{ $val->id }}" class="btn btn-warning">取消投放</a>
-                        <span style="font:20px/1.6 '微软雅黑'; float:right; font-weight: bold; color:red; margin-right:50px;">已投放</span>
+                        <span style="font:20px/1.6 '微软雅黑'; float:right; font-weight: bold; color:red; margin-right:30px;">已投放</span>
                         @else
                         <a style="float:left" href="/admin/ads/top/{{ $val->id }}" class="btn btn-danger">取消置顶</a>
                         <a style="float:left margin-left" href="/admin/ads/put/{{ $val->id }}" class="btn btn-primary">取消投放</a>
-                        <span style="font:20px/1.6 '微软雅黑'; float:right; font-weight: bold; color:red; margin-right:50px;" >已置顶</span>
+                        <span style="font:20px/1.6 '微软雅黑'; float:right; font-weight: bold; color:red; margin-right:30px;" >已置顶</span>
                         @endif
                     </td>
                     <td>
@@ -138,7 +138,7 @@
           type: 2,
           title: false,
           closeBtn: 0,
-          area: ['420px','420px'],
+          area: ['660px','560px'],
           skin: 'layui-layer-nobg',
           shadeClose: true,
           content: '/admin/ads/'+id

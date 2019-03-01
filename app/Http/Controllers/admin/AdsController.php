@@ -7,6 +7,24 @@ use App\Http\Controllers\Controller;
 use DB;
 class AdsController extends Controller
 {
+    public static function deldir(){
+        $dh = opendir('../public/uploads/cache');
+        while(($d = readdir($dh)) !== false){
+            if($d == '.' || $d == '..'){
+                continue;
+            }
+            $tmp = '../public/uploads/cache/'.$d;
+            if(!is_dir($tmp)){
+                unlink($tmp);
+            }else{
+                deldir($tmp);
+            }
+        }
+        closedir($dh);
+        rmdir('../public/uploads/cache');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -55,7 +73,15 @@ class AdsController extends Controller
         ]);
         $data = $request->except('_token');
         $data['put'] = 0;
+        $file = '../public/uploads/'.$data['image'];
+        $image =  explode("/",$data['image']);
+        $newfile = '../public/uploads/ads/'.$image[1];
+        if(!copy($file,$newfile)){
+            return back()->with('error', '添加失败,请刷新后重新添加');
+        }
+        $data['image'] = 'ads/'.$image[1];
         $res = DB::table('ads')->insert($data);
+        self::deldir();
         if($res){
             return redirect('/admin/ads')->with('success', '添加成功');
         }else{
@@ -73,7 +99,7 @@ class AdsController extends Controller
     {
         $show = DB::table('ads')->where('id',$id)->first();
         $path = "/uploads/".$show->image;
-        echo '<img src="'.$path.'"style="width:400px;height:400px;">';
+        echo '<img src="'.$path.'"style="width:640px;height:540px;">';
     }
 
     /**
@@ -116,10 +142,18 @@ class AdsController extends Controller
                 return back()->with('error', '内容未修改');
             }
         }else{
-            $image = $arr->image;
-            $path = '../public/uploads/'.$image;
+            $file = '../public/uploads/'.$data['image'];
+            $image =  explode("/",$data['image']);
+            $newfile = '../public/uploads/ads/'.$image[1];
+            if(!copy($file,$newfile)){
+                return back()->with('error', '添加失败,请刷新后重新添加');
+            }
+            $data['image'] = 'ads/'.$image[1];
+            $images = $arr->image;
+            $path = '../public/uploads/'.$images;
             unlink($path);
             $res = DB::table('ads')->where('id',$id)->update($data);
+            self::deldir();
             if($res){
                 return redirect('/admin/ads')->with('success', '修改成功');
             }else{
@@ -159,7 +193,7 @@ class AdsController extends Controller
             ];
         }elseif($request->hasFile('image'))
             {
-                $file_name = $request->file('image')->store('ads');
+                $file_name = $request->file('image')->store('cache');
                 $arr = [
                     'msg'=>'success',
                     'path'=>$file_name,
