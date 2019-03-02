@@ -63,7 +63,7 @@
                                         @if($common_game_child)
 
                                         @foreach($common_game_child as $k=>$v)
-                                         <li><a href="#">{{ $v->name }}</a></li>
+                                         <li><a href="/home/games/{{ $v->id }}">{{ $v->name }}</a></li>
                                         @endforeach
                                         @endif
                                         <li><a href="/games">游戏商店</a></li>
