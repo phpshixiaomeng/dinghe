@@ -52,7 +52,7 @@
                     <strong>{{ session('error') }}</strong>
                 </div>
             @endif
-            <table class="search"  cellpadding="0" cellspacing="0" class="list_hy">
+            <table class="search list_hy">
                 <tr>
                     <th class="xz" scope="col">选择</th>
                     <th scope="col">游戏名</th>

@@ -257,9 +257,11 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="copyright text-center">
+                            @if($common_websites)
                             <p>版权:{{$common_websites->title}}|<a  href="/home">Gilbard</a>. {{$common_websites->description}}.
                             |联系方式:{{$common_websites->information}}
                             </p>
+                            @endif
                         </div>
                     </div>
                 </div>

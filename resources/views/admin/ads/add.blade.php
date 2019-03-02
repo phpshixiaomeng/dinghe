@@ -34,9 +34,8 @@
                 <div class="space_hx">&nbsp;</div>
 
                 <form id="images">
-                        {{csrf_field()}}
-                        <input  id="img" name="image" style="display: none;" type="file" onchange="upload()">
-
+                    {{ csrf_field() }}
+                    <input  id="img" name="image" style="display: none;" type="file" onchange="upload()">
                 </form>
                 <!--终端列表-->
                 <form action="/admin/ads" method="post" enctype="multipart/form-data">
@@ -68,7 +67,7 @@
                             </li>
                             <input id="img_thumb" type="hidden" name="image" value="{{ old('image') }}">
                             @if(old('image'))
-                            <label style="margin-left:150px;margin-top:20px;" for="img" ><img id="thumb" style="width:100px;height:100px;" src="/uploads/{{ old('image') }}" alt=""></label>
+                            <label style="margin-left:150px;margin-top:20px;" for="img" ><img id="thumb" style="width:100px;height:100px;" src="/uploads/cache/{{ old('image') }}" alt=""></label>
                             @else
                              <label style="margin-left:150px;margin-top:20px;" for="img" ><img id="thumb" style="width:100px;height:100px;" src="/admin_assets/images/links/add.jpg" alt=""></label>
                             @endif
@@ -88,7 +87,7 @@
 <script type="text/javascript">
     function upload()
     {
-         $.ajax({
+        $.ajax({
             url: '/admin/ads/upload',
             type: 'POST',
             data: new FormData($('#images')[0]),
@@ -97,7 +96,7 @@
             dataType:"json",
             success : function(data) {
                 if(data.msg == 'success'){
-                    $('#thumb').attr('src','/uploads/'+data.path);
+                    $('#thumb').attr('src','/uploads/cache/'+data.path);
                     $('#img_thumb').val(data.path);
                 }else if(data.msg == 'error'){
                     alert('图片格式有误,请勿上传同一个文件');

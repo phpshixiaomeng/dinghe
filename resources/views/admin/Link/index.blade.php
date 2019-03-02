@@ -52,7 +52,7 @@
                     <strong>{{ session('error') }}</strong>
                 </div>
             @endif
-            <table  class="search" cellpadding="0" cellspacing="0" class="list_hy">
+            <table  class="search list_hy">
                 <tr>
                     <th class="xz" scope="col">选择</th>
                     <th scope="col">友情链接名</th>
@@ -66,9 +66,9 @@
                 <tr>
                     <td class="xz"><input name="id" type="checkbox" value="{{ $val->id }}"></td>
                     <td>{{ $val->lname }}</td>
-                    <td style="width:200px;display:block;overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">{{ $val->url }}</td>
+                    <td style="overflow:hidden;">{{ $val->url }}</td>
                     <td>
-                    	<img id="image" onclick="show({{ $val->id }})" src="/uploads/{{ $val->image }}" style="width:40px;height:40px;" alt="">
+                    	<img id="image" onclick="show({{ $val->id }})" src="/uploads/{{ $val->image }}" style="width:30px;height:30px;" alt="">
                     </td>
                     <td>
                         @if( $val->status == 0 )

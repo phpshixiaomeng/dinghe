@@ -36,13 +36,8 @@
                 </div>
                 <div class="space_hx">&nbsp;</div>
                 <!--终端列表-->
-<<<<<<< HEAD
-                <form action="/tjfl" method="post" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-=======
                 <form action="/admin/game" method="post" enctype="multipart/form-data">
-                    {{ csrf_field() }} 
->>>>>>> origin/cui
+                    {{ csrf_field() }}
                     <div class="xjhy">
                         <!--基本配置-->
                         <ul class="hypz">
@@ -54,15 +49,6 @@
                                     <i>*</i>
                                 </div>
                             </li>
-<<<<<<< HEAD
-
-                             <li class="clearfix">
-                                <span class="title">游戏价格：</span>
-                                <div class="li_r">
-                                    <input name="game_jg" type="text">
-                                    <i>*</i>
-=======
-                            
                             <li class="clearfix">
                                 <span class="title">所属类型：</span>
                                 <div class="li_r xial">
@@ -73,7 +59,7 @@
                                             @endforeach
                                         </select>
                                     </div>
->>>>>>> origin/cui
+
                                 </div>
                             </li>
 

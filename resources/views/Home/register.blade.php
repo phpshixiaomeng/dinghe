@@ -193,7 +193,7 @@ $("#facai").attr('disabled',true);
 
 
             var name=$("#name").val();
-        var data= "http://www.dingding.com/zhuce/"+name;
+        var data= "http://www.blog777.com/home/zhuce/"+name;
          $.ajaxSetup({
             headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
             });

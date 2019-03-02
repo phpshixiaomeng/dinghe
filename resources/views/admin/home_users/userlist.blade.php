@@ -45,7 +45,7 @@
                 <div class="space_hx">&nbsp;</div>
                 <!--列表-->
                 <form action="" method="post">
-                    <table class="table table-hover">
+                    <table class="search list_hy">
                          <tr>
 
                             <th scope="col">用户列</th>

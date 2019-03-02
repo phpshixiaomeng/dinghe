@@ -86,7 +86,7 @@
     layui.use(['layer', 'form'], function(){
       var layer = layui.layer
       ,form = layui.form;
-      
+
     });
 </script>
 
@@ -135,7 +135,7 @@
                 <div class="space_hx">&nbsp;</div>
                 <!--列表-->
                 <form action="" method="post">
-                    <table class="table table-hover">
+                    <table class="search list_hy">
                         <tr>
                             <th class="xz" scope="col">选择</th>
                             <th scope="col" style="text-align: center">游戏名称</th>
@@ -169,11 +169,8 @@
                                 <a href="/admin/game/{{ $v->id }}/edit" class="btn btn-warning">修改</a>
                             </td>
                         </tr>
-<<<<<<< HEAD
-
-=======
                         @endforeach
->>>>>>> origin/cui
+
                     </table>
                     <!--列表-->
                     <!--右边底部-->
@@ -210,7 +207,7 @@
               shade: 0.8,
               area: ['500px', '90%'],
               content: '/admin/game/'+id //iframe的url
-            }); 
+            });
         }
     </script>
 @endsection

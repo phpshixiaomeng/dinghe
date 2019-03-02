@@ -413,7 +413,7 @@
                 </div>
                 <ul class="erji">
                     <li>
-                        <span><a href="/admin/hlep" target="main">查看反馈与帮助</a></span>
+                        <span><a href="/admin/help" target="main">查看反馈与帮助</a></span>
                     </li>
                 </ul>
             </li>
