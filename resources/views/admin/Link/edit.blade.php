@@ -107,7 +107,7 @@
             dataType:"json",
             success : function(data) {
                 if(data.msg == 'success'){
-                    $('#thumb').attr('src','/uploads/'+data.path);
+                    $('#thumb').attr('src','/uploads/cache/'+data.path);
                     $('#img_thumb').val(data.path);
                 }else if(data.msg == 'error'){
                     alert('图片格式有误,请勿上传同一个文件');

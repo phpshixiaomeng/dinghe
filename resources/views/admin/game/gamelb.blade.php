@@ -135,7 +135,7 @@
                 <div class="space_hx">&nbsp;</div>
                 <!--列表-->
                 <form action="" method="post">
-                    <table class="table table-hover">
+                    <table class="search list_hy">
                         <tr>
                             <th class="xz" scope="col">选择</th>
                             <th scope="col" style="text-align: center">游戏名称</th>

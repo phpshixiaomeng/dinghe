@@ -193,7 +193,11 @@ $("#facai").attr('disabled',true);
 
 
             var name=$("#name").val();
+<<<<<<< HEAD
             var data= "/home/zhuce/"+name;
+=======
+        var data= "http://www.blog777.com/home/zhuce/"+name;
+>>>>>>> origin/weishao
          $.ajaxSetup({
             headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
             });

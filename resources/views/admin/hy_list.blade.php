@@ -40,7 +40,7 @@
                 <div class="space_hx">&nbsp;</div>
                 <!--列表-->
                 <form action="" method="post">
-                    <table cellpadding="0" cellspacing="0" class="list_hy">
+                    <table class="search list_hy">
                         <tr>
                         <th class="xz" scope="col">选择</th>
                             <th scope="col">

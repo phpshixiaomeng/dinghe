@@ -76,7 +76,7 @@
                                 </div>
                             </li>
                             @if(old('image'))
-                            <label style="margin-left:150px;margin-top:20px;" for="img" ><img id="thumb" style="width:100px;height:100px;" src="/uploads/{{ old('image') }}" alt=""></label>
+                            <label style="margin-left:150px;margin-top:20px;" for="img" ><img id="thumb" style="width:100px;height:100px;" src="/uploads/cache/{{ old('image') }}" alt=""></label>
                             @else
                              <label style="margin-left:150px;margin-top:20px;" for="img" ><img id="thumb" style="width:100px;height:100px;" src="/admin_assets/images/links/add.jpg" alt=""></label>
                             @endif
@@ -106,7 +106,7 @@
             dataType:"json",
             success : function(data) {
                 if(data.msg == 'success'){
-                    $('#thumb').attr('src','/uploads/'+data.path);
+                    $('#thumb').attr('src','/uploads/cache/'+data.path);
                     $('#img_thumb').val(data.path);
                 }else if(data.msg == 'error'){
                     alert('图片格式有误,请勿上传同一个文件');
