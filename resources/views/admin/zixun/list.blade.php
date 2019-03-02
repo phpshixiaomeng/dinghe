@@ -72,7 +72,8 @@
                     <th scope="col">缩略图</th>
                     <th scope="col">创建时间</th>
                     <th scope="col">状态</th>
-                    <th scope="col"><h2>操&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作</h2></th>
+                    <th scope="col">操作</th>
+                    <th scope="col">添加具体内容</th>
                 </tr>
 
             @foreach($data as $val)
@@ -85,7 +86,7 @@
                     <td>{{$val->fire}}</td>
 
                     <td>
-                        <img id="image" onclick="show({{ $val->id }})" src="/uploads/{{ $val->image }}" style="width:40px;height:40px;" alt="">
+                        <img id="image" onclick="show({{ $val->id }})" src="/uploads/{{ $val->image }}" style="width:40px;height:40px;" alt="暂无图片">
                     </td>
                     <td>{{$val->created_at}}</td>
                     <td>
@@ -96,7 +97,7 @@
                         @endif
                     </td>
                     <td>
-                        <button type="" class="btn btn-info" onclick="tan()">添加详情</button>
+
                         <form style="float:left" action="/admin/zixun/{{ $val->id }}" method="post">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
@@ -106,6 +107,8 @@
                         </form>
 
                     </td>
+                    <td><button type="" class="btn btn-info" onclick="tan({{ $val->id }})">添加具体内容</button></td>
+
                 </tr>
             @endforeach
                 </table>
@@ -132,14 +135,14 @@
 </div>
 
 <script>
-function tan(){
+function tan(id){
 layer.open({
   type: 2,
-  title: 'layer mobile页',
+  title: '添加具体内容',
   shadeClose: true,
   shade: 0.8,
-  area: ['380px', '90%'],
-  content: 'mobile/' //iframe的url
+  area: ['680px', '100%'],
+  content: '/admin/zixun/content/'+id //iframe的url
 });
 }
 </script>

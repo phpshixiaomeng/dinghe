@@ -184,6 +184,9 @@ class ZixunController extends Controller
     public function xiangqing($id){
 
     }
+    public function content($id){
 
+     return view('admin.zixun.addcontent',['id'=>$id]);
+    }
 
 }
