@@ -67,7 +67,7 @@
                        </div>
                    </div>
                    <div class="row">
-                       <div class="col-12">
+                       <!-- <div class="col-12">
                            <div class="ratting-wrap mb-40">
                                <h3>评级</h3>
                                <div class="rating-area">
@@ -149,7 +149,7 @@
                                    </div>
                                </div>
                            </div>
-                       </div>
+                       </div> -->
                    </div>
                    <div class="row">
                        <div class="col-12">

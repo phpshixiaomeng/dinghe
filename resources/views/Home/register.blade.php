@@ -193,7 +193,7 @@ $("#facai").attr('disabled',true);
 
 
             var name=$("#name").val();
-        var data= "http://www.dingding.com/zhuce/"+name;
+            var data= "/home/zhuce/"+name;
          $.ajaxSetup({
             headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
             });
@@ -285,7 +285,7 @@ $("#password").blur(function(){
                 'phone':phone,
                 'ma':duanxin
             };
-            var url='http://www.dingding.com/home/zhuce';
+            var url='/home/zhuce';
             $.ajaxSetup({
             headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
             });

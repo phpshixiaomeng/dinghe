@@ -66,7 +66,7 @@
                                          <li><a href="#">{{ $v->name }}</a></li>
                                         @endforeach
                                         @endif
-                                        <li><a href="games">游戏商店</a></li>
+                                        <li><a href="/games">游戏商店</a></li>
 
                                     </ul>
                                 </li>
@@ -256,9 +256,11 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="copyright text-center">
+                        @if(!empty($common_websites))
                             <p>版权:{{$common_websites->title}}|<a  href="/home">Gilbard</a>. {{$common_websites->description}}.
                             |联系方式:{{$common_websites->information}}
                             </p>
+                        @endif
                         </div>
                     </div>
                 </div>

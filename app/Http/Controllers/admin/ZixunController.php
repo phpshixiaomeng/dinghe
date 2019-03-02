@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 
-class LunboController extends Controller
+class ZixunController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,16 +15,15 @@ class LunboController extends Controller
      */
     public function index(Request $request)
     {
-        $search = $request->input('search','');
-        $data = DB::table('lunbotus')->where('gname','like','%'.$search.'%')->orderBy('id','asc')->paginate(2);
+                 $search = $request->input('search','');
+        $data = DB::table('news')->where('title','like','%'.$search.'%')->orderBy('id','asc')->paginate(5);
         if($search == ''){
-            $select = DB::table('lunbotus')->get();
+            $select = DB::table('news')->get();
             $num = count($select);
         }else{
             $num = count($data);
         }
-        return view('admin/lunbotu/list',['data'=>$data,'request'=> $request->all(),'num'=>$num,'i'=>1]);
-
+        return view('admin/zixun/list',['data'=>$data,'request'=> $request->all(),'num'=>$num,'i'=>1]);
     }
 
     /**
@@ -34,7 +33,7 @@ class LunboController extends Controller
      */
     public function create()
     {
-        return view('admin/lunbotu/add');
+        return view('admin/zixun/add');
     }
 
     /**
@@ -47,21 +46,24 @@ class LunboController extends Controller
     {
         $p1=$request->filled('gname');
 
-        $p2=$request->filled('image');
+        $p2=$request->filled('auth');
+        $p3=$request->filled('contact');
+        $p4=$request->filled('title');
+        $p5=$request->filled('image');
 
-        if($p1!=1 || $p2!=1){
+        if($p1!=1 || $p2!=1 ||$p3!=1||$p4!=1||$p5!=1){
         $request->flashExcept('_token');
-        return redirect('admin/lunbo/create')->with('error','有值为空,添加失败');
+        return redirect('admin/zixun/create')->with('error','有值为空,添加失败');
         }
-
-
         $data=$request->except('_token');
-        $res=DB::table('lunbotus')->insert($data);
+        $data['created_at']=date('Y-m-d H:i:s',time());
+        $res=DB::table('news')->insert($data);
+
         if($res){
-        return redirect('admin/lunbo')->with('success','添加成功');
-    }else{
-        return redirect('admin/lunbo/create')->with('error','添加失败');
-    }
+        return redirect('admin/zixun')->with('success','添加成功');
+     }else{
+        return redirect('admin/zixun/create')->with('error','添加失败');
+        }
     }
 
     /**
@@ -72,7 +74,7 @@ class LunboController extends Controller
      */
     public function show($id)
     {
-        $show = DB::table('lunbotus')->where('id',$id)->first();
+        $show = DB::table('news')->where('id',$id)->first();
         $path = "/uploads/".$show->image;
         echo '<img src="'.$path.'"style="width:400px;height:400px;">';
     }
@@ -108,22 +110,38 @@ class LunboController extends Controller
      */
     public function destroy($id)
     {
-        $data = DB::table('lunbotus')->where('id',$id)->first();
-        $res = DB::table('lunbotus')->where('id',$id)->delete();
+        $data = DB::table('news')->where('id',$id)->first();
+        $res = DB::table('news')->where('id',$id)->delete();
         if($res){
             $image = $data->image;
             $path = '../public/uploads/'.$image;
             unlink($path);
-            return redirect('/admin/lunbo')->with('success', '删除成功');
+            return redirect('/admin/zixun')->with('success', '删除成功');
         }else{
             return back()->with('error', '删除未成功');
         }
     }
+    public function del(Request $request){
 
+        $data= $request->input('delid');
+        $str = explode( ',',$data);
+        $i=0;
+        foreach($str as $k=>$v){
+            if($v!=''){
+                $select = DB::table('news')->where('id',$v)->first();
+                $image = $select->image;
+                $path = '../public/uploads/'.$image;
+                unlink($path);
+                $del=DB::table('news')->where('id',$v)->delete();
+                $i++;
+            }
+        }
+        $message = '批量删除'.$i.'条';
+        return back()->with('success', "$message");
 
-    public function upload(Request $request)
-    {
-        $type = $_FILES['image']['name'];
+    }
+    public function upload(Request $request){
+            $type = $_FILES['image']['name'];
         $ext = strrchr($type,'.');
         $img = ['.jpg','.jpeg','.png','.gif','.JPG','.JPEG','.PNG','.GIF'];
         if(!in_array($ext,$img)){
@@ -136,10 +154,10 @@ class LunboController extends Controller
                 $name=$request->file('image');
                 $zname=$name->extension();
                 $fname=time()+rand('111','999').'.'.$zname;
-                $file_name = $name->storeAs('lunbotu',$fname);
+                $file_name = $name->storeAs('zixun',$fname);
                 $arr = [
                     'msg'=>'success',
-                    'path'=>'lunbotu/'.$fname,
+                    'path'=>'zixun/'.$fname,
                 ];
             }else{
                 $arr = [
@@ -147,43 +165,25 @@ class LunboController extends Controller
                     'path'=>' ',
                 ];
             }
-
-        return json_encode($arr);
+            return json_encode($arr);
     }
+
     public function status($id,$status){
 
             $data['status'] = $status;
-            $res = DB::table('lunbotus')->where('id',$id)->update($data);
+            $res = DB::table('news')->where('id',$id)->update($data);
             if($res && $status==0){
-            return redirect('/admin/lunbo')->with('error', '图片已禁用');
+            return redirect('/admin/zixun')->with('error', '资讯已禁用');
             }elseif($res && $status==1){
-            return redirect('/admin/lunbo')->with('success', '图片已通过');
+            return redirect('/admin/zixun')->with('success', '资讯已通过');
         }   else{
             return back()->with('error', '修改失败请刷新重试');
             }
     }
 
-     public function del(Request $request)
-    {
-        $data= $request->input('delid');
-        $str = explode( ',',$data);
-        $i=0;
-        foreach($str as $k=>$v){
-            if($v!=''){
-                $select = DB::table('lunbotus')->where('id',$v)->first();
-                $image = $select->image;
-                $path = '../public/uploads/'.$image;
-                unlink($path);
-                $del=DB::table('lunbotus')->where('id',$v)->delete();
-                $i++;
-            }
-        }
-        $message = '批量删除'.$i.'条';
-        return back()->with('success', "$message");
+    public function xiangqing($id){
+
     }
-
-
-
 
 
 }
