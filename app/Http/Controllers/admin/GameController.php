@@ -20,7 +20,7 @@ class GameController extends Controller
     {
         // 搜索加分页
         $search = $request->input('search','');
-        $games_data = Games::where('name','like','%'.$search.'%')->select('*',DB::raw("concat(name,',',id) as paths"))->orderBy('paths','asc')->paginate(7);
+        $games_data = Games::where('name','like','%'.$search.'%')->paginate(6);
         return view('Admin/game/gamelb',['games_data'=>$games_data,'request'=> $request->all()]);
     }
 
@@ -118,6 +118,7 @@ class GameController extends Controller
     {
         // 游戏的修改
         // dump($id);
+       
         $games = Games::where('id',$id)->first();
         // dump($games->name);
         // 获取分类数据
@@ -142,6 +143,15 @@ class GameController extends Controller
     {
         //
         $data = $request->except('_token','_method');
+         // // 检查是否有文件上传
+        if($request->hasFile('game_img')) {
+            // 创建文件上传对象
+            $file = $request->file('game_img');
+            $file_name = $file->store('public');
+        } else {
+            return back();
+        }
+        $data['game_img'] = $file_name;
         $res = DB::table('games')->where('id',$id)->update($data);
         if($res){
             return redirect('admin/game')->with('success','修改成功');

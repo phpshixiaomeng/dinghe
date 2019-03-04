@@ -82,12 +82,6 @@
 </style>
 @endsection
 @section('content')
-<script type="text/javascript">
-    layui.use(['layer', 'form'], function(){
-      var layer = layui.layer
-      ,form = layui.form;
-
-    });
 </script>
 
     <div id="right_ctn">
@@ -95,22 +89,22 @@
             <!--会议列表-->
             <div class="hy_list">
                 <div class="box_t">
-                    <span class="name">分类列表</span>
+                    <span class="name">图片列表</span>
                     <!--当前位置-->
                     <div class="position">
                         <a href=""><img src="../images/icon5.png" alt=""/></a>
                         <a href="">首页</a>
                         <span><img src="../images/icon3.png" alt=""/></span>
-                        <a href="">分类管理</a>
+                        <a href="">图片管理</a>
                         <span><img src="../images/icon3.png" alt=""/></span>
-                        <a href="">分类列表</a>
+                        <a href="">图片列表</a>
                     </div>
                     <!--当前位置-->
                 </div>
                 <!--查询-->
                 <form action="/admin/tjfl" method="get">
                     <div class="search">
-                        <span>按分类名称查询：</span>
+                        <span>按游戏名称查询：</span>
                         <div class="s_text">
                             <input name="search" type="text" value="{{ $request['search'] or '' }}" placeholder="请输入搜索的关键字">
                         </div>
@@ -134,39 +128,23 @@
 
                 <div class="space_hx">&nbsp;</div>
                 <!--列表-->
-                <form action="" method="post">
+                <form action="#" method="post">
                     <table class="search list_hy">
                         <tr>
                             <th class="xz" scope="col">选择</th>
                             <th scope="col" style="text-align: center">游戏名称</th>
-                            <th scope="col" style="text-align: center">游戏价格</th>
-                            <th scope="col" style="text-align: center">游戏销量</th>
-                            <th scope="col" style="text-align: center">游戏库存</th>
-                            <th scope="col" style="text-align: center">游戏图片</th>
-                            <th scope="col" style="text-align: center">是否上架</th>
-                            <th scope="col" style="text-align: center">游戏详情</th>
+                            <th scope="col" style="text-align: center">游戏轮播图片</th>
                             <th scope="col" style="text-align: center">操作</th>
                         </tr>
-
-                       @foreach($games_data as $k=>$v)
+                        
+                        @foreach($tupian as $key=>$value)
                         <tr>
                             <td class="xz"><input name="" type="checkbox" value=""></td>
-                            <td style="text-align: center">{{ $v->name }}</td>
-                            <td style="text-align: center">{{ $v->game_jg }}</td>
-                            <td style="text-align: center">{{ $v->game_xl }}</td>
-                            <td style="text-align: center">{{ $v->game_kc }}</td>
-                            <td style="text-align: center"><img src="/uploads/{{ $v->game_img }}" style="width:50px;height:50px"></td>
+                            <td style="text-align: center">{{ $value->gname }}</td>
+                            <td style="text-align: center"><img src="/uploads/{{ $value->game_pic }}" style="width:50px;height:50px;"></td>
                             <td style="text-align: center">
-                                @if($v->game_zt == 0)
-                                <a href="/admin/game/display/{{ $v->id }}" class="btn btn-warning">下架</a>
-                                @else
-                                <a href="/admin/game/display/{{ $v->id }}" class="btn btn-info">上架</a>
-                                @endif
-                            </td>
-                            <td style="text-align: center"><a class="btn btn-info" onclick="show({{ $v->id }})">游戏详情</a></td>
-                            <td style="text-align: center">
-                                <a href="/admin/game/delete/{{ $v->id }}" class="btn btn-danger" onclick="return confirm('确定要删除吗?')">删除</a>
-                                <a href="/admin/game/{{ $v->id }}/edit" class="btn btn-warning">修改</a>
+                                <a href="/admin/gamepic/delete/{{ $value->id }}" class="btn btn-danger" onclick="return confirm('确定要删除吗?')">删除</a>
+                                <a href="/admin/gamepic/{{ $value->id }}/edit" class="btn btn-warning">修改</a>
                             </td>
                         </tr>
                         @endforeach
@@ -185,7 +163,7 @@
                             <!--分页-->
                             <div style="float:right;margin-right:100px;margin-top: -17px;">
                                 <a href="" class="prev"><img src="../images/icon7.png" alt=""/></a>
-                               {{ $games_data->appends($request)->links() }}
+                                {{ $tupian->appends($request)->links() }}
                             </div>
                             <!--分页-->
                         </div>
@@ -196,18 +174,4 @@
             <!--会议列表-->
         </div>
     </div>
-    <script type="text/javascript">
-        function show(id)
-        {
-            //iframe层
-            layer.open({
-              type: 2,
-              title: '游戏详情',
-              shadeClose: true,
-              shade: 0.8,
-              area: ['500px', '90%'],
-              content: '/admin/game/'+id //iframe的url
-            });
-        }
-    </script>
 @endsection

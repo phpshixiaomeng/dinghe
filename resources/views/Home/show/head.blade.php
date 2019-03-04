@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -106,7 +107,7 @@
                                 <li><a href="/home/login">登录</a></li>
                                 <li><a href="/home/zhuce">注册</a></li>
                             @else
-                                <li><a href="javascript:if(confirm('确实要退出吗?'))location='http://www.dingding.com/home/zhuce/tui/edit'">退出</a></li>
+                                <li><a href="javascript:if(confirm('确实要退出吗?'))location='/home/zhuce/tui/edit'">退出</a></li>
                                 <li><a href="/home/grxx">个人信息</a></li>
                             @endif
                                 <li class="header-search"><a class="header-search-toggle" href="#"><i class="icofont-search-2"></i></a>

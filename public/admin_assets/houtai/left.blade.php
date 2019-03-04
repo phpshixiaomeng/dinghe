@@ -82,11 +82,26 @@
                     <i>&nbsp;</i>
                 </div>
               <ul class="erji">
-                <li>
+                    <li>
                         <span><a href="/admin/game" target="main">游戏信息</a></span>
                     </li>
                     <li>
                         <span><a href="/admin/game/create" target="main">添加游戏</a></span>
+                    </li>
+                    
+                    <li>
+                        <span><a href="/admin/gameimg" target="main">游戏详情图信息</a></span>
+                    </li>
+                    <li>
+                        <span><a href="/admin/gameimg/create" target="main">游戏详情图添加</a></span>
+                    </li>
+                    
+                    <li>
+                        <span><a href="/admin/gamepic" target="main">游戏轮播图信息</a></span>
+                    </li>
+
+                    <li>
+                        <span><a href="/admin/gamepic/create" target="main">游戏轮播图添加</a></span>
                     </li>
 
                 </ul>

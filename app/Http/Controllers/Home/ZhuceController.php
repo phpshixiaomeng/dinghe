@@ -214,7 +214,7 @@ if($content){
      */
     public function edit($id)
     {
-        session_start();
+        if(!session_id()) session_start();
         unset($_SESSION);
         session_destroy();
         return redirect("home");
