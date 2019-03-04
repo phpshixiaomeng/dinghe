@@ -58,7 +58,7 @@
 
                                 </div>
 
-                                <input type="text" name="duanxin0" id="phone" placeholder="输入手机号获取短信验证码"><div class="fa fa-twitter"><input type="button" id="facai" value="获取验证码"></div>
+                                <input type="text" name="duanxin0" id="phone" placeholder="输入手机号获取短信验证码"><div class="fa fa-twitter"><input type="button" id="facai" class="btn btn-info" value="获取验证码"></div>
 
 
                             <input type="text" name="ma" id="ma" placeholder="输入验证码">
@@ -122,7 +122,7 @@
 
 //ajax短信提交
     var phone=$('#phone').val();
-    var url="http://www.dingding.com/home/zhuce/create?phone="+phone;
+    var url="/home/zhuce/create?phone="+phone;
      $.ajaxSetup({
             headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
             });
@@ -193,11 +193,10 @@ $("#facai").attr('disabled',true);
 
 
             var name=$("#name").val();
-<<<<<<< HEAD
+
             var data= "/home/zhuce/"+name;
-=======
-        var data= "http://www.blog777.com/home/zhuce/"+name;
->>>>>>> origin/weishao
+
+
          $.ajaxSetup({
             headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
             });

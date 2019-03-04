@@ -73,7 +73,7 @@
                     <th scope="col">创建时间</th>
                     <th scope="col">状态</th>
                     <th scope="col">操作</th>
-                    <th scope="col">添加具体内容</th>
+                    <th scope="col">具体内容操作</th>
                 </tr>
 
             @foreach($data as $val)
@@ -107,8 +107,11 @@
                         </form>
 
                     </td>
-                    <td><button type="" class="btn btn-info" onclick="tan({{ $val->id }})">添加具体内容</button></td>
-
+                    @if(($val->addjilu)==0)
+                    <td><a class="btn btn-info" onclick="tan({{ $val->id }})">添加具体内容</a></td>
+                    @else
+                    <td><a href="javascript:;" target="_top" class="btn btn-warning" onclick="etan({{ $val->id }})">修改具体内容</a></td>
+                    @endif
                 </tr>
             @endforeach
                 </table>
@@ -145,6 +148,24 @@ layer.open({
   content: '/admin/zixun/content/'+id //iframe的url
 });
 }
+function etan(cz){
+layer.open({
+  type: 2,
+  title: '修改具体内容',
+  shadeClose: true,
+  shade: 0.8,
+  area: ['680px', '100%'],
+  content: '/admin/zixun/contentedit/'+cz //iframe的url
+});
+}
+
+
+
+
+
+
+
+
 </script>
 
 

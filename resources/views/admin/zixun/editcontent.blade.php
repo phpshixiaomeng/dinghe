@@ -21,36 +21,47 @@
 
     });
 </script>
-<form action="/admin/zixun/adcon" method="post" id="gai">
+<form action="/admin/zixun/adconedit" method="post" id="gai">
 {{csrf_field()}}
-<input type="text" name="gid" value="{{$id}}" placeholder="" hidden>
+<input type="text" name="id" value="{{$data->id}}" placeholder="" hidden>
   <div class="form-group">
     <label for="content">文章内容:</label>
-    <textarea class="form-control" rows="3" id="content" name="content"></textarea>
+    <textarea class="form-control" rows="3" id="content" name="content">{{$data->content}}</textarea>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">游戏开始:</label>
-    <textarea class="form-control" rows="3" id="gstart" name="gstart"></textarea>
+    <textarea class="form-control" rows="3" id="gstart" name="gstart">{{$data->gstart}}</textarea>
   </div>
   <div class="form-group">
     <label for="inputEmail3">游戏创意团队:</label>
-    <input type="text" class="form-control" id="inputEmail3" name="gteam" placeholder="团队">
+    <input type="text" class="form-control"  value="{{$data->gteam}}" id="inputEmail3" name="gteam" placeholder="团队">
  </div>
  <div class="form-group">
     <label for="inputEmail4">游戏运行平台:</label>
     <select class="form-control" id="inputEmail4" name="gpt">
+    @if($data->gpt=='windows'){
     <option selected>Windows</option>
     <option>Osx</option>
     <option>Linux</option>
+    @elseif($data->gpt=='Osx')
+    <option selected>Osx</option>
+    <option>windows</option>
+    <option>Linux</option>
+    @else
+    <option selected>Linux</option>
+    <option>windows</option>
+    <option>Osx</option>
+    @endif
+
 </select
  </div>
 
  <div class="form-group">
     <label for="inputEmail5">游戏价格:</label>
-    <input type="text" class="form-control" id="inputEmail5" name="price" placeholder="价格">
+    <input type="text" class="form-control" value="{{$data->price}}" id="inputEmail5" name="price" placeholder="价格">
  </div>
 
-  <button type="submit" class="btn btn-info">立即添加</button>
+  <button type="submit" class="btn btn-info">立即修改</button>
 
 </form>
 <script>
@@ -65,7 +76,7 @@
 
     $.ajax({
     type:'post',
-    url: "/admin/zixun/adcon",
+    url: "/admin/zixun/adconedit",
     data: Data,
     dataType: 'html',
     processData: false,

@@ -49,7 +49,10 @@ Route::post('/admin/zixun/upload','admin\ZixunController@upload');//图片缩略
 Route::post('/admin/zixun/del','admin\ZixunController@del');
 Route::post('/admin/zixun/xiangqing/{id}','admin\ZixunController@xiangqing');//资讯详情
 Route::get('/admin/zixun/status/{id}/{status}','admin\ZixunController@status');
-Route::get('/admin/zixun/content/{id}','admin\ZixunController@content');//添加内容
+Route::get('/admin/zixun/content/{id}','admin\ZixunController@content');//添加内容页面
+Route::post('/admin/zixun/adcon','admin\ZixunController@adcon');//执行添加内容
+Route::get('/admin/zixun/contentedit/{id}','admin\ZixunController@contentedit');
+Route::post('/admin/zixun/adconedit','admin\ZixunController@adconedit');//执行修改添加内容
 Route::resource('/admin/zixun','admin\ZixunController');//资讯路由
 
 

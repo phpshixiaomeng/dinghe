@@ -23,7 +23,8 @@ class ZixunController extends Controller
         }else{
             $num = count($data);
         }
-        return view('admin/zixun/list',['data'=>$data,'request'=> $request->all(),'num'=>$num,'i'=>1]);
+        $cate=DB::table('news_cs')->get();
+        return view('admin/zixun/list',['data'=>$data,'request'=> $request->all(),'num'=>$num,'i'=>1,'cate'=>$cate]);
     }
 
     /**
@@ -188,5 +189,39 @@ class ZixunController extends Controller
 
      return view('admin.zixun.addcontent',['id'=>$id]);
     }
+
+    public function adcon(Request $request){
+        $data=$request->except('_token');
+        $res=DB::table('news_cs')->insert($data);
+        if($res){
+        DB::table('news')->where('id',$data['gid'])->update(['addjilu'=>'1']);
+        echo '1';
+
+        }else{
+        echo '2';
+
+        }
+
+
+
+}
+    public function contentedit($id){
+        $data=DB::table('news_cs')->where('gid',$id)->first();
+        return view('admin.zixun.editcontent',['data'=>$data]);
+
+    }
+
+    public function adconedit(Request $request){
+        $data=$request->except('_token');
+        $res=DB::table('news_cs')->where('id',$data['id'])->update($data);
+        if($res){
+            echo '1';
+
+        }else{
+          echo '2';
+
+
+    }
+}
 
 }

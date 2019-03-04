@@ -75,7 +75,7 @@ class LoginController extends Controller
     public function show($id)
     {
         // echo 11111;
-       session_start();
+       if(!session_id()) session_start();
         unset($_SESSION);
         session_destroy();
         return redirect("home");
