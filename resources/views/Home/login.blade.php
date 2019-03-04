@@ -84,7 +84,11 @@ $("form").submit(function(){
                 'password':ps
 
             };
+<<<<<<< HEAD
             var url='/home/login';
+=======
+            var url='http://www.addhao.com/home/login';
+>>>>>>> origin/ioo
             $.ajaxSetup({
             headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
             });
@@ -96,7 +100,11 @@ $("form").submit(function(){
 
             if(res==1){
                 alert('登录成功');
+<<<<<<< HEAD
                 window.location.href='/home';//登录成功跳到首页
+=======
+                window.location.href='http://www.addhao.com/home';//登录成功跳到首页
+>>>>>>> origin/ioo
             }else if(res==2){
                 alert('登录失败/账号或密码错误');
                 $('#password').val('');

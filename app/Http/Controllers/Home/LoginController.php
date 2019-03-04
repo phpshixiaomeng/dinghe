@@ -36,6 +36,7 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
+
         // echo $_POST['name'];
     //用户登录验证
     // echo 1111;
@@ -48,7 +49,7 @@ class LoginController extends Controller
     if(($res->status)==0){
 
         // session(['key'=>'1']);
-            if(!session_id()) session_start();
+            
             $_SESSION=$_POST;
 
         echo 1;
@@ -75,7 +76,11 @@ class LoginController extends Controller
     public function show($id)
     {
         // echo 11111;
+<<<<<<< HEAD
        if(!session_id()) session_start();
+=======
+        if(!session_id()) session_start();
+>>>>>>> origin/ioo
         unset($_SESSION);
         session_destroy();
         return redirect("home");

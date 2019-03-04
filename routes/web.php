@@ -201,6 +201,7 @@ Route::resource('admin/tjfl','admin\TjflController');
 
 
 // 添加游戏 ------ 游戏列表
+Route::get('admin/game/image','admin\GameController@image');
 Route::get('admin/game/display/{id}','admin\GameController@display');
 Route::get('admin/game/delete/{id}','admin\GameController@shan');
 Route::resource('admin/game','admin\GameController');
@@ -210,6 +211,16 @@ Route::get('admin/highpei/display/{id}','admin\PeizrController@display');
 Route::get('admin/highpei/delete/{id}','admin\PeizrController@shan');
 Route::resource('admin/highpei','admin\PeizrController');
 
+// 游戏详情部分
+Route::resource('home/gamexq','Home\GamexqController');
+
+// 游戏展示图
+Route::get('admin/gameimg/delete/{id}','admin\GameimgController@imgdel');
+Route::resource('admin/gameimg','admin\GameimgController');
+
+//游戏轮播图片
+Route::get('admin/gamepic/delete/{id}','admin\GamepicController@picdel');
+Route::resource('admin/gamepic','admin\GamepicController');
 
 
 

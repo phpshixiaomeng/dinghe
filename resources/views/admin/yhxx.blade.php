@@ -120,7 +120,7 @@
                 var iname = $(this).val();
                 // alert(iname);
 
-                var url = 'http://www.dingding.com/admin/yhxx/'+iname;
+                var url = '/admin/yhxx/'+iname;
 
                 $.get(url,function(res){
                      if (res == 1) {

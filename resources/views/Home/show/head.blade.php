@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -63,7 +64,7 @@
                                         @if($common_game_child)
 
                                         @foreach($common_game_child as $k=>$v)
-                                         <li><a href="#">{{ $v->name }}</a></li>
+                                         <li><a href="/home/games/{{ $v->id }}">{{ $v->name }}</a></li>
                                         @endforeach
                                         @endif
                                         <li><a href="/games">游戏商店</a></li>
@@ -106,7 +107,9 @@
                                 <li><a href="/home/login">登录</a></li>
                                 <li><a href="/home/zhuce">注册</a></li>
                             @else
+
                                 <li><a href="javascript:if(confirm('确实要退出吗?'))location='home/zhuce/tui/edit'">退出</a></li>
+
                                 <li><a href="/home/grxx">个人信息</a></li>
                             @endif
                                 <li class="header-search"><a class="header-search-toggle" href="#"><i class="icofont-search-2"></i></a>
@@ -233,18 +236,13 @@
                         <div class="footer-widget">
                             <div class="footer-social">
                                <span>友情链接:</span>
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/weishao
                                 <ul>
                                     @if($common_link)
                                     @foreach($common_link as $kkk=>$vvv)
-<<<<<<< HEAD
+
                                     <li><a href="{{ $vvv->url }}"><img style="width :40px;height: 40px;" src="/uploads/{{ $vvv->image }}" alt=""></a></li>
-=======
-                                    <li><a href="{{ $vvv->url }}"><img style="width :40px;height: 40px; z-index:999999" src="uploads/{{ $vvv->image }}" alt=""></a></li>
->>>>>>> origin/weishao
+
                                     @endforeach
                                     @endif
                                 </ul>
