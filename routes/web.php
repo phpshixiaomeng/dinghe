@@ -231,4 +231,5 @@ Route::post('/admin/ads/del','admin\AdsController@del');
 Route::post('/admin/ads/upload','admin\AdsController@upload');
 Route::resource('/admin/ads','admin\AdsController');
 //帮助和反馈模块
+Route::get('/admin/help/reply/{id}','admin\HelpController@reply');
 Route::resource('/admin/help','admin\HelpController');

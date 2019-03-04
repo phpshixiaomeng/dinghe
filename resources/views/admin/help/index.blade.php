@@ -55,14 +55,32 @@
             <table class="search list_hy">
                 <tr>
                     <th scope="col">用户名</th>
-                    <th scope="col">反馈事件名</th>
-                    <th scope="col">反馈内容</th>
+                    <th scope="col">事件名</th>
+                    <th scope="col">问题描述</th>
+                    <th scope="col">用户读取</th>
                     <th scope="col">回复</th>
                 </tr>
-                </table>
-                    <div style="text-align: right;">
-                        {{-- $data->appends($request)->links() --}}
-                    </div>
+                @foreach($data as $k=>$v)
+                <tr>
+                    <th> {{ $v->uname }} </th>
+                    <th> {{ $v->name }} </th>
+                    <th> {{ $v->description }} </th>
+                    @if($v->status == 0)
+                    <th><span style="color:red;text-align:center;">未读</span></th>
+                    @else
+                    <th><span style="color:green;text-align:center;">已读</span></th>
+                    @endif
+                    @if($v->reply)
+                    <th><a class="btn btn-waring" href="">已回复请查看</a></th>
+                    @else
+                    <th><a class="btn btn-primary" href="/admin/help/reply/{{ $v->id }}">点击回复</a></th>
+                    @endif
+                </tr>
+                @endforeach
+            </table>
+             <div style="text-align: right;">
+                {{-- $data->appends($request)->links() --}}
+            </div>
         </div>
     </div>
 </div>
