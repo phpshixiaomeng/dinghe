@@ -136,17 +136,12 @@ class LunboController extends Controller
                 $name=$request->file('image');
                 $zname=$name->extension();
                 $fname=time()+rand('111','999').'.'.$zname;
-<<<<<<< HEAD
+
                 $file_name = $name->storeAs('lunbotu',$fname);
                 $arr = [
                     'msg'=>'success',
                     'path'=>'lunbotu/'.$fname,
-=======
-                $file_name = $name->storeAs('lunbo',$fname);
-                $arr = [
-                    'msg'=>'success',
-                    'path'=>'lunbo/'.$fname,
->>>>>>> origin/weishao
+
                 ];
             }else{
                 $arr = [

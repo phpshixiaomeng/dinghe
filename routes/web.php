@@ -47,7 +47,9 @@ Route::get('/admin/lunbo/status/{id}/{status}','admin\LunboController@status');/
 Route::resource('/admin/lunbo','admin\LunboController');//轮播图路由
 Route::post('/admin/zixun/upload','admin\ZixunController@upload');//图片缩略图
 Route::post('/admin/zixun/del','admin\ZixunController@del');
-Route::post('/admin/zixun/xiangqing/{id}','admin\ZixunController@xiangqing');//资讯详情
+Route::get('/admin/zixun/xiangqing/{id}','admin\ZixunController@xiangqing');//资讯详情
+Route::get('/admin/zixun/pinglun/{id}','admin\ZixunController@pinglun');//资讯评论
+Route::get('/admin/zixun/pinglunshanchu/{id}','admin\ZixunController@pinglunshanchu');//资讯评论
 Route::get('/admin/zixun/status/{id}/{status}','admin\ZixunController@status');
 Route::get('/admin/zixun/content/{id}','admin\ZixunController@content');//添加内容页面
 Route::post('/admin/zixun/adcon','admin\ZixunController@adcon');//执行添加内容

@@ -46,7 +46,7 @@
  </div>
 
  <div class="form-group">
-    <label for="inputEmail5">游戏价格:</label>
+    <label for="inputEmail5">游戏价格:单位(元)</label>
     <input type="text" class="form-control" id="inputEmail5" name="price" placeholder="价格">
  </div>
 

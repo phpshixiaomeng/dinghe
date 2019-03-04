@@ -183,6 +183,24 @@ class ZixunController extends Controller
     }
 
     public function xiangqing($id){
+        $count=DB::table('news_pls')->where('gid',$id)->count();
+        $data=DB::table('news_cs')->where('gid',$id)->first();
+        return view('admin.zixun.xiangqing',['data'=>$data,'count'=>$count]);
+
+    }
+
+    public function pinglun($id){
+        $data=DB::table('news_pls')->where('gid',$id)->get();
+        return view('admin.zixun.pinglun',['data'=>$data,'i'=>1]);
+    }
+
+    public function pinglunshanchu($id){
+    $res=DB::table('news_pls')->where('id',$id)->delete();
+    if($res){
+        echo 1;
+    }else{
+        echo 2;
+    }
 
     }
     public function content($id){
@@ -191,6 +209,8 @@ class ZixunController extends Controller
     }
 
     public function adcon(Request $request){
+        //防空与添加简化内容同理
+
         $data=$request->except('_token');
         $res=DB::table('news_cs')->insert($data);
         if($res){
@@ -212,6 +232,7 @@ class ZixunController extends Controller
     }
 
     public function adconedit(Request $request){
+        //防空与添加简化内容同理
         $data=$request->except('_token');
         $res=DB::table('news_cs')->where('id',$data['id'])->update($data);
         if($res){
