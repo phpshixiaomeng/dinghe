@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="/admin_assets/layui-v2.4.5/layui/css/layui.css">
     <script src="/admin_assets/layui-v2.4.5/layui/layui.js"></script>
     <script type="text/javascript" src="/admin_assets/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/utf8-php/ueditor.config.js"></script>
+    <script type="text/javascript" src="/utf8-php/ueditor.all.js"></script>
     <script type="text/javascript">
     @section('function')
     @show

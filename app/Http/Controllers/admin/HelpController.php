@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 class HelpController extends Controller
 {
@@ -14,7 +15,8 @@ class HelpController extends Controller
      */
     public function index()
     {
-        return view('admin.help.index');
+        $data = DB::table('helps')->get();
+        return view('admin.help.index',['data'=>$data]);
     }
 
     /**
@@ -69,7 +71,7 @@ class HelpController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
@@ -81,5 +83,9 @@ class HelpController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function reply($id){
+        $helps = DB::table('helps')->first();
+        return view('admin.help.reply',['helps'=>$helps]);
     }
 }

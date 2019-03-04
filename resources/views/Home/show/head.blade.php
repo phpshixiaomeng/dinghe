@@ -89,7 +89,7 @@
 
                                     </ul>
                                 </li>
-                                <li><a href="/home/contact">联系</a></li>
+                                <li><a href="/home/contact">反馈与帮助</a></li>
 
                             </ul>
                         </nav>
@@ -233,11 +233,20 @@
                         <div class="footer-widget">
                             <div class="footer-social">
                                <span>友情链接:</span>
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/weishao
                                 <ul>
+                                    @if($common_link)
                                     @foreach($common_link as $kkk=>$vvv)
+<<<<<<< HEAD
                                     <li><a href="{{ $vvv->url }}"><img style="width :40px;height: 40px;" src="/uploads/{{ $vvv->image }}" alt=""></a></li>
+=======
+                                    <li><a href="{{ $vvv->url }}"><img style="width :40px;height: 40px; z-index:999999" src="uploads/{{ $vvv->image }}" alt=""></a></li>
+>>>>>>> origin/weishao
                                     @endforeach
+                                    @endif
                                 </ul>
 
                             </div>
