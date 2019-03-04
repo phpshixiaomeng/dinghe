@@ -51,9 +51,9 @@ class GameimgController extends Controller
             $file_a = $request->file('game_img');
             foreach($file_a as $key=>$value){
                 $file_pic = $value->store('public');
-                $data['game_pic'] = $file_pic;
+                $data['game_img'] = $file_pic;
                 $data['gname'] = $game_name->name;
-                $res = DB::table('games_pic')->insert($data);
+                $res = DB::table('games_img')->insert($data);
             }    
         } else {
             return back();
