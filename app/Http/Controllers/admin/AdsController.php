@@ -41,10 +41,9 @@ class AdsController extends Controller
         $data = DB::table('ads')->where('gname','like','%'.$search.'%')->orderBy('put','desc')->paginate(3);
         //判断是否查询,统计数据
         if($search == ''){
-            $ads = DB::table('ads')->get();
-            $num = count($ads);
+            $num = DB::table('ads')->count();
         }else{
-            $num = count($data);
+            $num = DB::table('ads')->where('gname','like','%'.$search.'%')->count();
         }
         //将查询到的数据返回页面
         return view('admin.ads.index',['data'=>$data,'request'=> $request->all(),'num'=>$num]);
@@ -81,7 +80,6 @@ class AdsController extends Controller
         ]);
         //获取上传的数据并删除_token
         $data = $request->except('_token');
-        $data['put'] = 0;
         //获取缓存文件夹里的图片相对路径
         $file = './uploads/cache/'.$data['image'];
         //获取用来存放广告图片的相对路径
@@ -220,13 +218,13 @@ class AdsController extends Controller
      *@批量删除
      *
      */
-    public function del(Request $request)
+    public function dels(Request $request)
     {
         //获取传输过来的批量删除的id
         $data= $request->input('delid');
         //把字符串的id拼接成数组
         $str = explode( ',',$data);
-        //设置一个变量来计算删除多少个
+        //设置一个变量来计算删除多少条
         $i=0;
         //遍历删除数据
         foreach($str as $k=>$v){

@@ -212,11 +212,9 @@ if($content){
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
-        session_start();
-        unset($_SESSION);
-        session_destroy();
+        $request->session()->flush();
         return redirect("home");
     }
 

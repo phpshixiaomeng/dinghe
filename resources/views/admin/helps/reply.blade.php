@@ -42,7 +42,7 @@
                 <div class="space_hx">&nbsp;</div>
                 <!--终端列表-->
 
-                <form action="/admin/help/{{ $helps->id }}" method="post" >
+                <form action="/admin/help/add/{{ $helps->id }}" method="post" >
                     <div class="xjhy">
                         @if (count($errors) > 0)
                             <div id="alert" class="alert alert-danger alert-dismissible" role="alert">
@@ -59,7 +59,6 @@
                             </div>
                         @endif
                         {{ csrf_field() }}
-                        {{ method_field('PUT') }}
                         <ul class="help_update" style="text-align: left; margin-left: 150px;">
                             <li>
                                 <h3><small>用户名</small></h3>
@@ -71,14 +70,10 @@
                             </li>
                             <li>
                                 <h3><small>问题描述</small></h3>
-                                <h3>{{ $helps->description }}</h3>
+                                <h3><div style=" width:500px;word-wrap:break-word ;">
+                                    {!! $helps->description !!}
+                                </div></h3>
                             </li>
-                            @if($helps->reply)
-                            <li>
-                                <h3><small>原回复内容</small></h3>
-                                <h3>{{ $helps->reply }}</h3>
-                            </li>
-                            @endif
                             <li >
                                 <h3><small>回复内容</small></h3>
                                 <script id="reply" name="reply" type="text/plain" style="width:50%;height:20%;">
@@ -98,13 +93,6 @@
         </div>
     </div>
 <script type="text/javascript">
-    function upload()
-
-    $('#button').click(function(){
-        $("#alert").hide();
-    });
-</script>
-<script type="text/javascript">
     var ue = UE.getEditor('reply',{
     autoHeightEnabled:false,
     toolbars: [
@@ -112,5 +100,8 @@
     ]
     });
 
+    $('#button').click(function(){
+        $("#alert").hide();
+    });
 </script>
 @endsection

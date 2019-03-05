@@ -41,10 +41,9 @@ class LinkController extends Controller
     	$data = DB::table('links')->where('lname','like','%'.$search.'%')->orderBy('id','asc')->paginate(3);
         //判断是否查询,统计数据
         if($search == ''){
-            $select = DB::table('links')->get();
-            $num = count($select);
+            $num = DB::table('links')->count();
         }else{
-            $num = count($data);
+            $num = DB::table('links')->where('lname','like','%'.$search.'%')->count();
         }
         //将查询到的数据返回页面
         return view('admin.link.index',['data'=>$data,'request'=> $request->all(),'num'=>$num]);
@@ -226,13 +225,13 @@ class LinkController extends Controller
      *@批量删除
      *
      */
-    public function del(Request $request)
+    public function dels(Request $request)
     {
         //获取传输过来的批量删除的id
         $data= $request->input('delid');
         //把字符串的id拼接成数组
         $str = explode( ',',$data);
-        //设置一个变量来计算删除多少个
+        //设置一个变量来计算删除多少条
         $i=0;
         //遍历删除数据
         foreach($str as $k=>$v){

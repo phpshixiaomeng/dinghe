@@ -14,7 +14,6 @@ class LoginController extends Controller
      */
     public function index()
     {
-        // echo '11111';
         return view('Home\login');
     }
 
@@ -36,29 +35,19 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        // echo $_POST['name'];
-    //用户登录验证
-    // echo 1111;
-    // exit;
-
         $_POST['password']=md5($_POST['password']);
 
-    $res=DB::table('home_users')->where($_POST)->first();
+        $res=DB::table('home_users')->where($_POST)->first();
     if($res){
-    if(($res->status)==0){
-
-        // session(['key'=>'1']);
-            if(!session_id()) session_start();
-            $_SESSION=$_POST;
-
-        echo 1;
-
-}else{
-        echo 3;
-}
-}else{
-        echo 2;
-    }
+        if(($res->status)==0){
+            session(['name'=>$res->name]);
+            echo 1;
+        }else{
+                echo 3;
+        }
+        }else{
+                echo 2;
+            }
     // exit;
 
 
@@ -74,8 +63,7 @@ class LoginController extends Controller
      */
     public function show($id)
     {
-        // echo 11111;
-       session_start();
+
         unset($_SESSION);
         session_destroy();
         return redirect("home");

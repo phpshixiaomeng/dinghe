@@ -67,9 +67,6 @@
 
 $("form").submit(function(){
 
-
-
-
         var name=$('#name').val();
         var ps=$('#password').val();
         // var nps=$('#npassword').val();
@@ -84,19 +81,16 @@ $("form").submit(function(){
                 'password':ps
 
             };
-            var url='http://www.dingding.com/home/login';
+            var url='/home/login';
             $.ajaxSetup({
             headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
             });
             $.post(url,data,function(res){
 
-            // alert(res);
-            // console(res);
-            // alert(res);
 
             if(res==1){
                 alert('登录成功');
-                window.location.href='http://www.dingding.com/home';//登录成功跳到首页
+                window.location.href='/home';//登录成功跳到首页
             }else if(res==2){
                 alert('登录失败/账号或密码错误');
                 $('#password').val('');
