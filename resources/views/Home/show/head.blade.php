@@ -102,8 +102,8 @@
                         <div class="header-right-wrap">
                             <ul>
 
-                           <?php if(!session_id()) session_start();?>
-                            @if(empty($_SESSION))
+
+                            @if(empty(session('name')))
                                 <li><a href="/home/login">登录</a></li>
                                 <li><a href="/home/zhuce">注册</a></li>
                             @else

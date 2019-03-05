@@ -15,8 +15,8 @@ class GrxxController extends Controller
      */
     public function index()
     {
-        if(!session_id()) session_start();
-        $name=$_SESSION['name'];
+
+        $name=session('name');
         $data=DB::table('home_users')->where('name','=',$name)->first();
 
         $data2=DB::table('users_details')->where('user_id','=',$data->id)->first();

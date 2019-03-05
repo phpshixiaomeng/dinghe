@@ -7,40 +7,39 @@
             <div class="row row-25">
                 <div class="col-lg-8">
                     <div class="row">
+                    @foreach($data as $val)
                         <div class="col-12">
                             <!--Single Blog Post Start-->
                             <div class="single-blog-post blog-list mb-30">
                                 <div class="blog-img">
-                                    <a href="gamesnews"><img src="assets/images/blog/blog-list1.jpg" alt=""></a>
+                                    <img src="/uploads/{{ $val->image }}" alt="">
                                 </div>
                                 <div class="blog-content">
-                                    <h3><a href="gamesnews">《愤怒的小鸟》最新版本于2019年发布</a></h3>
-                                    <p>《愤怒的小鸟》是最受欢迎的游戏，任何人都喜欢《长卷的秘密》是最受欢迎的。</p>
+                                    <h3>{{$val->title}}</h3>
+                                    <p>{{$val->contact}}</p>
                                     <div class="blog-bottom">
                                         <ul class="meta meta-border-bottom">
-                                            <li><a href="#">Smith</a></li>
-                                            <li>15 Devember, 2018 </li>
-                                            <li><a href="#">25 Comments</a></li>
+                                            <li>{{$val->auth}}</li>
+                                            <li>{{$val->created_at}}</li>
+                                            <li>热度:{{$val->fire}}度</li><br>
+                                            <li><a href="/home/{{$val->id}}/gamesnews" class="btn btn-info">查看详情</a></li>
                                         </ul>
+
+
+
+
                                     </div>
                                 </div>
                             </div>
                             <!--Single Blog Post End-->
                         </div>
-
+                    @endforeach
                     </div>
                     <div class="row">
                         <div class="col-12">
                             <div class="blog-pagination text-center">
                                 <ul class="page-pagination">
-                                    <li><a href="#"><i class="icofont-long-arrow-left"></i></a></li>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li><a href="#">6</a></li>
-                                    <li><a href="#"><i class="icofont-long-arrow-right"></i></a></li>
+                                   <li>{{ $data->links() }}</li>
                                 </ul>
                             </div>
                         </div>

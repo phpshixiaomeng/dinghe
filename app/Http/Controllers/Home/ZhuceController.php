@@ -82,9 +82,10 @@ if($content){
     $error_code = $result['error_code'];
     if($error_code == 0){
         //状态为0，说明短信发送成功
-        session_start();
-        $_SESSION['yanzhengma']=$yanzhengma;
-        $_SESSION['phone']=$_GET['phone'];
+        // session_start();
+        session(['yanzhengma'=>$yanzhengma,'phone'=>$_GET['phone']]);
+        // $_SESSION['yanzhengma']=$yanzhengma;
+        // $_SESSION['phone']=$_GET['phone'];
         // echo $_SESSION['yanzhengma'];
         echo 0;
     }else{
@@ -166,10 +167,10 @@ if($content){
         // $data=$request->except('_token','npassword');
         // dump($data);
         //
-    session_start();
-    if(!empty($_SESSION)){
 
-        if($_POST['ma']==$_SESSION['yanzhengma']&&$_POST['phone']==$_SESSION['phone']){
+    if(!empty(session('yanzhengma')) && !empty(session('phone'))){
+
+        if($_POST['ma']==session('yanzhengma')&&$_POST['phone']==session('phone')){
         // unset($_SESSION);
         unset($_POST['ma']);
         $_POST['password']=md5($_POST['password']);
@@ -212,11 +213,9 @@ if($content){
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
-        if(!session_id()) session_start();
-        unset($_SESSION);
-        session_destroy();
+        $request->session()->flush();
         return redirect("home");
     }
 

@@ -26,12 +26,15 @@ Route::resource('/home/grxx','Home\GrxxController');//个人信息
 
 //
 Route::resource('/home/games','Home\GamesController');//游戏商品路由
-Route::resource('/home/gamesnews','Home\GamesNewsController');//游戏新闻路由
+Route::post('/home/gamesnews','Home\GamesNewsController@store');//评论路由
+Route::get('/home/gamesnews/zan/{id}','Home\GamesNewsController@zan');//评论赞
+Route::get('/home/gamesnews/cai/{id}','Home\GamesNewsController@cai');//评论踩
+Route::resource('/home/{id}/gamesnews','Home\GamesNewsController');//游戏资讯路由
 Route::resource('/home/video','Home\VideoController');//游戏宣传视频
 Route::resource('/home/luntan','Home\LuntanController');//游戏论坛
 Route::resource('/home/luntanfatie','Home\LuntanFatieController');//游戏论坛发帖
 Route::resource('/home/luntanshaitu','Home\LuntanShaituController');//游戏论坛晒图
-Route::resource('/home/bokelist','Home\BokeListController');//博客
+Route::resource('/home/bokelist','Home\BokeListController');//资讯列表
 Route::resource('/home/bizhi','Home\BizhiController');//壁纸
 Route::resource('/home/zhifu','Home\ZhifuController');//用户支付
 Route::resource('/home/contact','Home\ContactController');//联系我们

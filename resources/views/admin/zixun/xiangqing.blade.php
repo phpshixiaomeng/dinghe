@@ -24,7 +24,7 @@
 <div class="right_m">
          <div class="hy_list">
             <div class="box_t">
-                <span class="name">详情</span>
+                <span class="name">详情<button onClick="document.location.reload()" class="btn btn-warning">刷新</button></span>
                     <div class="position">
                         <a href=""><img src="/admin_assets/images/icon5.png" alt=""/></a>
                         <a href="">首页</a>
@@ -48,7 +48,7 @@
             <th>价格</th>
             <th>评论数量(点击查看评论)</th>
         </tr>
-        <tr>
+        <tr class="info">
             <td>{{$data->gid}}</td>
             <td>{{$data->content}}</td>
             <td>{{$data->gstart}}</td>

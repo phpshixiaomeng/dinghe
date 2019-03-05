@@ -42,22 +42,22 @@ class LoginController extends Controller
     // echo 1111;
     // exit;
 
-        $_POST['password']=md5($_POST['password']);
+    $_POST['password']=md5($_POST['password']);
 
     $res=DB::table('home_users')->where($_POST)->first();
     if($res){
     if(($res->status)==0){
 
         // session(['key'=>'1']);
-            
-            $_SESSION=$_POST;
+
+    session(['name'=>$_POST['name']]);
 
         echo 1;
 
-}else{
+        }else{
         echo 3;
-}
-}else{
+        }
+        }else{
         echo 2;
     }
     // exit;
@@ -76,13 +76,11 @@ class LoginController extends Controller
     public function show($id)
     {
         // echo 11111;
-<<<<<<< HEAD
-       if(!session_id()) session_start();
-=======
-        if(!session_id()) session_start();
->>>>>>> origin/ioo
-        unset($_SESSION);
-        session_destroy();
+
+
+
+
+
         return redirect("home");
     }
 

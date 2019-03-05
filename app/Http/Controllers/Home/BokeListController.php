@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 class BokeListController extends Controller
 {
@@ -14,7 +15,8 @@ class BokeListController extends Controller
      */
     public function index()
     {
-        return View('Home/bokelist');
+        $data = DB::table('news')->orderBy('fire','desc')->paginate(3);
+        return View('Home/bokelist',['data'=>$data]);
     }
 
     /**

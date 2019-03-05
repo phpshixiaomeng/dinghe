@@ -33,14 +33,14 @@
   </tr>
 
   @foreach($data as $v)
-  <tr>
+  <tr class="info">
     <td>{{$i++}}</td>
     <td>{{$v->pname}}</td>
     <td>{{$v->ptime}}</td>
     <td>{{$v->pcontent}}</td>
     <td>{{$v->pzan}}</td>
     <td>{{$v->pcai}}</td>
-    <td><a href="javascript:;"  onclick="javascript:if (confirm('确定删除吗?')) {tan({{$v->id}});}else{return false;}" class="btn btn-danger">删除</td>
+    <td><a href="javascript:;"  onclick="javascript:if (confirm('确定删除吗?')) {tan({{$v->id}});}else{return false;}" class="btn btn-danger">删除</a></td>
   </tr>
   @endforeach
 
