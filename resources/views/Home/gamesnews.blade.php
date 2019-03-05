@@ -113,7 +113,7 @@
                           });
 
                                   $.get(url,function(res){
-                                  $('#zan').html(res);
+                                  $(this).text(res);
                                   })
 
 
@@ -129,7 +129,7 @@
 
 
                                   $.get(url,function(res){
-                                  $('#cai').html(res);
+                                  $(this).text(res);
                                   })
 
 
