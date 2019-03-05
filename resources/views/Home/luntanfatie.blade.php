@@ -27,8 +27,8 @@
                                 <div class="col-12">
                                     <!--Single Forum Start-->
                                     <div class="single-input mb-50 mb-sm-30 mb-xs-20">
-                                       <label>话题内容</label>
-                                        <textarea id="summernote" name="editordata"></textarea>
+                                      <label>话题内容</label>
+                                      <textarea id="summernote" name="editordata"></textarea>
                                     </div>
                                     <!--Single Forum End-->
                                 </div>
@@ -37,7 +37,7 @@
                                     <div class="file-input mb-50 mb-sm-30 mb-xs-20">
                                        <input type="file" name="myFile" id="customfile" class="sr-only">
                                        <label for="customfile"><i class="fa fa-paperclip"></i>附加文件</label>
-                                       <button class="save-btn">保存到草案/button>
+                                       <button class="save-btn">保存到草案</button>
                                     </div>
                                     <!--Single Forum End-->
                                 </div>

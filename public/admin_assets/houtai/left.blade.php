@@ -462,7 +462,9 @@
                 <ul class="erji">
                     <li>
                         <span><a href="/admin/help" target="main">查看反馈与帮助</a></span>
-                        <span><a href="/admin/help" target="main">反馈与帮助历史记录</a></span>
+                    </li>
+                    <li>
+                        <span><a href="/admin/help/history" target="main">反馈与帮助历史记录</a></span>
                     </li>
                 </ul>
             </li>

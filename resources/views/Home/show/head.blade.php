@@ -11,6 +11,7 @@
     <!-- Place favicon.ico in the root directory -->
     <link href="/assets/images/favicon.ico" type="img/x-icon" rel="shortcut icon">
     <!-- All css files are included here. -->
+    <link rel="stylesheet" type="text/css" href="/admin_assets/bootstrap-3.3.7-dist/css/bootstrap.css">
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/qanto.css">
     <link rel="stylesheet" href="/assets/css/bauhaus93.css">
@@ -20,6 +21,11 @@
     <link rel="stylesheet" href="/assets/css/helper.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link href="/assets/css/styler.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/admin_assets/layui-v2.4.5/layui/css/layui.css">
+    <script src="/admin_assets/layui-v2.4.5/layui/layui.js"></script>
+    <script type="text/javascript" src="/admin_assets/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/utf8-php/ueditor.config.js"></script>
+    <script type="text/javascript" src="/utf8-php/ueditor.all.js"></script>
 
 
     <!-- Modernizr JS -->
@@ -91,8 +97,8 @@
 
                                     </ul>
                                 </li>
-                                <li><a href="/home/contact">反馈与帮助</a></li>
-
+                                <li><a href="/home/help">反馈与帮助</a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -104,13 +110,13 @@
                             <ul>
 
 
+
                             @if(empty(session('name')))
                                 <li><a href="/home/login">登录</a></li>
                                 <li><a href="/home/zhuce">注册</a></li>
                             @else
 
                                 <li><a href="javascript:if(confirm('确实要退出吗?'))location='home/zhuce/tui/edit'">退出</a></li>
-
                                 <li><a href="/home/grxx">个人信息</a></li>
                             @endif
                                 <li class="header-search"><a class="header-search-toggle" href="#"><i class="icofont-search-2"></i></a>

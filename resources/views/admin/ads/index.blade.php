@@ -104,7 +104,7 @@
                             <em>全部选中</em>
                         </span>
                         <span style="width:100px;float:left;margin-top:5px;">
-                            <form method="post" id="qdel" action="/admin/ads/del">
+                            <form method="post" id="qdel" action="/admin/ads/dels">
                                 {{ csrf_field() }}
                                 <input class="btn btn-danger"  onclick="return confirm('确定要删除吗?')"  style="width:100px;height:30px;color:grey;" type="submit" value="批量删除">
                             </form>

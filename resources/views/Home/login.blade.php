@@ -67,9 +67,6 @@
 
 $("form").submit(function(){
 
-
-
-
         var name=$('#name').val();
         var ps=$('#password').val();
         // var nps=$('#npassword').val();
@@ -84,17 +81,18 @@ $("form").submit(function(){
                 'password':ps
 
             };
+<<<<<<< HEAD
 
             var url='/home/login';
 
+=======
+            var url='/home/login';
+>>>>>>> origin/weishao
             $.ajaxSetup({
             headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
             });
             $.post(url,data,function(res){
 
-            // alert(res);
-            // console(res);
-            // alert(res);
 
             if(res==1){
                 alert('登录成功');

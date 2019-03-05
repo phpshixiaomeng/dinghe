@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Home\Cates;
 use DB;
-
 class IndexController extends Controller
 {
     /**
@@ -38,8 +37,6 @@ class IndexController extends Controller
         return $links;
     }
 
-
-
     public static function  webSite()
     {
         $game_nav = DB::table('websites')->where('status','1')->first();
@@ -53,7 +50,9 @@ class IndexController extends Controller
 
 
 
+
         return view('Home/index',['num'=>$num,'data'=>$data,'i'=>1]);
+
     }
 
     /**
