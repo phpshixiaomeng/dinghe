@@ -19,11 +19,13 @@ class GamesNewsController extends Controller
         $pcount=DB::table('news_pls')->where('gid',$id)->count();
         $image=DB::table('news')->where('id',$id)->first()->image;
         $title=DB::table('news')->where('id',$id)->first()->title;
+        $gname=DB::table('news')->where('id',$id)->first()->gname;
         $fire=(DB::table('news')->where('id',$id)->first()->fire)+1;
+        $tata=DB::table('news')->where('id',$id)->first();
         DB::table('news')->where('id',$id)->update(['fire'=>$fire]);
         $pl=DB::table('news_pls')->where('gid',$id)->paginate(3);
         $data=DB::table('news_cs')->where('gid',$id)->first();
-        return view('Home/gamesnews',['data'=>$data,'pls'=>$pl,'image'=>$image,'title'=>$title,'count'=>$pcount]);
+        return view('Home/gamesnews',['tata'=>$tata,'data'=>$data,'gname'=>$gname,'pls'=>$pl,'image'=>$image,'title'=>$title,'count'=>$pcount]);
     }
 
     /**
@@ -105,19 +107,32 @@ class GamesNewsController extends Controller
     }
 
     public function zan($id){
-
+        $data=DB::table('new_pls_zans')->where(['pl_id'=>$id,'zan_user'=>session('name')])->first();
+        if(empty($data)){
         $zan=(DB::table('news_pls')->where('id',$id)->first()->pzan)+1;
         $res=DB::table('news_pls')->where('id',$id)->update(['pzan'=>$zan]);
+        DB::table('new_pls_zans')->insert(['pl_id'=>$id,'zan_user'=>session('name')]);
         if($res){
             echo $zan;
         }
+    }else{
+        $buzan=DB::table('news_pls')->where('id',$id)->first()->pzan;
+        echo $buzan;
+    }
     }
 
     public function cai($id){
+        $data=DB::table('new_pls_zans')->where(['pl_id'=>$id,'zan_user'=>session('name')])->first();
+        if(empty($data)){
         $cai=(DB::table('news_pls')->where('id',$id)->first()->pcai)+1;
         $res=DB::table('news_pls')->where('id',$id)->update(['pcai'=>$cai]);
+        DB::table('new_pls_zans')->insert(['pl_id'=>$id,'zan_user'=>session('name')]);
         if($res){
             echo $cai;
         }
+    }else{
+        $buzan=DB::table('news_pls')->where('id',$id)->first()->pcai;
+        echo $buzan;
+    }
     }
 }

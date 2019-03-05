@@ -22,7 +22,7 @@
     });
 </script>
 
-<div id="right_ctn">
+<div  id="right_ctn">
     <div class="right_m">
          <div class="hy_list">
             <div class="box_t">
@@ -61,7 +61,7 @@
                     <strong>{{ session('error') }}</strong>
                 </div>
             @endif
-            <table  class="search" cellpadding="0" cellspacing="0" class="list_hy">
+            <table style=" table-layout: fixed;width:150px"  class="search"  cellpadding="0" cellspacing="0" class="list_hy">
                 <tr>
                     <th class="xz" scope="col">选择</th>
                     <th scope="col">游戏名</th>
@@ -80,9 +80,9 @@
                 <tr>
                     <td class="xz"><input name="id" type="checkbox" value="{{ $val->id }}"></td>
                     <td>{{$val->gname}}</td>
-                    <td>{{$val->title}}</td>
+                    <td style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">{{$val->title}}</td>
                     <td>{{$val->auth}}</td>
-                    <td>{{$val->contact}}</td>
+                    <td style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">{{$val->contact}}</td>
                     <td>{{$val->fire}}</td>
 
                     <td>

@@ -185,8 +185,11 @@ class ZixunController extends Controller
     public function xiangqing($id){
         $count=DB::table('news_pls')->where('gid',$id)->count();
         $data=DB::table('news_cs')->where('gid',$id)->first();
+        if(!empty($data)){
         return view('admin.zixun.xiangqing',['data'=>$data,'count'=>$count]);
-
+    }else{
+        return back()->with('success','暂无内容');
+    }
     }
 
     public function pinglun($id){

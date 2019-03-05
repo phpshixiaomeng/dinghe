@@ -15,25 +15,26 @@
                                     <a href="single-blog.html"><img src="/uploads/{{$image}}" alt=""></a>
                                     <div class="meta-box">
                                         <ul class="meta meta-border-bottom">
-                                            <li><a href="#">Smith</a></li>
-                                            <li>15 Devember, 2018 </li>
-                                            <li><a href="#">25 Comments</a></li>
+                                            <li>{{$tata->auth}}</li>
+                                            <li>{{$tata->created_at}}</li>
+                                            <li>{{$tata->gname}}</li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="blog-content">
-                                    <h3>latest version of angry birds released in 2019</h3>
-                                    <p><strong>Need for Sped</strong> rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally tances occur in which toil and pain can procure him some great pleasure pleasure rationally encounter sequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain itsuse it is pain, but because occasionally circumstances occur in which toil and pain can procure </p>
-                                    <p>Rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally tances occur in which toil and pain can procure him some great pleasure pleasure rationally encounte</p>
+                                    <h3>{{$title}}</h3>
+                                    <p><strong>咨询主要内容:</strong></p>
+                                    <p>{{$data->content}}</p>
                                     <blockquote class="blockquote mt-30 mb-30">
-                                        <p>Rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because  nally tances occur in which toil and pain can procure </p>
+                                    <p><strong>游戏简要概括:</strong></p>
+                                        <p>{{$data->gstart}}</p>
                                     </blockquote>
-                                    <p>Rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or ues or desires to obtain pain of itself, because it is pain, but because occasionally tances occur in which toil and pain can procure him some great pleasure pleasure rationally encounte</p>
+
                                     <div class="blog-tags">
-                                        <h5>Tags:</h5>
-                                        <a href="#">Games</a>
-                                        <a href="#">Playstation</a>
-                                        <a href="#">Xbox</a>
+                                        <h5>标签:</h5>
+                                        {{$gname}}|
+                                        {{$data->price}}元|
+                                        {{$data->gpt}}
                                     </div>
                                 </div>
                             </div>
@@ -54,9 +55,9 @@
 
                                             </div>
                                             <p>{{$v->pcontent}}</p>
-                                            <a href="javascript:;" onclick="zan({{$v->id}})"><i class="fa fa-thumbs-o-up"></i><font id="zan">{{$v->pzan}}</font></a>
+                                            <i class="fa fa-thumbs-o-up"></i><a  dataid="{{$v->id}}" href="javascript:;" onclick="zan({{$v->id}})">{{$v->pzan}}</a>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                          <a href="javascript:;" onclick="cai({{$v->id}})"><i class="fa fa-thumbs-o-down"></i><font id="cai">{{$v->pcai}}</font></a>
+                                          <i class="fa fa-thumbs-o-down"></i><a  dtaid="{{$v->id}}" href="javascript:;" onclick="cai({{$v->id}})">{{$v->pcai}}</a>
 
                                         </div>
                                     </div>
@@ -107,13 +108,15 @@
 
                             //赞
                             function zan(zid){
+                              $id=zid;
                                 url='/home/gamesnews/zan/'+zid;
                                 $.ajaxSetup({
                           headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
                           });
 
                                   $.get(url,function(res){
-                                  $(this).text(res);
+                                  $('[dataid='+$id+']').html(res);
+
                                   })
 
 
@@ -121,6 +124,7 @@
                             }
 
                             function cai(cid){
+                              $id=cid;
                               $.ajaxSetup({
                           headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
                           });
@@ -129,7 +133,7 @@
 
 
                                   $.get(url,function(res){
-                                  $(this).text(res);
+                                   $('[dtaid='+$id+']').html(res);
                                   })
 
 
