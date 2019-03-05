@@ -54,10 +54,10 @@
                         <!--Single Game Start-->
                         <div class="single-game mb-50">
                             <div class="game-img">
-                                <a href="#"><img src="/uploads/" alt=""></a>
+                                <a href="/home/gamexq/{{ $v->id }}"><img src="/uploads/" alt=""></a>
                             </div>
                             <div class="game-content">
-                                <h4><a href="games-details.html">{{ $b->name }}</a></h4>
+                                <h4><a href="/home/gamexq/{{ $v->id }}">{{ $b->name }}</a></h4>
                                 <span>￥{{ $b->game_jg }}</span>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                                 <a href="/home/gamexq/{{ $v->id }}"><img src="#" alt=""></a>
                             </div>
                             <div class="game-content">
-                                <h4><a href="games-details.html">{{ $v->name }}</a></h4>
+                                <h4><a href="/home/gamexq/{{ $v->id }}">{{ $v->name }}</a></h4>
                                 <span>￥{{ $v->game_jg }}</span>
                             </div>
                         </div>

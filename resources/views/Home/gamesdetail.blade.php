@@ -9,30 +9,27 @@
                    <div class="row">
                        <div class="col-12">
                            <div class="game-image-gallery-wrap">
+                            {{-- 大图片轮播 --}}
                             <div class="game-image-large">
+
+                              @foreach($game_img as $key=>$value)
                                 <div class="game-image img-full">
-                                    <img src="/assets/images/game/game-large/game-large1.jpg" alt="">
+                                    <img src="/uploads/{{ $value->game_img }}" alt="">
                                 </div>
-                                <div class="game-image img-full">
-                                    <img src="/assets/images/game/game-large/game-large3.jpg" alt="">
-                                </div>
-                                <div class="game-image img-full">
-                                    <img src="/assets/images/game/game-large/game-large2.jpg" alt="">
-                                </div>
-                                <div class="game-image img-full">
-                                    <img src="/assets/images/game/game-large/game-large2.jpg" alt="">
-                                </div>
+                              @endforeach
+
                             </div>
+                            {{-- 小图片轮播 --}}
                             <div class="game-image-thumbs">
-                                <div class="sm-image"><img src="/assets/images/game/game-small/game-small3.jpg" alt="product image thumb"></div>
-                                <div class="sm-image"><img src="/assets/images/game/game-small/game-small2.jpg" alt="product image thumb"></div>
-                                <div class="sm-image"><img src="/assets/images/game/game-small/game-small1.jpg" alt="product image thumb"></div>
-                                <div class="sm-image"><img src="/assets/images/game/game-small/game-small1.jpg" alt="product image thumb"></div>
+
+                              @foreach($game_pic as $k=>$v)
+                                <div class="sm-image"><img src="/uploads/{{ $v->game_pic }}" alt="product image thumb"></div>
+                              @endforeach 
+                                    
                             </div>
                             <div class="game-description mb-45">
-                               <h3>巫师3号重新上膛</h3>
-                               <p><strong>需要SPED</strong> 理性地面对极其痛苦的后果。也没有人爱、追求或渴望自己的痛苦，因为这是痛苦，但因为偶尔会有一些紧张，在这些紧张中，劳苦和痛苦可以使他获得某种巨大的快乐，合理地遇到极度痛苦的序列。也没有人爱、追求或渴望获得痛苦，这是痛苦，但因为偶尔会发生劳苦和痛苦可以获得的情况。 </p>
-                               <p>理性地面对极其痛苦的后果。也没有人爱、追求或渴望自己的痛苦，因为这是痛苦，但因为偶尔会有一些紧张，在这些紧张中，劳苦和痛苦可以使他获得某种巨大的快乐，合理地遇到极度痛苦的序列。也没有人爱、追求或渴望获得痛苦，这是痛苦，但因为偶尔会发生劳苦和痛苦可以获得的情况。</p>
+                               <h3>{{ $gameslist->name }}</h3>
+                               <p>{!! $gameslist->game_xq !!}</p>
                            </div>
                         </div>
                        </div>
@@ -41,27 +38,39 @@
                        <div class="col-12">
                            <div class="timelaine-wrapper mb-30">
                                <div class="single-timeline pb-30">
-                                   <h4>游戏开始</h4>
-                                   <p>理性地面对极其痛苦的后果。也没有人爱、追求或渴望自己的痛苦，因为这是痛苦，但因为偶尔会有一些紧张，在这些紧张中，劳苦和痛苦可以使他获得某种巨大的快乐，合理地遇到极度痛苦的序列。也没有人爱、追求或渴望获得痛苦，这是痛苦，但因为偶尔会发生劳苦和痛苦可以获得的情况。</p>
+                                  @foreach($game_peiz as $kk=>$vv)
+                                    @if($vv->status == 0) 
+                                       <h4>游戏标准配置</h4>
+                                       操作系统：<p>{{ $vv->system }}</p>
+                                       最佳内存:<p>{{ $vv->ram }}</p>
+                                       最佳处理器:<p>{{ $vv->ram }}</p>
+                                       最佳GPU:<p>{{ $vv->graphic }}</p>
+                                       声卡:<p>{{ $vv->audio }}</p>
+                                       硬盘:<p>{{ $vv->disk }}</p>
+                                       其他事项：<p>{{ $vv->other }}</p>
+                                    @endif
+                                  @endforeach
                                </div>
+
+                              <div class="single-timeline pb-30">
+                                  @foreach($game_peiz as $kkk=>$vvv)
+                                    @if($vvv->status == 1)               
+                                       <h4>游戏最低配置</h4>
+                                       操作系统：<p>{{ $vvv->system }}</p>
+                                       最低内存:<p>{{ $vvv->ram }}</p>
+                                       处理器:<p>{{ $vvv->ram }}</p>
+                                       最佳GPU:<p>{{ $vvv->graphic }}</p>
+                                       声卡:<p>{{ $vvv->audio }}</p>
+                                       硬盘:<p>{{ $vvv->disk }}</p>
+                                       其他事项：<p>{{ $vvv->other }}</p>
+                                    @endif
+                                  @endforeach    
+                              </div> 
+
                                <div class="single-timeline pb-30">
-                                   <h4>创意团队</h4>
-                                   <p>理性地面对极其痛苦的后果。也没有人爱、追求或渴望自己的痛苦，因为这是痛苦，但因为偶尔会有一些紧张，在这些紧张中，劳苦和痛苦可以使他获得某种巨大的快乐，合理地遇到极度痛苦的序列。也没有人爱、追求或渴望获得痛苦，这是痛苦，但因为偶尔会发生劳苦和痛苦可以获得的情况。</p>
-                               </div>
-                               <div class="single-timeline pb-30">
-                                   <h4>首次发行</h4>
-                                   <p>理性地面对极其痛苦的后果。也没有人爱、追求或渴望自己的痛苦，因为这是痛苦，但因为偶尔会有一些紧张，在这些紧张中，劳苦和痛苦可以使他获得某种巨大的快乐，合理地遇到极度痛苦的序列。也没有人爱、追求或渴望获得痛苦，这是痛苦，但因为偶尔会发生劳苦和痛苦可以获得的情况。</p>
-                                   <p>理性地面对极其痛苦的后果。也没有人爱、追求或渴望自己的痛苦，因为这是痛苦，但因为偶尔会有一些紧张，在这些紧张中，劳苦和痛苦可以使他获得某种巨大的快乐，合理地遇到极度痛苦的序列。也没有人爱、追求或渴望获得痛苦，这是痛苦，但因为偶尔会发生劳苦和痛苦可以获得的情况。</p>
-                               </div>
-                               <div class="single-timeline pb-30">
-                                   <h4>运行平台</h4>
-                                   <span>PC  -  XBOX  -  PS4</span>
-                                   <p>理性地面对极其痛苦的后果。也没有人爱、追求或渴望自己的痛苦，因为这是痛苦，但因为偶尔会有一些紧张，在这些紧张中，劳苦和痛苦可以使他获得某种巨大的快乐，合理地遇到极度痛苦的序列。也没有人爱、追求或渴望获得痛苦，这是痛苦，但因为偶尔会发生劳苦和痛苦可以获得的情况。</p>
-                               </div>
-                               <div class="single-timeline pb-30">
-                                   <h4>价格和下载</h4>
-                                   <span class="game-price">PRICE $49</span>
-                                   <a href="checkout.html">CLICK HERE FOR DOWNLOAD</a>
+                                   <h4>价格和购买</h4>
+                                   <span class="game-price">价格 ￥{{ $gameslist->game_jg }}</span>
+                                   <a href="checkout.html">点击购买此游戏</a>
                                </div>
                            </div>
                        </div>
@@ -206,24 +215,22 @@
                     <div class="sidebar-area mt-sm-50 mt-xs-50">
                         <!--Single Sidebar Widget Start-->
                         <div class="single-sidebar-widget mb-45">
-                            <h3>featured games</h3>
+                            <h3>最新上架</h3>
+
+                            @foreach($xin_game as $a=>$b)
                             <div class="single-featured-game mb-20">
                                 <div class="game-img">
-                                    <a href="#"><img src="/assets/images/banner/sidebar-banner1.jpg" alt=""></a>
-                                    <a class="game-title" href="#">the killer</a>
+                                    <a href="#"><img src="/uploads/{{ $b->game_img }}" alt=""></a>
+                                    <a class="game-title" href="#">{{ $b->name }}</a>
                                 </div>
                             </div>
-                            <div class="single-featured-game mb-20">
-                                <div class="game-img">
-                                    <a href="#"><img src="/assets/images/banner/sidebar-banner2.jpg" alt=""></a>
-                                    <a class="game-title" href="#">muscle cars</a>
-                                </div>
-                            </div>
+                            @endforeach
+
                         </div>
                         <!--Single Sidebar Widget End-->
                         <!--Single Sidebar Widget Start-->
                         <div class="single-sidebar-widget mb-45">
-                            <h3>follow us</h3>
+                            <h3>关注我们</h3>
                             <div class="sidebar-social">
                                 <ul>
                                     <li><a class="facebook" href="#"><i class="icofont-facebook"></i></a></li>
@@ -236,68 +243,40 @@
                         <!--Single Sidebar Widget End-->
                         <!--Single Sidebar Widget Start-->
                         <div class="single-sidebar-widget mb-45">
-                            <h3>popular/recomended</h3>
+                            <h3>促销游戏</h3>
+
+                            @foreach($cu_game as $c=>$d)
                             <div class="popular-game mb-20">
                                 <div class="game-img">
-                                    <a href="#"><img src="/assets/images/banner/sidebar-banner3.jpg" alt=""></a>
+                                    <a href="#"><img src="/uploads/{{ $d->game_img }}" alt=""></a>
                                 </div>
                                 <div class="game-content">
-                                    <h3><a href="#">Splinter cell</a></h3>
+                                    <h3><a href="#">{{ $d->name }}</a></h3>
                                     <span>pc/xbox/ps4</span>
                                 </div>
                             </div>
-                            <div class="popular-game mb-20">
-                                <div class="game-img">
-                                    <a href="#"><img src="/assets/images/banner/sidebar-banner4.jpg" alt=""></a>
-                                </div>
-                                <div class="game-content">
-                                    <h3><a href="#">battle field 4</a></h3>
-                                    <span>pc/xbox/ps4</span>
-                                </div>
-                            </div>
+                            @endforeach
+
                         </div>
                         <!--Single Sidebar Widget End-->
                         <!--Single Sidebar Widget Start-->
                         <div class="single-sidebar-widget mb-45">
-                            <h3>recent post</h3>
+                            <h3>即将发售</h3>
                             <div class="sidebar-rc-post">
                                 <ul>
+
+                                  @foreach($yu_game as $e=>$f)
                                     <li>
                                         <div class="rc-post-thumb">
-                                            <a href="#"><img src="/assets/images/rc-img/rc-img1.jpg" alt=""></a>
+                                            <a href="#"><img src="/uploads/{{ $f->game_img }}" alt=""></a>
                                         </div>
                                         <div class="rc-post-content">
-                                            <h3><a href="#">latest update of the new version</a></h3>
-                                            <div class="widget-date">05 November, 2018</div>
+                                            <h3><a href="#">{{ $f->name }}</a></h3>
+                                            <div class="widget-date">{{ $f->game_time }}</div>
                                         </div>
                                     </li>
-                                    <li>
-                                        <div class="rc-post-thumb">
-                                            <a href="#"><img src="/assets/images/rc-img/rc-img2.jpg" alt=""></a>
-                                        </div>
-                                        <div class="rc-post-content">
-                                            <h3><a href="#">Crew in the earth get new season</a></h3>
-                                            <div class="widget-date">08 November, 2018</div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="rc-post-thumb">
-                                            <a href="#"><img src="/assets/images/rc-img/rc-img3.jpg" alt=""></a>
-                                        </div>
-                                        <div class="rc-post-content">
-                                            <h3><a href="#">secrect code for the Mortal Kombat 4</a></h3>
-                                            <div class="widget-date">05 November, 2018</div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="rc-post-thumb">
-                                            <a href="#"><img src="/assets/images/rc-img/rc-img4.jpg" alt=""></a>
-                                        </div>
-                                        <div class="rc-post-content">
-                                            <h3><a href="#">need for speed have new challenge</a></h3>
-                                            <div class="widget-date">02 November, 2018</div>
-                                        </div>
-                                    </li>
+                                  @endforeach  
+    
                                 </ul>
                             </div>
                         </div>
@@ -311,15 +290,12 @@
                         <!--Single Sidebar Widget End-->
                         <!--Single Sidebar Widget Start-->
                         <div class="single-sidebar-widget">
-                            <h3>follow us</h3>
+                            <h3>热门游戏</h3>
                             <div class="sidebar-instagram">
                                 <ul>
-                                    <li><a href="#"><img src="/assets/images/instagram/instagram1.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="/assets/images/instagram/instagram2.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="/assets/images/instagram/instagram3.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="/assets/images/instagram/instagram4.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="/assets/images/instagram/instagram5.jpg" alt=""></a></li>
-                                    <li><a href="#"><img src="/assets/images/instagram/instagram6.jpg" alt=""></a></li>
+                                    @foreach($re_game as $g=>$h)
+                                    <li><a href="#"><img src="/upload/{{ $h->game_img }}" alt=""></a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

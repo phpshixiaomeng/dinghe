@@ -16,6 +16,25 @@
         });
     });
 @endsection
+@section('style')
+    <style type="text/css">
+        .fail {
+            font-size: 13px;
+            color: red;
+            width: 300px;
+            height: 30px;
+            margin: 0 auto;
+            margin-left:-120px;
+        }
+        .success {
+        font-size: 13px;
+        color: green;
+        width: 300px;
+        margin: 0 auto;
+        margin-left:-120px;
+        }
+    </style>
+@endsection
 @section('content')
     <div id="right_ctn">
         <div class="right_m">
@@ -87,6 +106,14 @@
                                 </div>
                             </li>
 
+                            <li class="clearfix">
+                                <span class="title">发售时间：</span>
+                                <div class="li_r">
+                                    <input name="game_time" id="shijian" type="text" value="{{ old('game_time') }}">
+                                </div>
+                                <span id="sj"></span>
+                            </li>
+
                             <li class="clearfix" style="height:100px">
                                 <span class="title">游戏图片：</span>
                                 <div class="li_r xial">
@@ -140,5 +167,17 @@
         var ue = UE.getEditor('abc', {
             autoHeightEnabled:false,
         });
+    </script>
+
+    <script type="text/javascript">
+        $('#shijian').blur(function(){
+            if(!($(this).val().match(/^[1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/))){
+                $('#sj').addClass('fail');
+                $('#sj').text('时间格式不正确');
+            } else {
+                $('#sj').addClass('success');
+                $('#sj').text('时间格式正确');
+            }
+        })
     </script>
 @endsection

@@ -214,7 +214,7 @@ Route::get('admin/highpei/display/{id}','admin\PeizrController@display');
 Route::get('admin/highpei/delete/{id}','admin\PeizrController@shan');
 Route::resource('admin/highpei','admin\PeizrController');
 
-// 游戏详情部分
+// 游戏详情部分(前台)
 Route::resource('home/gamexq','Home\GamexqController');
 
 // 游戏展示图
@@ -224,6 +224,10 @@ Route::resource('admin/gameimg','admin\GameimgController');
 //游戏轮播图片
 Route::get('admin/gamepic/delete/{id}','admin\GamepicController@picdel');
 Route::resource('admin/gamepic','admin\GamepicController');
+
+// 游戏时间
+Route::get('admin/gameys/delete/{id}','admin\GameysController@ysdel');
+Route::resource('admin/gameys','admin\GameysController');
 
 
 
