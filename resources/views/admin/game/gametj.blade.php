@@ -179,5 +179,6 @@
                 $('#sj').text('时间格式正确');
             }
         })
+
     </script>
 @endsection

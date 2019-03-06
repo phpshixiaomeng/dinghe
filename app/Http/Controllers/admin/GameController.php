@@ -62,14 +62,21 @@ class GameController extends Controller
         $cid = intval($data['cid']);
         unset($data['cid']);
         $data['game_img'] = $file_name;
+        $aab = DB::table('games')->where('name',$data['name'])->first();
 
-        $gid = DB::table('Games')->insertGetId($data);
-
-        $game_cates = new Gamecates;
-        $game_cates->gid = $gid;
-        $game_cates->cid = $cid;
-        $res = $game_cates->save();
-        
+        if(!empty($aab)){
+            $gid = DB::table('games')->insertGetId($data);
+            $game_cates = new Gamecates;
+            $game_cates->gid = $gid;
+            $game_cates->cid = $cid;
+            $res = $game_cates->save();
+        }else{
+            $gid = $aab->id;
+            $game_cates = new Gamecates;
+            $game_cates->gid = $gid;
+            $game_cates->cid = $cid;
+            $res = $game_cates->save();
+        }
 
         if($res){
             return redirect('/admin/game')->with('success','添加成功');

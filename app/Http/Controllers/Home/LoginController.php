@@ -37,11 +37,11 @@ class LoginController extends Controller
     public function store(Request $request)
     {
 
-        // echo $_POST['name'];
+        //echo $_POST['name'];
     //用户登录验证
     // echo 1111;
     // exit;
-
+    
     $_POST['password']=md5($_POST['password']);
 
     $res=DB::table('home_users')->where($_POST)->first();
@@ -50,7 +50,7 @@ class LoginController extends Controller
 
         // session(['key'=>'1']);
 
-    session(['name'=>$_POST['name']]);
+    session(['name'=>$_POST['name'],'id'=>$res->id]);
 
         echo 1;
 
