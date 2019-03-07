@@ -19,6 +19,9 @@ Route::get('/', function () {
 
 
 Route::get('/home','Home\IndexController@index');//主页路由
+Route::get('/home/youxiang/{id}','Home\LoginController@youxiang');
+Route::post('/home/shensu','Home\LoginController@shensu');//申诉路由
+
 Route::resource('/home/login','Home\LoginController');//登陆路由
 Route::resource('/home/zhuce','Home\ZhuceController');//注册路由
 Route::post('/home/xiugai','Home\GrxxController@gaimima');//修改密码

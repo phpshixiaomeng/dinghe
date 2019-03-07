@@ -52,7 +52,13 @@
                                 </div>
 
                                 <input type="password" name="npassword" placeholder="请确认密码" onblur="yanzheng()" id="npassword"></div>
+                                <div class="col-12 mb-30">
+                                请谨慎写上自己的邮箱,这个关乎你的账户找回
+                                <div id="youxiangtishi">
 
+                                </div>
+                                <input type="text" id="youxiang" name="youxiang" value="" placeholder="请输入邮箱">
+                                </div>
                                 <div class="col-12 mb-30">
                                 <div id="duanxin">
 
@@ -171,6 +177,9 @@ $("#facai").attr('disabled',true);
     $("#npassword").focus(function(){
         $("#tishittt").html('');
 })
+$("#youxiang").focus(function(){
+        $("#youxiangtishi").html('');
+})
 
 
     //提示注册
@@ -243,6 +252,28 @@ $("#password").blur(function(){
 
 })
 
+//邮箱正则验证
+$("#youxiang").blur(function(){
+            var str = $("#youxiang").val();
+
+            var ret = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+            if(str!=''){
+            if(!ret.test(str)){
+
+
+                $("#youxiangtishi").html('<font color="red">邮箱格式不正确</font>');
+                $("#youxiang").val('');
+
+            }
+        }
+
+
+
+
+
+
+})
+
 
 
 
@@ -276,17 +307,20 @@ $("#password").blur(function(){
         var nps=$('#npassword').val();
         var phone=$('#phone').val();
         var duanxin=$('#ma').val();
+        var youxiang=$('#youxiang').val();
         // alert(11111);
         // alert($('#name').val());
-        if(name==''||ps==''||nps=='' || phone=='' || duanxin==''){
+        if(name==''||ps==''||nps=='' || phone=='' || duanxin=='' || youxiang==''){
             // alert(1111);
-            alert('用户名密码手机号短信验证码不能为空,请仔细确认');
+            alert('用户名密码手机号邮箱短信验证码不能为空,请仔细确认');
         }else{
             var data={
                 'name':name,
                 'password':ps,
                 'phone':phone,
-                'ma':duanxin
+                'ma':duanxin,
+                'mibao':mibao,
+                'wenti':wenti
             };
             var url='/home/zhuce';
             $.ajaxSetup({
@@ -313,6 +347,12 @@ $("#password").blur(function(){
     }
 return false;
 });
+
+
+//密保问题
+
+
+
 
 
 

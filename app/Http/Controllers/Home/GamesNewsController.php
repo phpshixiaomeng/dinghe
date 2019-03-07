@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Games;
+use App\Models\Admin\Cates;
+use App\Models\Admin\Gamecates;
 use DB;
 class GamesNewsController extends Controller
 {
@@ -22,10 +25,15 @@ class GamesNewsController extends Controller
         $gname=DB::table('news')->where('id',$id)->first()->gname;
         $fire=(DB::table('news')->where('id',$id)->first()->fire)+1;
         $tata=DB::table('news')->where('id',$id)->first();
+        $xinpin = Cates::where('name','新品')->first();
+        $tuijian = Cates::where('name','推荐')->first();
+        $xin_game = Cates::find($xinpin->id)->games()->orderBy('id','desc')->limit(3)->get();
+        $tuijian_game = Cates::find($tuijian->id)->games()->orderBy('id','desc')->limit(2)->get();
+
         DB::table('news')->where('id',$id)->update(['fire'=>$fire]);
         $pl=DB::table('news_pls')->where('gid',$id)->paginate(3);
         $data=DB::table('news_cs')->where('gid',$id)->first();
-        return view('Home/gamesnews',['tata'=>$tata,'data'=>$data,'gname'=>$gname,'pls'=>$pl,'image'=>$image,'title'=>$title,'count'=>$pcount]);
+        return view('Home/gamesnews',['tata'=>$tata,'data'=>$data,'gname'=>$gname,'pls'=>$pl,'image'=>$image,'title'=>$title,'count'=>$pcount,'xinpin'=>$xin_game,'tuijian'=>$tuijian_game]);
     }
 
     /**

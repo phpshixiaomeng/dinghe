@@ -11,7 +11,7 @@
     <!-- Place favicon.ico in the root directory -->
     <link href="/assets/images/favicon.ico" type="img/x-icon" rel="shortcut icon">
     <!-- All css files are included here. -->
-    <link rel="stylesheet" type="text/css" href="/admin_assets/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/bootstrap-3.3.7-dist/css/bootstrap.css"> -->
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/qanto.css">
     <link rel="stylesheet" href="/assets/css/bauhaus93.css">
@@ -116,7 +116,7 @@
                                 <li><a href="/home/zhuce">注册</a></li>
                             @else
 
-                                <li><a href="javascript:if(confirm('确实要退出吗?'))location='home/zhuce/tui/edit'">退出</a></li>
+                                <li><a href="javascript:if(confirm('确实要退出吗?'))location='/home/zhuce/tui/edit'">退出</a></li>
                                 <li><a href="/home/grxx">个人信息</a></li>
                             @endif
                                 <li class="header-search"><a class="header-search-toggle" href="#"><i class="icofont-search-2"></i></a>
