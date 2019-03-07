@@ -4,7 +4,8 @@
 
 <head>
     <!-- <meta charset="utf-8"> -->
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- <meta http-equiv="x-ua-compatible" content="ie=edge"> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Home 01 || Gilbard</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,9 +29,13 @@
     <script type="text/javascript" src="/utf8-php/ueditor.all.js"></script>
 
 
+
+
     <!-- Modernizr JS -->
     <script src="/assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="/assets/js/jquery-3.1.1.min.js"></script>
+    <script src="/assets/js/jquery.cookie.js"></script>
+
 
  </head>
 <body>
@@ -292,7 +297,7 @@
 <!-- Placed js at the end of the document so the pages load faster -->
 
 <!-- All jquery file included here -->
-<script src="/assets/js/vendor/jquery-1.12.4.min.js"></script>
+<!-- <script src="/assets/js/vendor/jquery-1.12.4.min.js"></script> -->
 <script src="/assets/js/popper.min.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/js/plugins.js"></script>

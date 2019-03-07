@@ -16,7 +16,7 @@ class ZixunController extends Controller
     public function index(Request $request)
     {
                  $search = $request->input('search','');
-        $data = DB::table('news')->where('title','like','%'.$search.'%')->orderBy('id','asc')->paginate(5);
+        $data = DB::table('news')->where('title','like','%'.$search.'%')->orderBy('id','asc')->paginate(4);
         if($search == ''){
             $select = DB::table('news')->get();
             $num = count($select);

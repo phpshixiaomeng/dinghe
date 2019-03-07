@@ -108,6 +108,47 @@
         //
         //
 //短信验证
+////////////////////////////////////////////////////////
+if($.cookie("duanxin")!=undefined&&$.cookie("duanxin")!='NaN'&&$.cookie("duanxin")!='null'){//cookie存在倒计时
+
+    timekeeping();
+
+    }else{//cookie 没有倒计时
+
+    $('#facai').attr("disabled", false);
+    }
+
+function timekeeping(){
+        //把按钮设置为不可以点击
+        $('#facai').attr("disabled", true);
+        var interval=setInterval(function(){//每秒读取一次cookie
+          //从cookie 中读取剩余倒计时
+          total=$.cookie("duanxin");
+          //在发送按钮显示剩余倒计时
+          $("#facai").val(total+'秒后可再次发送短信');;
+          //把剩余总倒计时减掉1
+          total--;
+
+          if(total==0){//剩余倒计时为零，则显示 重新发送，可点击
+          //清除定时器
+          clearInterval(interval);
+          //删除cookie
+          total=$.cookie("duanxin",total, { expires: -1 });
+
+          //显示重新发送
+          $('#facai').val('重新发送');
+          //把发送按钮设置为可点击
+          $('#facai').attr("disabled", false);
+          }else{//剩余倒计时不为零
+
+          //重新写入总倒计时
+          $.cookie("duanxin",total);
+          }
+
+        },1000);
+
+      }
+///////////////////////////////////////////////////////
     $("#facai").click(function(){
         $yz=$("#phone").val();
         // alert($yz);
@@ -145,21 +186,52 @@
 
 
 //
+//
+//
+//
+//////////////////////////////////////////
+$.cookie("duanxin",60);
+$('#facai').attr("disabled", true);
+        var interval=setInterval(function(){//每秒读取一次cookie
+          //从cookie 中读取剩余倒计时
+          total=$.cookie("duanxin");
+          //在发送按钮显示剩余倒计时
+          $("#facai").val(total+'秒后可再次发送短信');;
+          //把剩余总倒计时减掉1
+          total--;
 
+          if(total==0){//剩余倒计时为零，则显示 重新发送，可点击
+          //清除定时器
+          clearInterval(interval);
+          //删除cookie
+          total=$.cookie("duanxin",total, { expires: -1 });
 
+          //显示重新发送
+          $('#facai').val('重新发送');
+          //把发送按钮设置为可点击
+          $('#facai').attr("disabled", false);
+          }else{//剩余倒计时不为零
 
-    $a=60;//秒数
-    var zz=setInterval(function(){
-    if($a==0){
-    clearInterval(zz);
-    $("#facai").attr('disabled',false);
-    $("#facai").val("获取验证码");
-    }else{
-    $a--;
-    $("#facai").val($a+'秒后可再次发送短信');
-}
-},1000);
-$("#facai").attr('disabled',true);
+          //重新写入总倒计时
+          $.cookie("duanxin",total);
+          }
+
+        },1000);
+//////////////////////////////////////////
+
+//     $a=60;//秒数
+//     var zz=setInterval(function(){
+//     if($a==0){
+//     clearInterval(zz);
+//     $("#facai").attr('disabled',false);
+//     $("#facai").val("获取验证码");
+//     }else{
+//     $a--;
+//     $("#facai").val($a+'秒后可再次发送短信');
+// }
+// },1000);
+// $("#facai").attr('disabled',true);
+
 }
 }
     })

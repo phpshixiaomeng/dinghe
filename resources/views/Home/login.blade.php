@@ -24,16 +24,16 @@
                                     <input type="checkbox" id="remember_me">
                                     <!-- <label for="remember_me">记住我</label> -->
 
-                                    <a href="#">忘记了密码？</a>
+                                    忘记密码?<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Modal">
+                                    申诉密码
+                                    </button>
+
 
                                 </div>
                                 <div class="col-12"><input type="submit" value="登录"></div>
                             </div>
                         </form>
                         <h4>没有帐户？请点击 <a href="zhuce"><font style="color:blue">注册</font></a></h4>
-                        <h4>忘记帐户？请点击 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Modal">
-                        申诉密码
-                        </button></h4>
 
                     </div>
                 </div>
@@ -99,8 +99,8 @@
   </div> -->
   <div class="form-group">
     <label for="youxiang">邮箱:</label>
-    <input type="text" class="form-control" id="youxiang" value="" name="youxiang" placeholder="请输入邮箱">
-    <button class="btn btn-warning" id="send" onclick="send()">发送验证码</button>
+    <input type="text" class="form-control" id="youxiang" value=""  placeholder="请输入邮箱">
+    <button class="btn btn-warning"  id="send">发送验证码</button>
   </div>
  <div class="form-group">
 
@@ -118,8 +118,6 @@
     </div>
   </div>
 </div>
-
-
 
 <script>
 
@@ -174,6 +172,47 @@ $("#form").submit(function(){
 return false;
 });
 
+if($.cookie("total")!=undefined&&$.cookie("total")!='NaN'&&$.cookie("total")!='null'){//cookie存在倒计时
+    $('#yanzhengma').attr('hidden',false);
+    timekeeping();
+
+    }else{//cookie 没有倒计时
+
+    $('#send').attr("disabled", false);
+    }
+
+function timekeeping(){
+        //把按钮设置为不可以点击
+        $('#send').attr("disabled", true);
+        var interval=setInterval(function(){//每秒读取一次cookie
+          //从cookie 中读取剩余倒计时
+          total=$.cookie("total");
+          //在发送按钮显示剩余倒计时
+          $('#send').html('请等待'+total+'秒重新发送');
+          //把剩余总倒计时减掉1
+          total--;
+
+          if(total==0){//剩余倒计时为零，则显示 重新发送，可点击
+          //清除定时器
+          clearInterval(interval);
+          //删除cookie
+          total=$.cookie("total",total, { expires: -1 });
+
+          //显示重新发送
+          $('#send').html('重新发送');
+          //把发送按钮设置为可点击
+          $('#send').attr("disabled", false);
+          }else{//剩余倒计时不为零
+
+          //重新写入总倒计时
+          $.cookie("total",total);
+          }
+
+        },1000);
+
+      }
+
+
 $('#send').click(function(){
 
     $.ajaxSetup({
@@ -185,26 +224,41 @@ var y2=$('#youxiang').val();
 if(y1 !='' && y2 !='' ){
     url='/home/youxiang/'+y2;
     $.get(url,function(res){
+
       if(res==1){
-    $('#yanzhengma').attr('hidden',false);
-    $('#send').attr('disabled',true);
-      $('#send').attr('class','btn btn-danger');
-    var a=60;//秒数
-        var zz=setInterval(function(){
-         if(a==0){
-        clearInterval(zz);
-    $("#send").attr('disabled',false);
-    $("#send").html("发送验证码");
-    $('#send').attr('class','btn btn-info');
-        }else{
-        a--;
-    $('#send').html('邮箱发送成功!请'+a+'s秒后再次发送验证码');
-    }
-    },1000);
+
+$.cookie("total",60);
+$('#send').attr("disabled", true);
+        var interval=setInterval(function(){//每秒读取一次cookie
+          //从cookie 中读取剩余倒计时
+          total=$.cookie("total");
+          //在发送按钮显示剩余倒计时
+          $('#send').html('请等待'+total+'秒重新发送');
+          //把剩余总倒计时减掉1
+          total--;
+
+          if(total==0){//剩余倒计时为零，则显示 重新发送，可点击
+          //清除定时器
+          clearInterval(interval);
+          //删除cookie
+          total=$.cookie("total",total, { expires: -1 });
+
+          //显示重新发送
+          $('#send').html('重新发送');
+          //把发送按钮设置为可点击
+          $('#send').attr("disabled", false);
+          }else{//剩余倒计时不为零
+
+          //重新写入总倒计时
+          $.cookie("total",total);
+          }
+
+        },1000);
 
 
 
-      }else{
+/////////////////////////////////////////////////////////////
+ }else{
         alert('验证码发送失败');
       }
 
