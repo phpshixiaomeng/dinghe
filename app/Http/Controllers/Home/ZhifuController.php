@@ -17,6 +17,7 @@ class ZhifuController extends Controller
      */
     public function index()
     {
+
         return view('Home/zhifu');
     }
 
@@ -48,7 +49,7 @@ class ZhifuController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, $id)
-    {
+    {   
         //
         if(!$request->session()->has('name')){
             return redirect('/home/login');
@@ -72,7 +73,7 @@ class ZhifuController extends Controller
         // 购物车页面的遍历
         $user_id = $request->session()->get('id');
         $shop = Homeusers::find($user_id)->gameslist()->get();
-        dump($shop);
+        // dump($shop);
         return view('Home/zhifu',['gameslist'=>$gameslist,'game_img'=>$game_img,'game_pic'=>$game_pic,'shop'=>$shop]);
     }
 
@@ -115,9 +116,9 @@ class ZhifuController extends Controller
         // echo $id;
         $user_id = $request->session()->get('id');
         $game_id = $id;
-        //$res = DB::table('carts')->where('user_id',$user_id)->where('game_id',$game_id)->delete();
+        $res = DB::table('carts')->where('user_id',$user_id)->where('game_id',$game_id)->delete();
         $game = DB::table('games')->where('id',$id)->first();
-        if(empty($res)){
+        if(!empty($res)){
               $arr = [
                     'msg'=>'yes',
                     'qian'=>$game->game_jg,
@@ -128,11 +129,10 @@ class ZhifuController extends Controller
         return json_encode($arr);
     }
 
-    public function heji($id)
+    public function heji(Request $request, $id)
     {
         $game = DB::table('games')->where('id',$id)->first();
         return $game->game_jg;
-
     }
 
     public function xuan($id)
@@ -140,14 +140,40 @@ class ZhifuController extends Controller
         // echo $id;
         $user_id = session('id'); 
        // $game_id = $id;
-       $games = Homeusers::find($user_id)->gameslist()->get();
+        $games = Homeusers::find($user_id)->gameslist()->get();
        // return json_encode($games);
-       $arr = array();
-       foreach($games as $key=>$value){
+        $arr = array();
+        foreach($games as $key=>$value){
             $arr[] = $value->game_jg;
-       }
+        }
        return json_encode($arr);
 
     }
+
+    public function jia(Request $request, $id)
+    {
+        $uid = session('id');
+        $dd = DB::table('cache')->where('uid',$uid)->where('gid',$id)->first();
+        if(empty($dd)){
+            // return $id;
+            $data['uid'] = $request->session()->get('id');
+            $data['gid'] = $id;
+            $res = DB::table('cache')->insert($data);
+        }     
+    }
+
+    public function jian($id)
+    {
+        $uid = session('id');
+        $gid = $id;
+        DB::table('cache')->where('uid',$uid)->where('gid',$gid)->delete();
+    }
+
+    public function sx()
+    {
+        $uid = session('id');
+        DB::table('cache')->where('uid',$uid)->delete();
+    }
+
 
 }

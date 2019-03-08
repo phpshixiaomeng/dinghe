@@ -39,7 +39,10 @@ Route::resource('/home/bizhi','Home\BizhiController');//壁纸
 // 购物车模块
 Route::get('/home/zhifu/fu/{id}','Home\ZhifuController@zhifu');
 Route::get('/home/zhifu/heji/{id}','Home\ZhifuController@heji');
+Route::get('home/zhifu/jia/{id}','Home\ZhifuController@jia');
+Route::get('/home/zhifu/jian/{id}','Home\ZhifuController@jian');
 Route::get('/home/zhifu/qx/{id}','Home\ZhifuController@xuan');
+Route::get('/home/zhifu/shua','Home\ZhifuController@sx');
 Route::resource('/home/zhifu','Home\ZhifuController');//用户支付
 
 Route::resource('/home/contact','Home\ContactController');//联系我们
@@ -233,6 +236,12 @@ Route::resource('admin/gamepic','admin\GamepicController');
 // 游戏时间
 Route::get('admin/gameys/delete/{id}','admin\GameysController@ysdel');
 Route::resource('admin/gameys','admin\GameysController');
+
+// 前台订单
+Route::resource('home/order','Home\OrderController');
+
+// 后台订单
+Route::resource('admin/order','admin\OrderController');
 
 
 

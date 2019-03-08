@@ -16,22 +16,22 @@
                     <div class="contact-form mt-90 mt-lg-70 mt-md-60 mt-sm-50 mt-xs-20">
                         <h3>个人信息</h3>
                         <form action="#" class="comment-form">
-                            <div class="row" style="background-color:RGB(3,22,52);">
+                            <div class="row" style="background-color: grey;">
 
-                              <font color="white">用户头像:</font> <div class="col-md-12 col-24 mb-60">
+                              <font>用户头像:</font> <div class="col-md-12 col-24 mb-60">
                                     <label for="touxiang"><img src="/uploads/public/{{$data2->pic}}" alt="暂无头像请上传" width="120" height="120"></label>
 
 
                                 </div>
                                  <div class="col-md-6 col-12 mb-30">
-                                    <font color="white">用户昵称:{{$data2->nickname}}</font>
+                                    <font >用户昵称:{{$data2->nickname}}</font>
                                 </div>
 
                                 <div class="col-md-6 col-12 mb-30">
-                                    <font color="white">个人简介:{{$data2->profile}}</font>
+                                    <font >个人简介:{{$data2->profile}}</font>
                                 </div>
                                 <div class="col-md-6 col-12 mb-30">
-                                    <font color="white">性别:
+                                    <font >性别:
                                     @if($data2->sex==1)
                                     {{'男'}}
                                     @elseif($data2->sex==0)
@@ -44,7 +44,7 @@
 
 
                                 <div class="col-12 mb-30">
-                                <font color="white">VIP等级:{{$vip}}</font>
+                                <font>VIP等级:{{$vip}}</font>
                                 </div>
 
                                 <div class="col-12">
