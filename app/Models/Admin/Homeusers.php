@@ -17,4 +17,9 @@ class Homeusers extends Model
     {
     	return $this->belongsToMany('App\Models\Admin\Games','cache','uid','gid');
     }
+
+    public function cartgame()
+    {
+        return $this->belongsToMany('App\Models\Admin\Games','carts','user_id','game_id');
+    }
 }

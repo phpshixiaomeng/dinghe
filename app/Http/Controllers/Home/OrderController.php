@@ -16,11 +16,13 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $rem = DB::table('cache')->first();
+        $s_id = session('gid');
         $id = session('id');
+
+        $rem = DB::table('cache')->first();
         // dd($rem);
         if(!empty($rem)){
             $sum = 0;
@@ -39,6 +41,8 @@ class OrderController extends Controller
             $data['order_status'] = 0;
             $data['order_time'] = time();
             $res = DB::table('orders')->insertGetId($data);
+            $orderid['order_id'] = $res;
+            DB::table('games_replys')->insert($orderid);
             // dump($res);
             $games = Homeusers::find($id)->price()->get();
             foreach($games as $kk=>$vv){
@@ -47,17 +51,49 @@ class OrderController extends Controller
                 $game_id = $vv->id;
                 $success = DB::table('order_details')->insert($arr);
                 DB::table('cache')->where('uid',$id)->delete();
+                DB::table('carts')->where('user_id',$id)->where('game_id',$vv->id)->delete();
             }
+        }
+        // 全选
+       if(!empty($s_id)){
+            foreach($s_id as $la=>$xi){
+                // dump($xi);
+                $game_nan = DB::table('carts')->where('game_id',$xi)->where('user_id',$id)->first();
+                $sum = 0;
+                $yx = Homeusers::find($id)->cartgame()->get();
+                foreach($yx as $k=>$v){
+                    $sum += $v->game_jg;
+                }
+                $yh = $sum*0.1;
+                $zj = $sum*0.9;
+            
+                // 订单表的添加
+                $data['order_num'] = time()+rand(1000,9999);
+                $data['user_id'] = $id;
+                $data['order_amount'] = $zj;
+                $data['order_type'] = 0;
+                $data['order_status'] = 0;
+                $data['order_time'] = time();
+                $res = DB::table('orders')->insertGetId($data);
+                $orderid['order_id'] = $res;
+                DB::table('games_replys')->insert($orderid);
+                $games = Homeusers::find($id)->cartgame()->get();
+                $request->session()->forget('gid');
+                // dd($games);
+                foreach($games as $kk=>$vv){
+                    $arr['order_id'] = $res;
+                    $arr['game_id'] = $vv->id;
+                    $game_id = $vv->id;
+                    $success = DB::table('order_details')->insert($arr);
+                    DB::table('carts')->where('user_id',$id)->where('game_id',$vv->id)->delete();
+                }
+            }
+             
         }
 
         // 订单表前台的遍历
         $order = DB::table('orders')->where('user_id',$id)->get();
-        foreach($order as $a=>$b){
-            $dingdan = Orders::find($b->id)->gameorder()->get();
-            // dump($dingdan);
-        }
-        // dump($order);
-        return view('Home.order',['order'=>$order,'dingdan'=>$dingdan]);
+        return view('Home.order',['order'=>$order]);
     }
 
     /**
@@ -124,6 +160,13 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function display($id)
+    {
+        // dump($id);
+        $games = Orders::find($id)->gameorder()->get();
+        return view('Home.orderzhans',['games'=>$games]);
     }
 
 }

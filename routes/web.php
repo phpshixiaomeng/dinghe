@@ -42,6 +42,7 @@ Route::get('/home/zhifu/heji/{id}','Home\ZhifuController@heji');
 Route::get('home/zhifu/jia/{id}','Home\ZhifuController@jia');
 Route::get('/home/zhifu/jian/{id}','Home\ZhifuController@jian');
 Route::get('/home/zhifu/qx/{id}','Home\ZhifuController@xuan');
+Route::get('/home/zhifu/qu','Home\ZhifuController@qu');
 Route::get('/home/zhifu/shua','Home\ZhifuController@sx');
 Route::resource('/home/zhifu','Home\ZhifuController');//用户支付
 
@@ -238,10 +239,11 @@ Route::get('admin/gameys/delete/{id}','admin\GameysController@ysdel');
 Route::resource('admin/gameys','admin\GameysController');
 
 // 前台订单
+Route::get('home/order/display/{id}','Home\OrderController@display');
 Route::resource('home/order','Home\OrderController');
 
-// 后台订单
-Route::resource('admin/order','admin\OrderController');
+/*// 后台订单
+Route::resource('admin/order','admin\OrderController');*/
 
 
 

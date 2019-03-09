@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Games;
 use App\Models\Admin\Cates;
 use App\Models\Admin\Gamecates;
+use APP\Models\Admin\Homeusers;
+use App\Models\Admin\Orders;
 use DB;
 
 class GamexqController extends Controller
@@ -69,6 +71,15 @@ class GamexqController extends Controller
         $re_game = Cates::find($rexiao->id)->games()->orderBy('id','desc')->limit(6)->get();
 
         // 查询有时是否买过
+        $user_id = session('id');
+        $ioo = DB::table('orders')->where('user_id',$user_id)->get();
+        foreach($ioo as $j=>$h){
+            $ilike = Orders::find($h->id)->gameorder()->where('game_id',$id)->first();
+            if(!empty($ilike)){
+                return view('Home.gamesdetail',['gameslist'=>$gameslist,'game_img'=>$game_img,'game_pic'=>$game_pic,'game_peiz'=>$game_peiz,'xin_game'=>$xin_game,'cu_game'=>$cu_game,'yu_game'=>$yu_game,'re_game'=>$re_game,'ilike'=>$ilike]);
+            }
+        }
+        // dump($ilike->id);
 
         return view('Home.gamesdetail',['gameslist'=>$gameslist,'game_img'=>$game_img,'game_pic'=>$game_pic,'game_peiz'=>$game_peiz,'xin_game'=>$xin_game,'cu_game'=>$cu_game,'yu_game'=>$yu_game,'re_game'=>$re_game]);
     }

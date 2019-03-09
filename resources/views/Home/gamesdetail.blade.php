@@ -70,10 +70,13 @@
                                <div class="single-timeline pb-30">
                                    <h4>价格和购买</h4>
                                    <span class="game-price">价格 ￥{{ $gameslist->game_jg }}</span>
-                                  
-                                    
+                                    @if(!empty($ilike->id))
+                                    @if($gameslist->id == $ilike->id)
+                                    <a href="{{ $gameslist->download }}"><span style="color:grey;">已拥有此游戏,</span>点击下载</a>
+                                    @endif
+                                    @else
                                     <a href="/home/zhifu/{{ $gameslist->id }}">点击购买此游戏</a>
-                                  
+                                    @endif
                                </div>
                            </div>
                        </div>

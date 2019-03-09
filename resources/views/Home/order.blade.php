@@ -1,5 +1,12 @@
 @extends('Home/show/head')
 @section('content')
+<script type="text/javascript">
+    layui.use(['layer', 'form'], function(){
+      var layer = layui.layer
+      ,form = layui.form;
+
+    });
+</script>
 <div id="main-wrapper">
     <!--Page Banner Area Start-->
     <div class="page-banner-area" style="background-image: url(/assets/images/bg/page-bg.jpg)">
@@ -33,21 +40,20 @@
 											<tr class="text-center">
 											  <th class="active">编号</th>
 											  <th class="success">订单号</th>
-											  <th class="warning">游戏名称</th>
-											  <th class="danger">订单金额</th>
-											  <th class="info">游戏链接</th>
+											  <th class="warning">订单金额</th>
+											  <th class="danger">订单状态</th>
+											  <th class="info">查看详情/下载</th>
 											</tr>
-                                            @foreach($dingdan as $c=>$d)
-                                            @foreach($order as $cc=>$dd)
+                                            @foreach($order as $k=>$v)                
 											<tr class="text-center">
-											  <td class="active">{{ $dd->id }}</td>
-											  <td class="success">{{ $dd->order_num }}</td>
-                                            @endforeach
-											  <td class="warning">{{ $d->name }}</td>
-											  <td class="danger">{{ 0.9*$d->game_jg }}</td>
-											  <td class="info"><a class="btn btn-primary btn-sm" href="{{ $d->download }}" style="font-size: 10px;">点击下载</a></td>
+											  <td class="active">{{ $v->id }}</td>
+											  <td class="success">{{ $v->order_num }}</td>
+											  <td class="warning">{{ $v->order_amount }}</td>
+                                              @if($v->order_status == 0)
+											  <td class="danger" style="color:grey">交易成功</td>
+                                              @endif
+											  <td class="info"><button onclick="lbw({{ $v->id }})" class="btn btn-primary btn-sm" style="font-size: 10px;">详情/下载</button></td>
 											</tr>
-
                                             @endforeach
 									  </table>
 									</div>
@@ -197,13 +203,22 @@
     </div>
     <!--Projects section end-->
 </div>
-<!-- Placed js at the end of the document so the pages load faster -->
-<!-- All jquery file included here -->
-<script src="//assets/js/vendor/jquery-1.12.4.min.js"></script>
-<script src="//assets/js/popper.min.js"></script>
-<script src="//assets/js/bootstrap.min.js"></script>
-<script src="//assets/js/plugins.js"></script>
-<script src="//assets/js/main.js"></script>
+
+
 </body>
+
+<script type="text/javascript">
+function lbw(id){
+  layer.open({
+  type: 2,
+  title: 'layer mobile页',
+  shadeClose: true,
+  shade: 0.8,
+  area: ['800px', '90%'],
+  content: '/home/order/display/'+id //iframe的url
+}); 
+}
+
+</script>
 
 @endsection

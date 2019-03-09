@@ -176,6 +176,7 @@
             $('#quan').click(function(){
               if($(this).is(':checked')){
                 $(':checkbox[name=item]').prop('checked',true);
+                $(':checkbox[name=item]').attr('disabled',true);
                 if($(':checkbox[name=item]').is(':checked')){
                   var qx = $(':checkbox[name=item]').val();
                   var url = '/home/zhifu/qx/'+qx;
@@ -192,9 +193,14 @@
                 }
               }else{
                 $(':checkbox[name=item]').prop('checked',false);
+                $(':checkbox[name=item]').attr('disabled',false);
                     $('#xj').text('00.00');
                     $('#yh').text('00.00');
                     $('#zj').text('00.00');
+                var url = '/home/zhifu/qu';
+                $.get(url,function(){
+                  
+                });
               }
               
             })
@@ -241,11 +247,11 @@
                   var gid = $(this).val();
                   var url = '/home/zhifu/jian/'+gid;
                   $.get(url,function(rem){
-                    
+                    $(':checkbox[name=item]').attr('disable',true);
                   });
               }
            })
-
+          
            $('#btn').click(function(){
               if(!$(':checkbox[name=item]').is(':checked')){
                 alert('请选择想付款的游戏');

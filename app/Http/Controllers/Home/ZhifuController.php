@@ -50,6 +50,7 @@ class ZhifuController extends Controller
      */
     public function show(Request $request, $id)
     {   
+        // dump($request->session()->all());
         //
         if(!$request->session()->has('name')){
             return redirect('/home/login');
@@ -135,10 +136,16 @@ class ZhifuController extends Controller
         return $game->game_jg;
     }
 
-    public function xuan($id)
+    public function xuan(Request $request, $id)
     {
         // echo $id;
-        $user_id = session('id'); 
+        $user_id = session('id');
+        $gg = DB::table('carts')->where('user_id',$user_id)->get();
+        $abb = array();
+        foreach($gg as $jj=>$hh){
+            $abb[] = $hh->game_id;
+        }
+        $request->session()->put('gid',$abb);
        // $game_id = $id;
         $games = Homeusers::find($user_id)->gameslist()->get();
        // return json_encode($games);
@@ -148,6 +155,11 @@ class ZhifuController extends Controller
         }
        return json_encode($arr);
 
+    }
+
+    public function qu(Request $request)
+    {
+        $request->session()->forget('gid');
     }
 
     public function jia(Request $request, $id)
