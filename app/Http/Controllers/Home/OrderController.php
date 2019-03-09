@@ -57,16 +57,16 @@ class OrderController extends Controller
         // 全选
        if(!empty($s_id)){
             foreach($s_id as $la=>$xi){
-                // dump($xi);
+                // dd($xi);
                 $game_nan = DB::table('carts')->where('game_id',$xi)->where('user_id',$id)->first();
                 $sum = 0;
                 $yx = Homeusers::find($id)->cartgame()->get();
                 foreach($yx as $k=>$v){
                     $sum += $v->game_jg;
                 }
-                $yh = $sum*0.1;
-                $zj = $sum*0.9;
-            
+                    $yh = $sum*0.1;
+                    $zj = $sum*0.9;
+                }
                 // 订单表的添加
                 $data['order_num'] = time()+rand(1000,9999);
                 $data['user_id'] = $id;
@@ -75,10 +75,11 @@ class OrderController extends Controller
                 $data['order_status'] = 0;
                 $data['order_time'] = time();
                 $res = DB::table('orders')->insertGetId($data);
+                dump($res);                
                 $orderid['order_id'] = $res;
                 DB::table('games_replys')->insert($orderid);
                 $games = Homeusers::find($id)->cartgame()->get();
-                $request->session()->forget('gid');
+                
                 // dd($games);
                 foreach($games as $kk=>$vv){
                     $arr['order_id'] = $res;
@@ -86,11 +87,11 @@ class OrderController extends Controller
                     $game_id = $vv->id;
                     $success = DB::table('order_details')->insert($arr);
                     DB::table('carts')->where('user_id',$id)->where('game_id',$vv->id)->delete();
+                    $request->session()->forget('gid');
                 }
-            }
+            
              
         }
-
         // 订单表前台的遍历
         $order = DB::table('orders')->where('user_id',$id)->get();
         return view('Home.order',['order'=>$order]);
