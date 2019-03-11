@@ -31,9 +31,7 @@ Route::get('/home/gamesnews/zan/{id}','Home\GamesNewsController@zan');//评论�
 Route::get('/home/gamesnews/cai/{id}','Home\GamesNewsController@cai');//评论踩
 Route::resource('/home/{id}/gamesnews','Home\GamesNewsController');//游戏资讯路由
 Route::resource('/home/video','Home\VideoController');//游戏宣传视频
-Route::resource('/home/luntan','Home\LuntanController');//游戏论坛
-Route::resource('/home/luntanfatie','Home\LuntanFatieController');//游戏论坛发帖
-Route::resource('/home/luntanshaitu','Home\LuntanShaituController');//游戏论坛晒图
+
 Route::resource('/home/bokelist','Home\BokeListController');//资讯列表
 Route::resource('/home/bizhi','Home\BizhiController');//壁纸
 Route::resource('/home/zhifu','Home\ZhifuController');//用户支付
@@ -281,6 +279,26 @@ Route::post('/admin/help/update/{id}','admin\HelpController@update');
 Route::resource('/admin/help','admin\HelpController');
 //前台帮助和反馈模块
 Route::get('/home/help','Home\HelpController@index');
+Route::get('/home/help/num','Home\HelpController@num');
 Route::get('/home/help/reply','Home\HelpController@reply');
 Route::get('/home/help/del/{id}','Home\HelpController@del');
 Route::post('/home/help/add','Home\HelpController@add');
+//论坛模块
+Route::get('/home/luntan/zan/{id}','Home\LuntanController@zan');
+Route::get('/home/luntan/cai/{id}','Home\LuntanController@cai');
+Route::get('/home/luntan/num','Home\LuntanController@num');
+Route::get('/home/luntan/xinxi','Home\LuntanController@xinxi');
+Route::post('/home/luntan/huitie','Home\LuntanController@huitie');
+Route::post('/home/luntan/huifu','Home\LuntanController@huifu');
+Route::get('/home/luntan/delete/{id}','Home\LuntanController@delete');
+Route::get('/home/luntan/del/{id}','Home\LuntanController@del');
+Route::get('/home/luntan/deleted/{id}','Home\LuntanController@deleted');
+Route::resource('/home/luntan','Home\LuntanController');
+
+//论坛后台
+Route::get('/admin/luntan/delete/{id}','admin\LuntanController@delete');
+Route::get('/admin/luntan/del/{id}','admin\LuntanController@del');
+Route::get('/admin/luntan/reply/{id}','admin\LuntanController@reply');
+Route::get('/admin/luntan/huifu/{id}','admin\LuntanController@huifu');
+Route::get('/admin/luntan/deleted/{id}','admin\LuntanController@deleted');
+Route::resource('/admin/luntan','admin\LuntanController');

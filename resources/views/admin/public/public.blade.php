@@ -25,7 +25,7 @@
 
     @show
 </head>
-    <body onLoad="Resize();" class="a">
+    <body>
     @section('content')
     @show
     </body>

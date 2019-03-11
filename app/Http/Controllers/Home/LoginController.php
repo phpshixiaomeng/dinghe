@@ -35,21 +35,13 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
 
-        // echo $_POST['name'];
-    //用户登录验证
-    // echo 1111;
-    // exit;
 
     $_POST['password']=md5($_POST['password']);
-=======
-        $_POST['password']=md5($_POST['password']);
->>>>>>> origin/weishao
+
 
         $res=DB::table('home_users')->where($_POST)->first();
     if($res){
-<<<<<<< HEAD
     if(($res->status)==0){
 
         // session(['key'=>'1']);
@@ -64,17 +56,7 @@ class LoginController extends Controller
         }else{
         echo 2;
     }
-=======
-        if(($res->status)==0){
-            session(['name'=>$res->name]);
-            echo 1;
-        }else{
-                echo 3;
-        }
-        }else{
-                echo 2;
-            }
->>>>>>> origin/weishao
+
     // exit;
 
 
@@ -90,18 +72,13 @@ class LoginController extends Controller
      */
     public function show($id)
     {
-<<<<<<< HEAD
+
         // echo 11111;
 
 
 
 
 
-=======
-
-        unset($_SESSION);
-        session_destroy();
->>>>>>> origin/weishao
         return redirect("home");
     }
 

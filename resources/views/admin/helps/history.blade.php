@@ -79,7 +79,7 @@
                     <form style="float:left;" action="/admin/help/{{ $v->id }}" method="post">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
-                        <input class="btn btn-danger" type="submit"  value="永久删除">
+                        <input  onclick="return confirm('确定要永久删除吗?')"  class="btn btn-danger" type="submit"  value="永久删除">
                     </form>
                     <a style="float:left;" class="btn btn-primary" href="/admin/help/huanyuan/{{ $v->id }}">还原</a>
                     </th>

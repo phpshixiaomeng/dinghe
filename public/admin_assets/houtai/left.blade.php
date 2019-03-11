@@ -88,14 +88,14 @@
                     <li>
                         <span><a href="/admin/game/create" target="main">添加游戏</a></span>
                     </li>
-                    
+
                     <li>
                         <span><a href="/admin/gameimg" target="main">游戏详情图信息</a></span>
                     </li>
                     <li>
                         <span><a href="/admin/gameimg/create" target="main">游戏详情图添加</a></span>
                     </li>
-                    
+
                     <li>
                         <span><a href="/admin/gamepic" target="main">游戏轮播图信息</a></span>
                     </li>
@@ -468,7 +468,17 @@
                     </li>
                 </ul>
             </li>
-
+            <li class="now">
+                <div class="nav_m">
+                    <span><a>论坛管理</a></span>
+                    <i>&nbsp;</i>
+                </div>
+                <ul class="erji">
+                    <li>
+                        <span><a href="/admin/luntan" target="main">查看帖子</a></span>
+                    </li>
+                </ul>
+            </li>
 
 
 
