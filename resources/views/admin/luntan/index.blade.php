@@ -23,26 +23,22 @@
     <div class="right_m">
          <div class="hy_list">
             <div class="box_t">
-                <span class="name">反馈管理</span>
+                <span class="name">发帖管理</span>
                     <div class="position">
                         <a href=""><img src="/admin_assets/images/icon5.png" alt=""/></a>
                         <a href="">首页</a>
                         <span><img src="/admin_assets/images/icon3.png" alt=""/></span>
-                        <a href="">反馈列表</a>
+                        <a href="">发帖列表</a>
                     </div>
             </div>
             <script>
-                layui.use(['layer', 'form'], function(){
-                  var layer = layui.layer
-                  ,form = layui.form;
-                });
             </script>
-            <form  action="/admin/help" method="get">
+            <form  action="/admin/luntan" method="get">
                 <div class="search">
-                    <span >按照用户名查询</span>
+                    <span >按照帖子名字查询</span>
                     <div class="s_text"><input name="search" type="text"></div>
                     <input class="btn btn-primary" type="submit"  value="搜索">
-                    <span style="float:right; font:18px/1.2 '微软雅黑';margin-right: 100px;margin-top: 20px;" >总共<b style="color:red;" >{{$num}}</b>条反馈 </span>
+                    <span style="float:right; font:18px/1.2 '微软雅黑';margin-right: 100px;margin-top: 20px;" >总共<b style="color:red;" >{{ $num }}</b>条帖子</span>
                 </div>
             </form>
             <div class="space_hx">&nbsp;</div>
@@ -58,56 +54,44 @@
                     <strong>{{ session('error') }}</strong>
                 </div>
             @endif
-            <table class="search list_hy">
+            <table  class="search list_hy">
                 <tr>
-                    <th style="width:20%">用户名</th>
-                    <th style="width:20%">事件名</th>
-                    <th style="width:20%">问题描述</th>
-                    <th style="width:20%">用户读取</th>
-                    <th style="width:20%">回复</th>
+                    <th scope="col">用户名</th>
+                    <th scope="col">帖子标题</th>
+                    <th scope="col">帖子详情</th>
+                    <th scope="col">操作</th>
                 </tr>
-                @foreach($data as $k=>$v)
+                @foreach($data as $key=>$val)
                 <tr>
-                    <th> {{ $v->uname }} </th>
-                    <th> {{ $v->name }} </th>
-                    <th><div style=" width:200px;overflow: hidden; text-overflow:ellipsis; white-space: nowrap;">
-                       {!! $v->description !!}
-                    </div></th>
-                    @if($v->status == 0)
-                    <th><span style="color:red;text-align:center;">未读</span></th>
-                    @else
-                    <th><span style="color:green;text-align:center;">已读</span></th>
-                    @endif
+                    <th>{{ $val->uname}}</th>
+                    <th>{{ $val->title}}</th>
+                    <th><a  class="btn-primary btn" onclick="show({{ $val->id }})" >查看帖子详情</a></th>
                     <th>
-                    @if($v->reply)
-                    <a class="btn btn-warning" onclick="show({{ $v->id }})">已回复请查看</a>|
-                    @else
-                    <a class="btn btn-primary" href="/admin/help/reply/{{ $v->id }}">点击回复</a>|
-                    @endif
-                    <a   onclick="return confirm('确定要添加回收站吗?')"  href="/admin/help/del/{{ $v->id }}" class="btn btn-danger">添加回收站</a></th>
+                        <a class="btn-primary btn" href="/admin/luntan/reply/{{$val->id}}" >查看子帖</a>
+                        <a class="btn btn-danger"  onclick="return confirm('确定要删除吗?')" href="/admin/luntan/delete/{{$val->id}}" >删除</a>
                     </th>
                 </tr>
                 @endforeach
-            </table>
-             <div style="text-align: right;">
+                </table>
+            <div style="text-align: right;">
                 {{ $data->appends($request)->links() }}
             </div>
         </div>
     </div>
 </div>
 <script type="text/javascript">
-    function show(id)
+function show(id)
     {
         layer.open({
           type: 2,
           area: ['1000px', '600px'],
           fixed: false,
           maxmin: true,
-          content: '/admin/help/'+id+'/edit'
+          content: '/admin/luntan/'+id
         });
     }
-    $('#button').click(function(){
-        $("#alert").hide();
-    });
+$('#button').click(function(){
+    $("#alert").hide();
+});
 </script>
 @endsection

@@ -34,6 +34,11 @@
     <link rel="stylesheet" href="/assets/css/lq-score.css">
     <link rel="stylesheet" href="/assets/css/demo.css">
 
+
+    @section('style')
+
+    @show
+
     <!-- Modernizr JS -->
     <script src="/assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="/assets/js/jquery-3.1.1.min.js"></script>
@@ -91,7 +96,7 @@
                                 <li><a href="/home/luntan">论坛</a>
                                     <ul class="sub-menu">
                                         <li><a href="/home/luntan">论坛</a></li>
-                                        <li><a href="/home/luntanfatie">发帖</a></li>
+                                        <li><a href="/home/luntan/create">发帖</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="/home/bokelist">游戏资讯</a>

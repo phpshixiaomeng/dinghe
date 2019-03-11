@@ -14,10 +14,8 @@ class HelpController extends Controller
      */
     public function index()
     {
-        //查询数量
-        $num = DB::table('helps')->where('uname',session('name'))->where('updated_at','>','0')->where('status','0')->where('deleted_at','0')->count();
-        //返回页面未读数量
-        return view('Home.helps.help',['num'=>$num]);
+
+        return view('Home.helps.help');
     }
 
     /**
@@ -48,7 +46,7 @@ class HelpController extends Controller
                 return back()->with('error','反馈和帮助提交失败');
             }
         }else{
-            return back()->with('error','请查看是否登录');
+            return redirect('/home/login')->with('error','请查看是否登录');
         }
     }
 
@@ -71,7 +69,7 @@ class HelpController extends Controller
         }
         //查询历史反馈的回复
         $data = DB::table('helps')->where('uname',session('name'))->where('updated_at','>','0')->where('deleted_at','0')->orderBy('updated_at','desc')->paginate(3);
-        $num = DB::table('helps')->where('uname',session('name'))->where('updated_at','>','0')->where('deleted_at','0')->orderBy('updated_at','desc')->count();
+        $num = DB::table('helps')->where('uname',session('name'))->where('updated_at','>','0')->where('deleted_at','0')->count();
         return view('Home.helps.reply',['data'=>$data,'request'=> $request->all(),'num'=>$num]);
     }
 
@@ -89,6 +87,17 @@ class HelpController extends Controller
         }else{
             return back()->with('error','删除失败请刷新后在删除');
         }
+    }
+
+    /**
+     * @计算用户未接收的消息
+     *
+     *
+     */
+    public function num()
+    {
+        $num = DB::table('helps')->where('uname',session('name'))->where('updated_at','>','0')->where('status','0')->where('deleted_at','0')->count();
+        return $num;
     }
 
 }
