@@ -29,6 +29,7 @@
 
 
 
+
                               <!-- <font >用户头像:</font> -->
 
                                    <!--  <label for="touxiang"><img class="img-circle" src="/uploads/public/{{$data2->pic}}" alt="暂无头像请上传" width="100" height="100"></label>
@@ -44,6 +45,7 @@
 
 
                                     <font>性别:
+
                                     @if($data2->sex==1)
                                     {{'男'}}
                                     @elseif($data2->sex==0)
@@ -52,6 +54,7 @@
                                     {{'未知'}}
                                     @endif
                                     </font>
+
 
 
 

@@ -89,7 +89,7 @@
                                     <i>*</i>
                                 </div>
                             </li>
-
+                            
                             <li class="clearfix">
                                 <span class="title">游戏销量：</span>
                                 <div class="li_r">
@@ -122,6 +122,14 @@
 
                                     </div>
                                 </div>
+                            </li>
+                            
+                            <li class="clearfix">
+                                <span class="title">发售时间：</span>
+                                <div class="li_r">
+                                    <input name="download" id="download" type="text" value="{{ old('download') }}">
+                                </div>
+                                <span id="sj"></span>
                             </li>
 
                             <li class="clearfix">

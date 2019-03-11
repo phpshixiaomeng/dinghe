@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="/assets/css/plugins.css">
     <link rel="stylesheet" href="/assets/css/helper.css">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/admin_assets/layui-v2.4.5/layui/layui.js"></script>
     <link href="/assets/css/styler.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/admin_assets/layui-v2.4.5/layui/css/layui.css">
     <script src="/admin_assets/layui-v2.4.5/layui/layui.js"></script>

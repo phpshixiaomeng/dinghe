@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-12">
                     <!-- Checkout Form Start-->
-                    <form action="#" class="checkout-form">
+                    {{-- <form action="#" class="checkout-form"> --}}
                        <div class="row row-40">
 
                            <div class="col-lg-7">
@@ -86,7 +86,7 @@
 
                                    <!-- Payment Method -->
                                    <div class="col-12">
-
+                                      <form action="/home/order" mothod="post">
                                        <h4 class="checkout-title">支付方式</h4>
 
                                        <div class="checkout-payment-method">
@@ -128,20 +128,24 @@
 
                                        </div>
 
-                                       <button class="place-order df-btn">定单</button>
-
+                                       <!-- <a id="xia" type="/home/order" class="place-order df-btn">付款</a> -->
+                                       <button id="btn" type="submit" class="place-order df-btn">付款</button>
+                                        <div style="width:1226;height:150px;"></div>
+                                      </form>
                                    </div>
 
                                </div>
                            </div>
 
                        </div>
-                    </form>
+                    {{-- </form> --}}
                     <!-- Checkout Form End-->
                 </div>
             </div>
         </div>
     </div>
+
+
     <!--Checkout Area End-->
     <script type="text/javascript">
         $.ajaxSetup({
@@ -161,8 +165,8 @@
                          var jian = parseInt(data.qian);
                          var zong = qian-jian;
                          $('#xj').text(zong);
-                         $('#yh').text(Math.floor(0.1*zong * 100) / 100 );
-                         $('#zj').text(0.9*zong);
+                         $('#yh').text(Math.floor(0.1*zong*100)/100 );
+                         $('#zj').text(Math.floor(0.9*zong*100)/100 );
                         }    
                     }
 
@@ -172,6 +176,7 @@
             $('#quan').click(function(){
               if($(this).is(':checked')){
                 $(':checkbox[name=item]').prop('checked',true);
+                $(':checkbox[name=item]').attr('disabled',true);
                 if($(':checkbox[name=item]').is(':checked')){
                   var qx = $(':checkbox[name=item]').val();
                   var url = '/home/zhifu/qx/'+qx;
@@ -188,9 +193,14 @@
                 }
               }else{
                 $(':checkbox[name=item]').prop('checked',false);
+                $(':checkbox[name=item]').attr('disabled',false);
                     $('#xj').text('00.00');
                     $('#yh').text('00.00');
                     $('#zj').text('00.00');
+                var url = '/home/zhifu/qu';
+                $.get(url,function(){
+                  
+                });
               }
               
             })
@@ -201,14 +211,13 @@
                 var url = '/home/zhifu/heji/'+bid;
                 // alert(url);
                 $.get(url,function(res){
-                  
                 var qian = parseInt($('#xj').text());
                 var jia = parseInt(res);
                 var zng = qian+jia;
                 var zong = parseInt(zng);
                 $('#xj').text(zong);
                 $('#yh').text(Math.floor(0.1*zong * 100) / 100 );
-                $('#zj').text(0.9*zong);
+                $('#zj').text(Math.floor(0.9*zong*100)/100 );
                 });
               }else{
                 var bid =$(this).val();
@@ -220,11 +229,45 @@
                   var zong = qian-jian;
                   $('#xj').text(zong);
                   $('#yh').text(Math.floor(0.1*zong * 100) / 100 );
-                  $('#zj').text(0.9*zong);
+                  $('#zj').text(Math.floor(0.9*zong*100)/100 );
                     
                 });
               }
             })
+
+           // 试验田
+           $(':checkbox[name=item]').click(function(){
+              if($(this).is(':checked')){
+                  var gid = $(this).val();
+                  var url = '/home/zhifu/jia/'+gid;
+                  $.get(url,function(rem){
+                    
+                  });
+              }else{
+                  var gid = $(this).val();
+                  var url = '/home/zhifu/jian/'+gid;
+                  $.get(url,function(rem){
+                    $(':checkbox[name=item]').attr('disable',true);
+                  });
+              }
+           })
+          
+           $('#btn').click(function(){
+              if(!$(':checkbox[name=item]').is(':checked')){
+                alert('请选择想付款的游戏');
+                return false;
+              }
+           })
+
+            if(!window.name){
+              var url = '/home/zhifu/shua';
+                  $.get(url,function(sss){
+                  });
+            }else{
+              var url = '/home/zhifu/shua';
+                  $.get(url,function(sss){
+                  });
+            }
 
     </script>
    @endsection
