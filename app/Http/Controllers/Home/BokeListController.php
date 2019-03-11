@@ -21,7 +21,7 @@ class BokeListController extends Controller
         $xinpin = Cates::where('name','新品')->first();
         $xin_game = Cates::find($xinpin->id)->games()->orderBy('id','desc')->limit(3)->get();
         $data = DB::table('news')->orderBy('fire','desc')->paginate(3);
-        $tuijian = Cates::where('name','推荐')->first();
+        $tuijian = Cates::where('name','热销')->first();
         $tuijian_game = Cates::find($tuijian->id)->games()->orderBy('id','desc')->limit(2)->get();
         return View('Home/bokelist',['data'=>$data,'xinpin'=>$xin_game,'tuijian'=>$tuijian_game]);
     }

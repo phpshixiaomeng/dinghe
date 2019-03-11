@@ -39,7 +39,9 @@ class LoginController extends Controller
     {
 
 
+
         // echo $_POST['name'];
+
     //用户登录验证
     // echo 1111;
     // exit;
@@ -54,7 +56,7 @@ class LoginController extends Controller
 
         // session(['key'=>'1']);
 
-    session(['name'=>$_POST['name']]);
+    session(['name'=>$_POST['name'],'id'=>$res->id]);
 
         echo 1;
 

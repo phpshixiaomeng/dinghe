@@ -16,9 +16,11 @@ class GamesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
     public static function getGameshow()
     {
+
+
         $games = DB::table('games')->paginate(9);
         return $games;
     }
@@ -30,11 +32,23 @@ class GamesController extends Controller
      */
     public function index(Request $request)
     {
+
         $search = $request->input('search','');
         $games = DB::table('games')->where('name','like','%'.$search.'%')->paginate(9);
+        foreach($games as $v){
+        $res=DB::table('game_shoucang')->where(['uname'=>session('name'),'gid'=>$v->id])->first();
+        if($res){
+         $shoucang[]=$res->gid;
+        }else{
+        $shoucang[]='';
+        }
+
+        }
+
+
         $cates_type = Cates::where('path','0,2')->get();
         $cates_flat = Cates::where('path','0,5')->get();
-        return view('Home/games',['games'=>$games,'cates_type'=>$cates_type,'cates_flat'=>$cates_flat]);
+        return view('Home/games',['games'=>$games,'cates_type'=>$cates_type,'cates_flat'=>$cates_flat,'shoucang'=>$shoucang]);
     }
 
     /**
@@ -68,7 +82,7 @@ class GamesController extends Controller
     {
         $cates_lian = Cates::find($id);
         $cgame = $cates_lian->games;
-        
+
         // 根据点击的游戏选择类型
         $cates_type = Cates::where('path','0,2')->get();
         $cates_flat = Cates::where('path','0,5')->get();

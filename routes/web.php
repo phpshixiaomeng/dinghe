@@ -39,7 +39,12 @@ Route::resource('/home/luntanfatie','Home\LuntanFatieController');//游戏论坛
 Route::resource('/home/luntanshaitu','Home\LuntanShaituController');//游戏论坛晒图
 Route::resource('/home/bokelist','Home\BokeListController');//资讯列表
 Route::resource('/home/bizhi','Home\BizhiController');//壁纸
+// 购物车模块
+Route::get('/home/zhifu/fu/{id}','Home\ZhifuController@zhifu');
+Route::get('/home/zhifu/heji/{id}','Home\ZhifuController@heji');
+Route::get('/home/zhifu/qx/{id}','Home\ZhifuController@xuan');
 Route::resource('/home/zhifu','Home\ZhifuController');//用户支付
+
 Route::resource('/home/contact','Home\ContactController');//联系我们
 
 //后台模板路由
@@ -218,6 +223,8 @@ Route::get('admin/highpei/delete/{id}','admin\PeizrController@shan');
 Route::resource('admin/highpei','admin\PeizrController');
 
 // 游戏详情部分(前台)
+Route::get('home/gamexq/cang/{id}','Home\GamexqController@shoucang');
+Route::get('home/gamexq/shan/{id}','Home\GamexqController@shan');
 Route::resource('home/gamexq','Home\GamexqController');
 
 // 游戏展示图

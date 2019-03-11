@@ -14,146 +14,39 @@
 
                                <!-- Billing Address -->
                                <div id="billing-form" class="mb-10">
-                                   <h4 class="checkout-title">帐单地址</h4>
+                                   <h4 class="checkout-title">游戏展示</h4>
+                                    <div class="game-image-gallery-wrap">
+                            {{-- 大图片轮播 --}}
+                            <div class="game-image-large">
 
-                                   <div class="row">
+                              @foreach($game_img as $key=>$value)
+                                <div class="game-image img-full">
+                                    <img src="/uploads/{{ $value->game_img }}" alt="">
+                                </div>
+                              @endforeach
 
-                                       <div class="col-md-6 col-12 mb-20">
-                                           <label>第一个名字*</label>
-                                           <input type="text" placeholder="First Name">
-                                       </div>
+                            </div>
+                            {{-- 小图片轮播 --}}
+                            <div class="game-image-thumbs">
 
-                                       <div class="col-md-6 col-12 mb-20">
-                                           <label>最后一个名字*</label>
-                                           <input type="text" placeholder="Last Name">
-                                       </div>
-
-                                       <div class="col-md-6 col-12 mb-20">
-                                           <label>邮箱地址*</label>
-                                           <input type="email" placeholder="Email Address">
-                                       </div>
-
-                                       <div class="col-md-6 col-12 mb-20">
-                                           <label>电话号*</label>
-                                           <input type="text" placeholder="Phone number">
-                                       </div>
-
-                                       <div class="col-12 mb-20">
-                                           <label>公司名字</label>
-                                           <input type="text" placeholder="Company Name">
-                                       </div>
-
-                                       <div class="col-12 mb-20">
-                                           <label>地址*</label>
-                                           <input type="text" placeholder="Address line 1">
-                                           <input type="text" placeholder="Address line 2">
-                                       </div>
-
-                                       <div class="col-md-6 col-12 mb-20">
-                                           <label>国家*</label>
-                                           <select class="nice-select">
-                                                <option>Bangladesh</option>
-                                                <option>中国</option>
-                                                <option>country</option>
-                                                <option>印度</option>
-                                                <option>日本</option>
-                                           </select>
-                                       </div>
-
-                                       <div class="col-md-6 col-12 mb-20">
-                                           <label>城市*</label>
-                                           <input type="text" placeholder="Town/City">
-                                       </div>
-
-                                       <div class="col-md-6 col-12 mb-20">
-                                           <label>街道*</label>
-                                           <input type="text" placeholder="State">
-                                       </div>
-
-                                       <div class="col-md-6 col-12 mb-20">
-                                           <label>门牌号*</label>
-                                           <input type="text" placeholder="Zip Code">
-                                       </div>
-
-                                       <div class="col-12 mb-20">
-                                           <div class="check-box">
-                                               <input type="checkbox" id="create_account">
-                                               <label for="create_account">创建帐户?</label>
-                                           </div>
-                                           <div class="check-box">
-                                               <input type="checkbox" id="shiping_address" data-shipping>
-                                               <label for="shiping_address">送货地址不同</label>
-                                           </div>
-                                       </div>
-
-                                   </div>
-
+                              @foreach($game_pic as $k=>$v)
+                                <div class="sm-image"><img src="/uploads/{{ $v->game_pic }}" alt="product image thumb"></div>
+                              @endforeach 
+                                    
+                            </div>
+                            <div class="game-description mb-45">
+                               <p>游戏价格:<span style="color:red"> ￥{{ $gameslist->game_jg }}</span></p>
+                               <h3 style="color:blue">{{ $gameslist->name }}</h3>
+                               <p>{!! $gameslist->game_xq !!}</p>
+                           </div>
+                        </div>
                                </div>
 
                                <!-- Shipping Address -->
                                <div id="shipping-form">
                                    <h4 class="checkout-title">Shipping Address</h4>
 
-                                   <div class="row">
-
-                                       <div class="col-md-6 col-12 mb-20">
-                                           <label>First Name*</label>
-                                           <input type="text" placeholder="First Name">
-                                       </div>
-
-                                       <div class="col-md-6 col-12 mb-20">
-                                           <label>Last Name*</label>
-                                           <input type="text" placeholder="Last Name">
-                                       </div>
-
-                                       <div class="col-md-6 col-12 mb-20">
-                                           <label>Email Address*</label>
-                                           <input type="email" placeholder="Email Address">
-                                       </div>
-
-                                       <div class="col-md-6 col-12 mb-20">
-                                           <label>Phone no*</label>
-                                           <input type="text" placeholder="Phone number">
-                                       </div>
-
-                                       <div class="col-12 mb-20">
-                                           <label>Company Name</label>
-                                           <input type="text" placeholder="Company Name">
-                                       </div>
-
-                                       <div class="col-12 mb-20">
-                                           <label>Address*</label>
-                                           <input type="text" placeholder="Address line 1">
-                                           <input type="text" placeholder="Address line 2">
-                                       </div>
-
-                                       <div class="col-md-6 col-12 mb-20">
-                                           <label>Country*</label>
-                                           <select class="nice-select">
-                                                <option>Bangladesh</option>
-                                                <option>China</option>
-                                                <option>country</option>
-                                                <option>India</option>
-                                                <option>Japan</option>
-                                           </select>
-                                       </div>
-
-                                       <div class="col-md-6 col-12 mb-20">
-                                           <label>Town/City*</label>
-                                           <input type="text" placeholder="Town/City">
-                                       </div>
-
-                                       <div class="col-md-6 col-12 mb-20">
-                                           <label>State*</label>
-                                           <input type="text" placeholder="State">
-                                       </div>
-
-                                       <div class="col-md-6 col-12 mb-20">
-                                           <label>Zip Code*</label>
-                                           <input type="text" placeholder="Zip Code">
-                                       </div>
-
-                                   </div>
+                                   
 
                                </div>
 
@@ -169,20 +62,24 @@
 
                                        <div class="checkout-cart-total">
 
-                                           <h4>商品 <span>合计</span></h4>
+                                           <h4>商品 <span style="padding-right: 10px;">合计</span></h4>
 
                                            <ul>
-                                               <li>Teritory Quentily X 01 <span>$35.00</span></li>
-                                               <li>Adurite Silocone X 02 <span>$59.00</span></li>
-                                               <li>Baizidale Momone X 01 <span>$78.00</span></li>
-                                               <li>Makorone Cicile X 01 <span>$65.00</span></li>
+                                                {{-- 遍历购物车 --}}
+
+                                                @foreach($shop as $k=>$v)
+                                               <li><input name="item" type="checkbox" value="{{ $v->id }}" onclick="" style="position: relative;top:3px;">{{ $v->name }}<span>￥{{ $v->game_jg }}<button type="button" style="margin-left: 5px;" onclick="shan({{ $v->id }},this)"><img src="/assets/images/cart/timg.jpg" style="width:8px;height:8px;"></button></span></li>
+                                                @endforeach
+
                                            </ul>
 
-                                           <p>小计 <span>$296.00</span></p>
-                                           <p>运费 <span>$00.00</span></p>
+                                           <p>小计 <span id="xj">00.00</span></p>
+                                           <p>优惠 <span id="yh">00.00</span></p>
+                                           <p style="font-size: 18px;">总计<span id="zj">￥00.00</span></p>
+                                           <h4><input id="quan" type="checkbox">全选<span><a href="/home/games">继续购物</a></span></h4>
 
-                                           <h4>总计 <span>$296.00</span></h4>
 
+                                           
                                        </div>
 
                                    </div>
@@ -246,5 +143,88 @@
         </div>
     </div>
     <!--Checkout Area End-->
+    <script type="text/javascript">
+        $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        
+            function shan(cid,obj){
+              var url = '/home/zhifu/fu/'+cid;
+                $.get(url,function(data){
+                    // console.log(data.msg);
+                    if(data.msg == 'yes'){
+                        $(obj).parent().parent().remove();
+                        if($(obj).parent().prev().is(':checked')){
+                         var qian = parseInt($('#xj').text());
+                         var jian = parseInt(data.qian);
+                         var zong = qian-jian;
+                         $('#xj').text(zong);
+                         $('#yh').text(Math.floor(0.1*zong * 100) / 100 );
+                         $('#zj').text(0.9*zong);
+                        }    
+                    }
 
+                },'json');
+            }
+
+            $('#quan').click(function(){
+              if($(this).is(':checked')){
+                $(':checkbox[name=item]').prop('checked',true);
+                if($(':checkbox[name=item]').is(':checked')){
+                  var qx = $(':checkbox[name=item]').val();
+                  var url = '/home/zhifu/qx/'+qx;
+                  var sum = 0;
+                  $.get(url,function(msg){
+                    // console.log(msg);
+                    $.each(msg,function(index,value){
+                       sum += parseFloat(value); 
+                    })
+                    $('#xj').text(sum);
+                    $('#yh').text(sum/10);
+                    $('#zj').text(0.9*sum);
+                  },'json'); 
+                }
+              }else{
+                $(':checkbox[name=item]').prop('checked',false);
+                    $('#xj').text('00.00');
+                    $('#yh').text('00.00');
+                    $('#zj').text('00.00');
+              }
+              
+            })
+
+            $(':checkbox[name=item]').click(function(){
+              if($(this).is(':checked')){
+                var bid = $(this).val();
+                var url = '/home/zhifu/heji/'+bid;
+                // alert(url);
+                $.get(url,function(res){
+                  
+                var qian = parseInt($('#xj').text());
+                var jia = parseInt(res);
+                var zng = qian+jia;
+                var zong = parseInt(zng);
+                $('#xj').text(zong);
+                $('#yh').text(Math.floor(0.1*zong * 100) / 100 );
+                $('#zj').text(0.9*zong);
+                });
+              }else{
+                var bid =$(this).val();
+                var url = '/home/zhifu/heji/'+bid;
+                // alert(url);
+                $.get(url,function(res){
+                  var qian = parseInt($('#xj').text());
+                  var jian = parseInt(res);
+                  var zong = qian-jian;
+                  $('#xj').text(zong);
+                  $('#yh').text(Math.floor(0.1*zong * 100) / 100 );
+                  $('#zj').text(0.9*zong);
+                    
+                });
+              }
+            })
+
+    </script>
    @endsection

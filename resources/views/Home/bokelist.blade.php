@@ -64,14 +64,14 @@
                         <!--Single Sidebar Widget End-->
                         <!--Single Sidebar Widget Start-->
                         <div class="single-sidebar-widget mb-45">
-                             <h3>流行/推荐</h3>
+                             <h3>流行/热销</h3>
                           @foreach($tuijian as $v)
                             <div class="popular-game mb-20">
                                 <div class="game-img">
-                                    <a href="#"><img src="/uploads/{{ $v->game_img }}" alt=""></a>
+                                    <a href="/home/gamexq/{{ $v->id }}"><img src="/uploads/{{ $v->game_img }}" alt=""></a>
                                 </div>
                                 <div class="game-content">
-                                    <h3><a href="#">{{$v->name}}</a></h3>
+                                    <h3><a href="/home/gamexq/{{ $v->id }}">{{ $v->name }}</a></h3>
                                     <span>激情发售!</span>
                                 </div>
                             </div>
@@ -86,10 +86,10 @@
                                    @foreach($xinpin as $v)
                                     <li>
                                         <div class="rc-post-thumb">
-                                            <a href="#"><img src="/uploads/{{ $v->game_img }}" alt=""></a>
+                                            <a href="/home/gamexq/{{ $v->id }}"><img src="/uploads/{{ $v->game_img }}" alt=""></a>
                                         </div>
                                         <div class="rc-post-content">
-                                            <h3><a href="#">{{$v->name}}</a></h3>
+                                            <h3><a href="/home/gamexq/{{ $v->id }}">{{$v->name}}</a></h3>
                                             <div class="widget-date">{{$v->game_time}}</div>
                                         </div>
                                     </li>

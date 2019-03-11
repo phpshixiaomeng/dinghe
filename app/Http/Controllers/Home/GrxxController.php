@@ -18,9 +18,15 @@ class GrxxController extends Controller
 
         $name=session('name');
         $data=DB::table('home_users')->where('name','=',$name)->first();
+        // $games=DB::table('games')->get();
+        $game=DB::table('game_shoucang')->where('uname',$name)->paginate(3);
+        $game2=DB::table('game_shoucang')->where('uname',$name)->get();
+
+        // dd($games);
+
 
         $data2=DB::table('users_details')->where('user_id','=',$data->id)->first();
-        return view('home/grxx',['vip'=>($data->user_vip),'id'=>($data->id),'data2'=>$data2]);
+        return view('home/grxx',['vip'=>($data->user_vip),'id'=>($data->id),'data2'=>$data2,'game'=>$game,'i'=>1,'game2'=>$game2]);
     }
 
     /**

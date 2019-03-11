@@ -70,7 +70,10 @@
                                <div class="single-timeline pb-30">
                                    <h4>价格和购买</h4>
                                    <span class="game-price">价格 ￥{{ $gameslist->game_jg }}</span>
-                                   <a href="checkout.html">点击购买此游戏</a>
+                                  
+                                    
+                                    <a href="/home/zhifu/{{ $gameslist->id }}">点击购买此游戏</a>
+                                  
                                </div>
                            </div>
                        </div>

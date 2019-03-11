@@ -48,15 +48,19 @@ class GamexqController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
+
+
         // 游戏详情
         // dump($id);
         $gameslist = Games::find($id);
         $tuname = $gameslist->name;
+        // 前台图片的遍历
         $game_img = DB::table('games_img')->where('gname',$tuname)->get();
         $game_pic = DB::table('games_pic')->where('gname',$tuname)->get();
         $game_peiz = DB::table('games_recommend')->where('game_name',$tuname)->get();
+        // 前台标签页遍历
         $xinpin = Cates::where('name','新品')->first();
         $xin_game = Cates::find($xinpin->id)->games()->orderBy('id','desc')->limit(2)->get();
         $cuxiao = Cates::where('name','促销')->first();
@@ -65,6 +69,9 @@ class GamexqController extends Controller
         $yu_game = Cates::find($yushou->id)->games()->orderBy('id','desc')->limit(4)->get();
         $rexiao = Cates::where('name','热销')->first();
         $re_game = Cates::find($rexiao->id)->games()->orderBy('id','desc')->limit(6)->get();
+
+        // 查询有时是否买过
+
         return view('Home.gamesdetail',['gameslist'=>$gameslist,'game_img'=>$game_img,'game_pic'=>$game_pic,'game_peiz'=>$game_peiz,'xin_game'=>$xin_game,'cu_game'=>$cu_game,'yu_game'=>$yu_game,'re_game'=>$re_game]);
     }
 
@@ -101,4 +108,32 @@ class GamexqController extends Controller
     {
         //
     }
+
+    public function shoucang($id){
+    // $data=DB::table('games')->where('id',$id)->first;
+    $price=DB::table('games')->where('id',$id)->first()->game_jg;
+    $name=DB::table('games')->where('id',$id)->first()->name;
+    $img=DB::table('games')->where('id',$id)->first()->game_img;
+    $time=date('Y-m-d',time());
+    $res=DB::table('game_shoucang')->insert(['uname'=>session('name'),'time'=>$time,'gid'=>$id,'price'=>$price,'gname'=>$name,'gimg'=>$img]);
+    if($res){
+        echo 1;
+    }else{
+        echo 2;
+    }
+
+    }
+
+    public function shan($id){
+    $res=DB::table('game_shoucang')->where('gid',$id)->delete();
+    if($res){
+        echo 1;
+    }else{
+        echo 2;
+    }
+
+
+    }
+
+
 }

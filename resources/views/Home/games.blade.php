@@ -1,4 +1,4 @@
-﻿@extends('Home/show/head')
+@extends('Home/show/head')
 @section('content')
 
     <!--Games Area Start-->
@@ -47,7 +47,7 @@
         </div>
         <div class="row">
 
-            @if(isset($cgame)){
+            @if(isset($cgame))
 
                 @foreach($cgame as $a=>$b)
                     <div class="col-lg-4 col-md-6" style="float:left;">
@@ -66,7 +66,7 @@
                 @endforeach
 
             @else
-                
+
                 @foreach($games as $k=>$v)
                     <div class="col-lg-4 col-md-6" style="float:left;">
                         <!--Single Game Start-->
@@ -75,8 +75,21 @@
                                 <a href="/home/gamexq/{{ $v->id }}"><img src="#" alt=""></a>
                             </div>
                             <div class="game-content">
+
+
+
+<div id="{{$v->id}}" class="alert alert-success alert-dismissible" hidden>
+  <!-- <button type="button" class="close" data-dismiss="alert">&times;</button> -->
+  <strong>收藏成功!请去<a href="/home/grxx">个人信息</a>我的收藏查看</strong>
+  </div>
+
+
                                 <h4><a href="/home/gamexq/{{ $v->id }}">{{ $v->name }}</a></h4>
-                                <span>￥{{ $v->game_jg }}</span>
+                                @if(!in_array($v->id,$shoucang))
+                                <span><a shou="{{$v->id}}" href="javascript:;" onclick="shou({{$v->id}})" class="btn btn-success">点我收藏</a><h4>￥{{ $v->game_jg }}</h4></span>
+                                @else
+                                <span><a shou="{{$v->id}}" href="javascript:;" onclick="shou({{$v->id}})" class="btn btn-warning">已被收藏</a><h4>￥{{ $v->game_jg }}</h4></span>
+                                @endif
                             </div>
                         </div>
                         <!--Single Game End-->
@@ -84,7 +97,7 @@
                     @endforeach
 
             @endif
-               
+
         </div>
         <div class="row">
             <div class="col-12">
@@ -106,5 +119,57 @@
     </div>
     </div>
     <!--Games Area End-->
+<script type="text/javascript">
+$.ajaxSetup({
+            headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+            });
+
+function shou(id){
+$id=id;
+if($('[shou='+$id+']').text()=='点我收藏'){
+
+
+url='/home/gamexq/cang/'+id;
+
+$.get(url,function(res){
+if(res==1){
+$('[shou='+$id+']').attr('class','btn btn-warning');
+$('[shou='+$id+']').html('已被收藏');
+$('#'+$id).attr('hidden',false);
+}else{
+$('#'+$id).attr('class','alert alert-danger alert-dismissible');
+$('#'+$id).find("strong").eq(0).text('收藏失败');
+$('#'+$id).attr('hidden',false);
+}
+})
+}else{
+$('#'+$id).attr('hidden',true);
+url='/home/gamexq/shan/'+id;
+$.get(url,function(res){
+if(res==1){
+$('[shou='+$id+']').attr('class','btn btn-success');
+$('[shou='+$id+']').html('点我收藏');
+
+}
+})
+
+
+
+
+
+
+
+
+}
+
+return false;
+}
+
+
+
+</script>
+
+
+
 
     @endsection

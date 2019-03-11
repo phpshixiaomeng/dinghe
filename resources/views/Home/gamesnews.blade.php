@@ -35,8 +35,44 @@
                                         {{$gname}}|
                                         {{$data->price}}元|
                                         {{$data->gpt}}
+                                    <h3 num='5'>⭐⭐⭐⭐⭐()人</h3>
+                                    <h3 num='4'>⭐⭐⭐⭐()人</h3>
+                                    <h3 num='3'>⭐⭐⭐()人</h3>
+                                    <h3 num='2'>⭐⭐()人</h3>
+                                    <h3 num='1'>⭐()人</h3>
+                                      <h2>文章打分:</h2>
+                                      <div id="root">
+                                      <div><div class="myapp-score">
+                                      <h2>
+                                      <div id="demo9">
+                                      </div>
+                                      </h2>
+                                      <div class="myapp-tip">
+                                      <h2><span id="tip9" class="lq-score-tip"></span></h2>
+                                      </div>
+                                      </div>
+                                      </div>
+                                      </div>
+
+
+
+
+
+
+
                                     </div>
+
                                 </div>
+
+
+
+
+
+
+
+
+
+
                             </div>
                         </div>
                     </div>
@@ -65,13 +101,21 @@
                                 </li>
                               @endforeach
                             </ul>
+
+
                             <h3> {{ $pls->links() }}</h3>
-                            <h4>留下评论:</h4>
+
                             <form action="#" id="form" class="comment-form">
+                            <h4>留下评论:</h4>
                                 <input type="" name="gid" value="{{$data->gid}}" placeholder="" hidden>
                                  <textarea style="border:0;border-radius:5px;background-color:RGB(214,213,183);padding: 10px;resize: none;"  class="form-control" name="pcontent" rows="3"></textarea>
                                 <input type="submit" class="btn btn-info" value="评论" placeholder="">
                             </form>
+
+
+
+
+                            <script src="/assets/js/lq-score.min.js"></script>
                             <script type="text/javascript">
                             $("#form").submit(function(){
                           var Data = new FormData($('#form')[0]);
@@ -145,12 +189,33 @@
 
 
 
+                            /*
+            属性参数介绍：
+            $tipEle--------提示元素，请传入jquery对象
+            fontSize-------大小，字符串类型
+            isReScore------是否允许重新评分
+            tips-----------提示，可以是default默认消息，可以传模板字符串，也可以传长度为5的数组
+            zeroTip--------无分数提示，字符串类型
+            score----------分数，小数、整数都可以
+            callBack-------评分回调，会返回分数和插件元素李，例：function(score,ele){}
+            content--------内容
+            defultColor----默认颜色(未选中的颜色)
+            selectColor----选中后的颜色，可以传单个字符串，也可以传长度为5的数组
+        */
+                          $(function () {
 
+                            //demo9
+                      $("#demo9").lqScore({
+                      $tipEle: $("#tip9"),
+                      defultColor:'yellow',
+                      callBack:function(score){
 
+                      },
+                      fontSize:'40px',
+                      tips: "default", //默认提示
+                       });
 
-
-
-
+                      });
 
 
 

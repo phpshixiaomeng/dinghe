@@ -226,7 +226,7 @@ if(y1 !='' && y2 !='' ){
     $.get(url,function(res){
 
       if(res==1){
-
+$('#yanzhengma').attr('hidden',false);
 $.cookie("total",60);
 $('#send').attr("disabled", true);
         var interval=setInterval(function(){//每秒读取一次cookie
