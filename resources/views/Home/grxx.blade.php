@@ -30,43 +30,7 @@
 
 
 
-                              <!-- <font >用户头像:</font> -->
 
-                                   <!--  <label for="touxiang"><img class="img-circle" src="/uploads/public/{{$data2->pic}}" alt="暂无头像请上传" width="100" height="100"></label>
-
-
-
-
-                              <font>用户昵称:{{$data2->nickname}}</font>
-
-
-
-                              <font>个人简介:{{$data2->profile}}</font>
-
-
-                                    <font>性别:
-
-                                    @if($data2->sex==1)
-                                    {{'男'}}
-                                    @elseif($data2->sex==0)
-                                    {{'女'}}
-                                    @else
-                                    {{'未知'}}
-                                    @endif
-                                    </font>
-
-
-
-
-
-                                <font>VIP等级:{{$vip}}</font>
-
-                       <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                                修改个人信息
-                                </button>
-                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#Modal">
-                                修改密码
-                                </button> -->
 
 <ul class="nav nav-pills">
   <li id="li1" role="presentation" class="btn btn-info">个人信息</li>
@@ -94,6 +58,7 @@
   @else
   <p>暂无个人简介</p>
   @endif
+  @if(!empty($data2))
   @if($data2->sex==1 || $data2->sex==0)
   <p><div class="alert alert-info" role="alert">性别:@if($data2->sex==1)
     {{'男'}}
@@ -106,6 +71,7 @@
   </p>
   @else
   <p>暂未选择性别</p>
+  @endif
   @endif
   <p><div class="alert alert-info" role="alert">VIP等级:{{$vip}}</div></p>
   <p><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
@@ -181,7 +147,7 @@
     <!-- form表单 -->
 
 <form id="edit">
-
+@if(!empty($data2))
   <div class="form-group">
     <label for="exampleInputEmail1">用户昵称</label>
     <input type="text" class="form-control" value="{{$data2->nickname}}" name="nickname" id="exampleInputEmail1" placeholder="用户昵称">
@@ -224,6 +190,70 @@
   </div>
 
   <input type="submit" class="btn btn-info" value="保存修改">
+@else
+  <div class="form-group">
+    <label for="exampleInputEmail1">用户昵称</label>
+    <input type="text" class="form-control" value="" name="nickname" id="exampleInputEmail1" placeholder="用户昵称">
+  </div>
+<!--   <div class="form-group">
+    <label for="exampleInputEmail1">生日</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="出生日期">
+  </div> -->
+  <div class="form-group">
+    <label for="exampleInputPassword1">个人简介</label>
+    <input type="text" class="form-control" value="" name="profile" placeholder="个人简介">
+    <input type="text" class="form-control" name="user_id" value="{{$id}}" hidden>
+    <input type="text" class="form-control" name="pic" value="" hidden>
+
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">性别:</label>
+
+  <label>
+    <input type="radio" value="1" name="sex" checked>
+    男
+  </label>
+
+
+     <label>
+     <input type="radio" value="0" name="sex">
+    女
+    </label>
+
+
+  </div>
+  <div class="form-group">
+    <label for="exampleInputFile">上传头像
+    <img src="/uploads/public/"  alt="暂无头像请上传" width="120" height="120">
+    </label>
+    <input type="file" id="exampleInputFile" name="file" hidden>
+
+    <!-- <p class="help-block">Example block-level help text here.</p> -->
+  </div>
+
+  <input type="submit" class="btn btn-info" value="保存修改">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@endif
 </form>
     <!-- endform表单 -->
       </div>

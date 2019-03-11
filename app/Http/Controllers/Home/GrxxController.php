@@ -22,10 +22,14 @@ class GrxxController extends Controller
         $game=DB::table('game_shoucang')->where('uname',$name)->paginate(3);
         $game2=DB::table('game_shoucang')->where('uname',$name)->get();
 
-        // dd($games);
+        // dd($name);
 
 
         $data2=DB::table('users_details')->where('user_id','=',$data->id)->first();
+        // dd($data2);
+        if($data2==null){
+            $data2='';
+        }
         return view('home/grxx',['vip'=>($data->user_vip),'id'=>($data->id),'data2'=>$data2,'game'=>$game,'i'=>1,'game2'=>$game2]);
     }
 

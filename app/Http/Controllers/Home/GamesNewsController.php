@@ -19,6 +19,22 @@ class GamesNewsController extends Controller
     {
 
         // $nickname=DB::table('users_details')->where('user_id',$userid)->first()->nickname;
+        $star5=DB::table('news_pls_star')->where(['store'=>5,'news_id'=>$id])->count();
+        $star4=DB::table('news_pls_star')->where(['store'=>4,'news_id'=>$id])->count();
+        $star3=DB::table('news_pls_star')->where(['store'=>3,'news_id'=>$id])->count();
+        $star2=DB::table('news_pls_star')->where(['store'=>2,'news_id'=>$id])->count();
+        $star1=DB::table('news_pls_star')->where(['store'=>1,'news_id'=>$id])->count();
+        $numstar=DB::table('news_pls_star')->where(['name'=>session('name'),'news_id'=>$id])->first();
+        if(empty($numstar)){
+        $numstar='';
+        }
+        $people=$star5+$star4+$star3+$star2+$star1;
+        $zongfen=$star5*5+$star4*4+$star3*3+$star2*2+$star1*1;
+        if($people!=0){
+        $pingjun=round($zongfen/$people,1);
+    }else{
+        $pingjun=0;
+    }
         $pcount=DB::table('news_pls')->where('gid',$id)->count();
         $image=DB::table('news')->where('id',$id)->first()->image;
         $title=DB::table('news')->where('id',$id)->first()->title;
@@ -33,7 +49,7 @@ class GamesNewsController extends Controller
         DB::table('news')->where('id',$id)->update(['fire'=>$fire]);
         $pl=DB::table('news_pls')->where('gid',$id)->paginate(3);
         $data=DB::table('news_cs')->where('gid',$id)->first();
-        return view('Home/gamesnews',['tata'=>$tata,'data'=>$data,'gname'=>$gname,'pls'=>$pl,'image'=>$image,'title'=>$title,'count'=>$pcount,'xinpin'=>$xin_game,'tuijian'=>$tuijian_game,'id'=>$id]);
+        return view('Home/gamesnews',['tata'=>$tata,'data'=>$data,'gname'=>$gname,'pls'=>$pl,'image'=>$image,'title'=>$title,'count'=>$pcount,'xinpin'=>$xin_game,'tuijian'=>$tuijian_game,'id'=>$id,'star1'=>$star1,'star2'=>$star2,'star3'=>$star3,'star4'=>$star4,'star5'=>$star5,'pingjun'=>$pingjun,'people'=>$people,'zongfen'=>$zongfen,'numstar'=>$numstar]);
     }
 
     /**
@@ -143,4 +159,26 @@ class GamesNewsController extends Controller
         echo $buzan;
     }
     }
+
+
+    public function star($id,$cid){
+    $panduan=DB::table('news_pls_star')->where(['news_id'=>$id,'name'=>session('name')])->first();
+
+    if(empty($panduan)){
+        $res=DB::table('news_pls_star')->insert(['name'=>session('name'),'news_id'=>$id,'store'=>$cid]);
+        if($res){
+        echo $cid;
+        }
+
+    }else{
+        echo 6;
+    }
+
+
+
+    }
+
+
+
+
 }

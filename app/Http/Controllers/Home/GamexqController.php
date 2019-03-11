@@ -75,15 +75,18 @@ class GamexqController extends Controller
         // 查询有时是否买过
         $user_id = session('id');
         $ioo = DB::table('orders')->where('user_id',$user_id)->get();
-        foreach($ioo as $j=>$h){
-            $ilike = Orders::find($h->id)->gameorder()->where('game_id',$id)->first();
-            if(!empty($ilike)){
-                return view('Home.gamesdetail',['gameslist'=>$gameslist,'game_img'=>$game_img,'game_pic'=>$game_pic,'game_peiz'=>$game_peiz,'xin_game'=>$xin_game,'cu_game'=>$cu_game,'yu_game'=>$yu_game,'re_game'=>$re_game,'ilike'=>$ilike]);
-            }
-        }
-        // dump($ilike->id);
 
-        return view('Home.gamesdetail',['gameslist'=>$gameslist,'game_img'=>$game_img,'game_pic'=>$game_pic,'game_peiz'=>$game_peiz,'xin_game'=>$xin_game,'cu_game'=>$cu_game,'yu_game'=>$yu_game,'re_game'=>$re_game]);
+        // dd($ioo);
+        $like=null;
+        foreach($ioo as $j=>$h){
+
+        if(!empty($h)){
+        $like = Orders::find($h->id)->gameorder()->where('game_id',$id)->first();
+        }
+        }
+        // dd($like);
+
+        return view('Home.gamesdetail',['gameslist'=>$gameslist,'game_img'=>$game_img,'game_pic'=>$game_pic,'game_peiz'=>$game_peiz,'xin_game'=>$xin_game,'cu_game'=>$cu_game,'yu_game'=>$yu_game,'re_game'=>$re_game,'ilike'=>$like]);
     }
 
     /**

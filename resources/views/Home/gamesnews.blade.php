@@ -35,12 +35,103 @@
                                         {{$gname}}|
                                         {{$data->price}}元|
                                         {{$data->gpt}}
-                                    <h3 num='5'>⭐⭐⭐⭐⭐()人</h3>
-                                    <h3 num='4'>⭐⭐⭐⭐()人</h3>
-                                    <h3 num='3'>⭐⭐⭐()人</h3>
-                                    <h3 num='2'>⭐⭐()人</h3>
-                                    <h3 num='1'>⭐()人</h3>
-                                      <h2>文章打分:</h2>
+                                    <div class="row">
+                       <div class="col-12">
+                           <div class="ratting-wrap mb-40">
+                               <h3>评级</h3>
+                               <div class="rating-area">
+                                   <div class="total-rating">
+                                       <h2 id="pingjun">{{$pingjun}}</h2>
+                                       <span></span>
+                                   </div>
+                                   <div class="rating-review">
+                                       <div class="single-rating">
+                                           <div class="rating-star">
+                                               <span>5</span>
+                                               <i class="fa fa-star"></i>
+                                           </div>
+                                           <div class="rating-progress">
+                                               <div class="progress">
+                                                  <div class="progress-bar wow fadeInLeft" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" data-wow-duration="1.5s" data-wow-delay="1.2s"></div>
+                                               </div>
+                                           </div>
+                                           <div class="rating-count">
+                                               <span id="star5">{{$star5}}</span>
+                                           </div>
+                                       </div>
+                                       <div class="single-rating">
+                                           <div class="rating-star">
+                                               <span>4</span>
+                                               <i class="fa fa-star"></i>
+                                           </div>
+                                           <div class="rating-progress">
+                                               <div class="progress">
+                                                  <div class="progress-bar wow fadeInLeft" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" data-wow-duration="1.5s" data-wow-delay="1.2s"></div>
+                                               </div>
+                                           </div>
+                                           <div class="rating-count">
+                                               <span id="star4">{{$star4}}</span>
+                                           </div>
+                                       </div>
+                                       <div class="single-rating">
+                                           <div class="rating-star">
+                                               <span>3</span>
+                                               <i class="fa fa-star"></i>
+                                           </div>
+                                           <div class="rating-progress">
+                                               <div class="progress">
+                                                  <div class="progress-bar wow fadeInLeft" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" data-wow-duration="1.5s" data-wow-delay="1.2s"></div>
+                                               </div>
+                                           </div>
+                                           <div class="rating-count">
+                                               <span id="star3">{{$star3}}</span>
+                                           </div>
+                                       </div>
+                                       <div class="single-rating">
+                                           <div class="rating-star">
+                                               <span>2</span>
+                                               <i class="fa fa-star"></i>
+                                           </div>
+                                           <div class="rating-progress">
+                                               <div class="progress">
+                                                  <div class="progress-bar wow fadeInLeft" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" data-wow-duration="1.5s" data-wow-delay="1.2s"></div>
+                                               </div>
+                                           </div>
+                                           <div class="rating-count">
+                                               <span id="star2">{{$star2}}</span>
+                                           </div>
+                                       </div>
+                                       <div class="single-rating">
+                                           <div class="rating-star">
+                                               <span>1</span>
+                                               <i class="fa fa-star"></i>
+                                           </div>
+                                           <div class="rating-progress">
+                                               <div class="progress">
+                                                  <div class="progress-bar wow fadeInLeft" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" data-wow-duration="1.5s" data-wow-delay="1.2s"></div>
+                                               </div>
+                                           </div>
+                                           <div class="rating-count">
+                                               <span id="star1">{{$star1}}</span>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+  <div id="success" class="alert alert-success alert-dismissible" hidden>
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>评级成功!</strong>
+  </div>
+
+  <div id="fail"    class="alert alert-success alert-dismissible" hidden>
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong><font color="red">评级失败!已评级无法重复评级</font></strong>
+  </div>
+
+                                  @if(empty($numstar))
+                                      <h2>文章评级:</h2>
                                       <div id="root">
                                       <div><div class="myapp-score">
                                       <h2>
@@ -53,12 +144,20 @@
                                       </div>
                                       </div>
                                       </div>
-
-
-
-
-
-
+                                  @else
+                                      <h2>已评级:</h2>
+                                  @if($numstar->store==5)
+                                      <h2>⭐⭐⭐⭐⭐{{$numstar->store}}分</h2>
+                                  @elseif($numstar->store==4)
+                                      <h2>⭐⭐⭐⭐{{$numstar->store}}分</h2>
+                                  @elseif($numstar->store==3)
+                                      <h2>⭐⭐⭐{{$numstar->store}}分</h2>
+                                  @elseif($numstar->store==2)
+                                      <h2>⭐⭐{{$numstar->store}}分</h2>
+                                  @elseif($numstar->store==1)
+                                      <h2>⭐{{$numstar->store}}分</h2>
+                                  @endif
+                                  @endif
 
                                     </div>
 
@@ -118,10 +217,10 @@
                             <script src="/assets/js/lq-score.min.js"></script>
                             <script type="text/javascript">
                             $("#form").submit(function(){
-                          var Data = new FormData($('#form')[0]);
-                          $.ajaxSetup({
-                          headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
-                          });
+                            var Data = new FormData($('#form')[0]);
+                            $.ajaxSetup({
+                           headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+                            });
 
 
 
@@ -205,17 +304,43 @@
                           $(function () {
 
                             //demo9
-                      $("#demo9").lqScore({
-                      $tipEle: $("#tip9"),
-                      defultColor:'yellow',
-                      callBack:function(score){
+                        $("#demo9").lqScore({
+                        $tipEle: $("#tip9"),
+                        defultColor:'yellow',
+                        callBack:function(score){
+                          $.ajaxSetup({
+                            headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+                            });
+                          var id={{$id}};
+                          url='/home/gamesnews/star/'+id+'/'+score;
+                          var star1=$('#star1').text();
+                          var star2=$('#star2').text();
+                          var star3=$('#star3').text();
+                          var star4=$('#star4').text();
+                          var star5=$('#star5').text();
+                          var zongfen={{$zongfen}};
+                          var people={{$people}};
+                          $.get(url,function(res){
+                              if(res<6){
+                          var star=$('#star'+res).text();
+                              $('#success').attr('hidden',false);
+                              var zz=$('#star'+res).text(star*1+1*1);
 
-                      },
-                      fontSize:'40px',
-                      tips: "default", //默认提示
-                       });
+                              // alert(zongfen);
+                              $('#pingjun').text(Math.round(((zongfen*1+res*1)*1/(people*1+1*1)*1)*Math.pow(10,1))/Math.pow(10,1));
+                              // Math.round(((zongfen*1+res*1)*1/(people*1+1*1)*1)*Math.pow(10,1))/Math.pow(10,1)
 
-                      });
+                              }else{
+                                $('#fail').attr('hidden',false);
+                              }
+
+                          })
+                        return false;
+                        },
+                        fontSize:'40px',
+                        tips: "default", //默认提示
+                        });
+                        });
 
 
 

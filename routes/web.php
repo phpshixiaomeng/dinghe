@@ -32,6 +32,7 @@ Route::resource('/home/games','Home\GamesController');//游戏商品路由
 Route::post('/home/gamesnews','Home\GamesNewsController@store');//评论路由
 Route::get('/home/gamesnews/zan/{id}','Home\GamesNewsController@zan');//评论赞
 Route::get('/home/gamesnews/cai/{id}','Home\GamesNewsController@cai');//评论踩
+Route::get('/home/gamesnews/star/{id}/{cid}','Home\GamesNewsController@star');//评星
 Route::resource('/home/{id}/gamesnews','Home\GamesNewsController');//游戏资讯路由
 Route::resource('/home/video','Home\VideoController');//游戏宣传视频
 
