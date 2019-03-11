@@ -226,6 +226,7 @@ Route::get('admin/highpei/delete/{id}','admin\PeizrController@shan');
 Route::resource('admin/highpei','admin\PeizrController');
 
 // 游戏详情部分(前台)
+Route::get('home/gamexq/star/{id}/{cid}','Home\GamexqController@star');//评星
 Route::get('home/gamexq/cang/{id}','Home\GamexqController@shoucang');
 Route::get('home/gamexq/shan/{id}','Home\GamexqController@shan');
 Route::resource('home/gamexq','Home\GamexqController');

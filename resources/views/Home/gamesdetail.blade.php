@@ -24,8 +24,8 @@
 
                               @foreach($game_pic as $k=>$v)
                                 <div class="sm-image"><img src="/uploads/{{ $v->game_pic }}" alt="product image thumb"></div>
-                              @endforeach 
-                                    
+                              @endforeach
+
                             </div>
                             <div class="game-description mb-45">
                                <h3>{{ $gameslist->name }}</h3>
@@ -39,7 +39,7 @@
                            <div class="timelaine-wrapper mb-30">
                                <div class="single-timeline pb-30">
                                   @foreach($game_peiz as $kk=>$vv)
-                                    @if($vv->status == 0) 
+                                    @if($vv->status == 0)
                                        <h4>游戏标准配置</h4>
                                        操作系统：<p>{{ $vv->system }}</p>
                                        最佳内存:<p>{{ $vv->ram }}</p>
@@ -54,7 +54,7 @@
 
                               <div class="single-timeline pb-30">
                                   @foreach($game_peiz as $kkk=>$vvv)
-                                    @if($vvv->status == 1)               
+                                    @if($vvv->status == 1)
                                        <h4>游戏最低配置</h4>
                                        操作系统：<p>{{ $vvv->system }}</p>
                                        最低内存:<p>{{ $vvv->ram }}</p>
@@ -64,8 +64,8 @@
                                        硬盘:<p>{{ $vvv->disk }}</p>
                                        其他事项：<p>{{ $vvv->other }}</p>
                                     @endif
-                                  @endforeach    
-                              </div> 
+                                  @endforeach
+                              </div>
 
                                <div class="single-timeline pb-30">
                                    <h4>价格和购买</h4>
@@ -87,8 +87,8 @@
                                <h3>评级</h3>
                                <div class="rating-area">
                                    <div class="total-rating">
-                                       <h2>4.82</h2>
-                                       <span>(4.8 out of 5)</span>
+                                       <h2 id="pingjun">{{$pingjun}}</h2>
+                                       <span></span>
                                    </div>
                                    <div class="rating-review">
                                        <div class="single-rating">
@@ -102,7 +102,7 @@
                                                </div>
                                            </div>
                                            <div class="rating-count">
-                                               <span>980</span>
+                                               <span id="star5">{{$star5}}</span>
                                            </div>
                                        </div>
                                        <div class="single-rating">
@@ -116,7 +116,7 @@
                                                </div>
                                            </div>
                                            <div class="rating-count">
-                                               <span>280</span>
+                                               <span id="star4">{{$star4}}</span>
                                            </div>
                                        </div>
                                        <div class="single-rating">
@@ -130,7 +130,7 @@
                                                </div>
                                            </div>
                                            <div class="rating-count">
-                                               <span>89</span>
+                                               <span id="star3">{{$star3}}</span>
                                            </div>
                                        </div>
                                        <div class="single-rating">
@@ -144,7 +144,7 @@
                                                </div>
                                            </div>
                                            <div class="rating-count">
-                                               <span>25</span>
+                                               <span id="star2">{{$star2}}</span>
                                            </div>
                                        </div>
                                        <div class="single-rating">
@@ -158,7 +158,7 @@
                                                </div>
                                            </div>
                                            <div class="rating-count">
-                                               <span>25</span>
+                                               <span id="star1">{{$star1}}</span>
                                            </div>
                                        </div>
                                    </div>
@@ -166,13 +166,85 @@
                            </div>
                        </div>
                    </div>
+<!-- 评分 -->
+<div id="success" class="alert alert-success alert-dismissible" hidden>
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>评级成功!</strong>
+  </div>
+
+  <div id="fail"    class="alert alert-success alert-dismissible" hidden>
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong><font color="red">评级失败!已评级无法重复评级</font></strong>
+</div>
+
+                                  @if(empty($numstar))
+                                      <h2>文章评级:</h2>
+                                      <div id="root">
+                                      <div><div class="myapp-score">
+                                      <h2>
+                                      <div id="demo9">
+                                      </div>
+                                      </h2>
+                                      <div class="myapp-tip">
+                                      <h2><span id="tip9" class="lq-score-tip"></span></h2>
+                                      </div>
+                                      </div>
+                                      </div>
+                                      </div>
+
+                                  @else
+                                      <h3>已评级:</h3>
+                                  @if($numstar->store==5)
+                                      <h3>⭐⭐⭐⭐⭐{{$numstar->store}}分</h3>
+                                  @elseif($numstar->store==4)
+                                      <h3>⭐⭐⭐⭐{{$numstar->store}}分</h3>
+                                  @elseif($numstar->store==3)
+                                      <h3>⭐⭐⭐{{$numstar->store}}分</h3>
+                                  @elseif($numstar->store==2)
+                                      <h3>⭐⭐{{$numstar->store}}分</h3>
+                                  @elseif($numstar->store==1)
+                                      <h3>⭐{{$numstar->store}}分</h3>
+                                  @endif
+                                  @endif
+
+
+
+
+
+
+
+
+
+<!-- 评分 -->
+
+
+
+                <!--   <form action="/home/gamexq/{{ $gameslist->id }}" method="post">
+                      {{ csrf_field() }}
+                      {{ method_field('PUT') }}
+                      <div style="width:550px;height:300px">
+                        <script id="abc" style="width:550px;height:150px" name="greply_reply" type="text/plain">
+
+                        </script>
+                        <input id="btn" type="submit" value="评论" class="btn btn-primary btn-sm" style="margin-top: 10px;float:right;">
+                      </div>
+                   </form> -->
+
                    <div class="row">
+
+
+
+
                        <div class="col-12">
                            <div class="review-wrap">
-                              <h3>评论（120）</h3>
+                              <h3>评论（{{ $pl }}）</h3>
                               <!--Single Review Start-->
+                              @if(!empty($reply))
+                              @foreach($reply as $g=>$h)
                               <div class="single-review mb-30">
-                                  <h4>最佳动作游戏</h4>
+
+
+                                  <h4><a href="">{{ $h->nickname->nickname }}</a></h4>
                                   <div class="ratting">
                                       <i class="fa fa-star"></i>
                                       <i class="fa fa-star"></i>
@@ -180,38 +252,24 @@
                                       <i class="fa fa-star"></i>
                                       <i class="fa fa-star-half-o"></i>
                                   </div>
-                                  <p>T他是我玩过的最好的动作游戏。遭遇痛苦的后果。同样，我也不存在任何爱、追求或欲望的人，他们的意义微不足道，不那么性感，我们中的任何人都曾进行过艰苦的体育锻炼。</p>
+                                  <p>{!! $h->greply_reply !!}</p>
                                   <div class="review-name-action">
-                                      <a href="#">Adam Smith</a>
+                                      <span style="font-size: 12px;">{{ date('Y-m-d',$h->greply_time) }}</span>
                                       <ul>
-                                          <li><a href="#"><i class="fa fa-thumbs-o-up"></i>425</a></li>
-                                          <li><a href="#"><i class="fa fa-thumbs-o-down"></i>65</a></li>
+                                          <li><a onclick="zan({{ $h->id }})"><i class="fa fa-thumbs-o-up"></i>{{ $h->zan }}</a></li>
+                                          <li><a onclick="cai({{ $h->id }})"><i class="fa fa-thumbs-o-down"></i>{{ $h->cai }}</a></li>
                                       </ul>
                                   </div>
                               </div>
+                              @endforeach
+                              @endif
                               <!--Single Review End-->
-                              <!--Single Review Start-->
-                              <div class="single-review mb-30">
-                                  <h4>我真的爱这个游戏</h4>
-                                  <div class="ratting">
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star-half-o"></i>
-                                  </div>
-                                  <p>The Witcher 3 is the best action game that i play ever. encounter consequences that are mely painful. Nor again is there me anyone who loves or pursues or desires take a trivial meaning less sexample, which of us ever undertakes laborious physical exercise.</p>
-                                  <div class="review-name-action">
-                                      <a href="#">Thomas Morgan</a>
-                                      <ul>
-                                          <li><a href="#"><i class="fa fa-thumbs-o-up"></i>425</a></li>
-                                          <li><a href="#"><i class="fa fa-thumbs-o-down"></i>65</a></li>
-                                      </ul>
-                                  </div>
-                              </div>
+
                               <!--Single Review End-->
-                              <div class="reply-btn">
-                                <a href="#">view more <i class="icofont-long-arrow-right"></i></a>
+                              <div class="blog-pagination text-center">
+                                <ul class="page-pagination">
+                                    {{ $replys->links() }}
+                                </ul>
                               </div>
                            </div>
                        </div>
@@ -281,8 +339,8 @@
                                             <div class="widget-date">{{ $f->game_time }}</div>
                                         </div>
                                     </li>
-                                  @endforeach  
-    
+                                  @endforeach
+
                                 </ul>
                             </div>
                         </div>
@@ -311,7 +369,103 @@
             </div>
         </div>
     </div>
-
+<script src="/assets/js/lq-score.min.js"></script>
     <!--Games Details Area End-->
+<script type="text/javascript">
+  var ue = UE.getEditor('abc', {
+      autoHeightEnabled:false,
+      toolbars:[['FullScreen', 'Source', 'Undo', 'Redo','bold','test','emotion']],
+  });
+</script>
+<script type="text/javascript">
+  $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+  function zan(id){
+    var url = '/home/gamexq/zan/'+id;
+    $.get(url,function(res){
+      console.log(res);
+        if(res == 2){
+            alert('请勿重复发表意见');
+        }else if(res == 3){
+            alert('请先登录');
+            window.location.href="/home/login";
+        }
+    });
+  }
+
+  function cai(id){
+    var url = '/home/gamexq/cai/'+id;
+    $.get(url,function(res){
+      console.log(res);
+        if(res == 2){
+            alert('请勿重复发表意见');
+        }else if(res == 3){
+            alert('请先登录');
+            window.location.href="/home/login";
+        }
+    });
+  }
+
+
+
+
+                      $(function () {
+
+
+                        $("#demo9").lqScore({
+                        $tipEle: $("#tip9"),
+                        defultColor:'yellow',
+                        callBack:function(score){
+                          $.ajaxSetup({
+                            headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+                            });
+                          var id={{$gameid}};
+                          url='/home/gamexq/star/'+id+'/'+score;
+                          var star1=$('#star1').text();
+                          var star2=$('#star2').text();
+                          var star3=$('#star3').text();
+                          var star4=$('#star4').text();
+                          var star5=$('#star5').text();
+                          var zongfen={{$zongfen}};
+                          var people={{$people}};
+                          $.get(url,function(res){
+                          // alert(res);
+                              if(res<6){
+                          var star=$('#star'+res).text();
+                              $('#success').attr('hidden',false);
+                              var zz=$('#star'+res).text(star*1+1*1);
+
+                              // alert(zongfen);
+                              $('#pingjun').text(Math.round(((zongfen*1+res*1)*1/(people*1+1*1)*1)*Math.pow(10,1))/Math.pow(10,1));
+                              // Math.round(((zongfen*1+res*1)*1/(people*1+1*1)*1)*Math.pow(10,1))/Math.pow(10,1)
+
+                              }else{
+                                $('#fail').attr('hidden',false);
+                              }
+
+                          })
+                        return false;
+                        },
+                        fontSize:'30px',
+                        tips: "default", //默认提示
+                        });
+                        });
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
 
 @endsection

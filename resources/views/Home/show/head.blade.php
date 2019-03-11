@@ -4,16 +4,17 @@
 <!-- <html lang="en"> -->
 <head>
     <meta charset="UTF-8">
-    <!-- <meta http-equiv="x-ua-compatible" content="ie=edge"> -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Home 01 || Gilbard</title>
     <meta name="description" content="">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/bootstrap-3.3.7-dist/css/bootstrap.css">
     <!-- Place favicon.ico in the root directory -->
     <link href="/assets/images/favicon.ico" type="img/x-icon" rel="shortcut icon">
     <!-- All css files are included here. -->
-    <link rel="stylesheet" type="text/css" href="/bootstrap-3.3.7-dist/css/bootstrap.css">
+
 
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/qanto.css">
@@ -23,6 +24,8 @@
     <link rel="stylesheet" href="/assets/css/plugins.css">
     <link rel="stylesheet" href="/assets/css/helper.css">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <script type="text/javascript" src="/utf8-php/ueditor.config.js"></script>
+    <script type="text/javascript" src="/utf8-php/ueditor.all.js"></script>
     <script src="/admin_assets/layui-v2.4.5/layui/layui.js"></script>
     <link href="/assets/css/styler.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/admin_assets/layui-v2.4.5/layui/css/layui.css">
