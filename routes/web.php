@@ -224,6 +224,8 @@ Route::get('admin/highpei/delete/{id}','admin\PeizrController@shan');
 Route::resource('admin/highpei','admin\PeizrController');
 
 // 游戏详情部分(前台)
+Route::get('home/gamexq/zan/{id}','Home\GamexqController@zan');
+Route::get('home/gamexq/cai/{id}','Home\GamexqController@cai');
 Route::resource('home/gamexq','Home\GamexqController');
 
 // 游戏展示图

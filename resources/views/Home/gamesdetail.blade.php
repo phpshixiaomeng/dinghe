@@ -166,13 +166,28 @@
                            </div>
                        </div>
                    </div>
+                    {{-- 加载百度编辑器 --}}
+                    <form action="/home/gamexq/{{ $gameslist->id }}" method="post">
+                      {{ csrf_field() }}
+                      {{ method_field('PUT') }}
+                      <div style="width:550px;height:300px">
+                        <script id="abc" style="width:550px;height:150px" name="greply_reply" type="text/plain">
+                                            
+                        </script>
+                        <input id="btn" type="submit" value="评论" class="btn btn-primary btn-sm" style="margin-top: 10px;float:right;">
+                      </div>
+                   </form>
+                    {{-- 加载结束 --}}
                    <div class="row">
                        <div class="col-12">
                            <div class="review-wrap">
-                              <h3>评论（120）</h3>
+                              <h3>评论（{{ $pl }}）</h3>
                               <!--Single Review Start-->
+                              @foreach($reply as $g=>$h)
                               <div class="single-review mb-30">
-                                  <h4>最佳动作游戏</h4>
+                                
+ 
+                                  <h4><a href="">{{ $h->nickname->nickname }}</a></h4>
                                   <div class="ratting">
                                       <i class="fa fa-star"></i>
                                       <i class="fa fa-star"></i>
@@ -180,38 +195,23 @@
                                       <i class="fa fa-star"></i>
                                       <i class="fa fa-star-half-o"></i>
                                   </div>
-                                  <p>T他是我玩过的最好的动作游戏。遭遇痛苦的后果。同样，我也不存在任何爱、追求或欲望的人，他们的意义微不足道，不那么性感，我们中的任何人都曾进行过艰苦的体育锻炼。</p>
+                                  <p>{!! $h->greply_reply !!}</p>
                                   <div class="review-name-action">
-                                      <a href="#">Adam Smith</a>
+                                      <span style="font-size: 12px;">{{ date('Y-m-d',$h->greply_time) }}</span>
                                       <ul>
-                                          <li><a href="#"><i class="fa fa-thumbs-o-up"></i>425</a></li>
-                                          <li><a href="#"><i class="fa fa-thumbs-o-down"></i>65</a></li>
+                                          <li><a onclick="zan({{ $h->id }})"><i class="fa fa-thumbs-o-up"></i>{{ $h->zan }}</a></li>
+                                          <li><a onclick="cai({{ $h->id }})"><i class="fa fa-thumbs-o-down"></i>{{ $h->cai }}</a></li>
                                       </ul>
                                   </div>
                               </div>
+                              @endforeach
                               <!--Single Review End-->
-                              <!--Single Review Start-->
-                              <div class="single-review mb-30">
-                                  <h4>我真的爱这个游戏</h4>
-                                  <div class="ratting">
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star-half-o"></i>
-                                  </div>
-                                  <p>The Witcher 3 is the best action game that i play ever. encounter consequences that are mely painful. Nor again is there me anyone who loves or pursues or desires take a trivial meaning less sexample, which of us ever undertakes laborious physical exercise.</p>
-                                  <div class="review-name-action">
-                                      <a href="#">Thomas Morgan</a>
-                                      <ul>
-                                          <li><a href="#"><i class="fa fa-thumbs-o-up"></i>425</a></li>
-                                          <li><a href="#"><i class="fa fa-thumbs-o-down"></i>65</a></li>
-                                      </ul>
-                                  </div>
-                              </div>
+                             
                               <!--Single Review End-->
-                              <div class="reply-btn">
-                                <a href="#">view more <i class="icofont-long-arrow-right"></i></a>
+                              <div class="blog-pagination text-center">
+                                <ul class="page-pagination">
+                                    {{ $replys->links() }}
+                                </ul>
                               </div>
                            </div>
                        </div>
@@ -313,5 +313,45 @@
     </div>
 
     <!--Games Details Area End-->
+<script type="text/javascript">
+  var ue = UE.getEditor('abc', {
+      autoHeightEnabled:false,
+      toolbars:[['FullScreen', 'Source', 'Undo', 'Redo','bold','test','emotion']],
+  });
+</script>
+<script type="text/javascript">
+  $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+  function zan(id){
+    var url = '/home/gamexq/zan/'+id;
+    $.get(url,function(res){
+      console.log(res);
+        if(res == 2){
+            alert('请勿重复发表意见');
+        }else if(res == 3){
+            alert('请先登录');
+            window.location.href="/home/login";
+        }
+    });
+  }
+
+  function cai(id){
+    var url = '/home/gamexq/cai/'+id;
+    $.get(url,function(res){
+      console.log(res);
+        if(res == 2){
+            alert('请勿重复发表意见');
+        }else if(res == 3){
+            alert('请先登录');
+            window.location.href="/home/login";
+        }
+    });
+  }
+
+</script>
+
 
 @endsection

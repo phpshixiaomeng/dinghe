@@ -75,16 +75,18 @@ class OrderController extends Controller
                 $data['order_status'] = 0;
                 $data['order_time'] = time();
                 $res = DB::table('orders')->insertGetId($data);
-                dump($res);                
-                $orderid['order_id'] = $res;
-                DB::table('games_replys')->insert($orderid);
-                $games = Homeusers::find($id)->cartgame()->get();
+                // dump($res);
                 
+                $games = Homeusers::find($id)->cartgame()->get(); 
                 // dd($games);
                 foreach($games as $kk=>$vv){
                     $arr['order_id'] = $res;
                     $arr['game_id'] = $vv->id;
-                    $game_id = $vv->id;
+                    $orderid['game_id'] = $vv->id;
+                    $orderid['user_id'] = $id;                
+                    $orderid['order_id'] = $res;
+                    DB::table('games_replys')->insert($orderid);
+                    $game_id = $vv->id;                
                     $success = DB::table('order_details')->insert($arr);
                     DB::table('carts')->where('user_id',$id)->where('game_id',$vv->id)->delete();
                     $request->session()->forget('gid');

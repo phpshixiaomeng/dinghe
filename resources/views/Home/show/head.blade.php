@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="/assets/css/plugins.css">
     <link rel="stylesheet" href="/assets/css/helper.css">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <script type="text/javascript" src="/utf8-php/ueditor.config.js"></script>
+    <script type="text/javascript" src="/utf8-php/ueditor.all.js"></script>
     <script src="/admin_assets/layui-v2.4.5/layui/layui.js"></script>
     <link href="/assets/css/styler.css" rel="stylesheet" type="text/css">
 
