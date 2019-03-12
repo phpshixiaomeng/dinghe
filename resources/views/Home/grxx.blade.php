@@ -10,6 +10,7 @@
 <div style="text-align:center;clear:both;">
 <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
 <script src="/follow.js" type="text/javascript"></script>
+
 </div>
     <!--Contact Section Start-->
     <div class="contact-section section pt-10 pt-lg-10 pt-md-10 pt-sm-10 pt-xs-20 pb-xs-45">
@@ -44,7 +45,7 @@
   <h1>暂无个人信息</h1>
   @endif
   @if(!empty($data2->pic))
-  <p><span class="glyphicon glyphicon-camera"></span><img class="img-circle" src="/uploads/public/{{$data2->pic}}" alt="暂无头像请上传" width="80" height="80"></p>
+  <p><span class="glyphicon glyphicon-camera"></span><img class="img-circle" src="/uploads/{{ $data2->pic }}" alt="暂无头像请上传" width="80" height="80"></p>
   @else
   <p>暂无头像</p>
   @endif
@@ -145,7 +146,10 @@
       </div>
       <div class="modal-body">
     <!-- form表单 -->
-
+                <form id="images">
+                    {{csrf_field()}}
+                    <input  id="img" name="image" style="display: none;" type="file" onchange="upload()">
+                </form>
 <form id="edit">
 @if(!empty($data2))
   <div class="form-group">
@@ -181,10 +185,10 @@
 
   </div>
   <div class="form-group">
-    <label for="exampleInputFile">上传头像
-    <img src="/uploads/public/{{$data2->pic}}"  alt="暂无头像请上传" width="120" height="120">
+  选择头像:
+    <label style="margin-left:150px;margin-top:20px;" for="img" ><img id="thumb" style="width:100px;height:100px;" src="/admin_assets/images/links/add.jpg" alt="">
     </label>
-    <input type="file" id="exampleInputFile" name="file" hidden>
+    <input id="img_thumb" type="hidden" name="pic" value="{{$data2->pic}}">
 
     <!-- <p class="help-block">Example block-level help text here.</p> -->
   </div>
@@ -224,10 +228,11 @@
 
   </div>
   <div class="form-group">
-    <label for="exampleInputFile">上传头像
-    <img src="/uploads/public/"  alt="暂无头像请上传" width="120" height="120">
-    </label>
-    <input type="file" id="exampleInputFile" name="file" hidden>
+<input id="img_thumb" type="hidden" name="pic" value="">
+
+   <label style="margin-left:150px;margin-top:20px;" for="img" ><img id="thumb" style="width:100px;height:100px;" src="/admin_assets/images/links/add.jpg" alt=""></label>
+
+
 
     <!-- <p class="help-block">Example block-level help text here.</p> -->
   </div>
@@ -442,7 +447,7 @@ $("#gai").submit(function(){
                     alert('修改成功,请重新登陆');
                     window.location.href='/home/login';
                 }else{
-                    alert('修改失败');
+                    alert('无内容变化,修改失败');
                 }
         }
 
@@ -480,6 +485,38 @@ function shouadd(){
 }
 
 // return false;
+//
+//
+//
+function upload()
+    {
+
+         $.ajax({
+            url: '/home/grxx/upload',
+            type: 'POST',
+            data: new FormData($('#images')[0]),
+            processData: false,
+            contentType: false,
+            dataType:"json",
+            success : function(data) {
+                if(data.msg == 'success'){
+                    $('#thumb').attr('src','/uploads/'+data.path);
+                    $('#img_thumb').val(data.path);
+                }else if(data.msg == 'error'){
+                    alert('图片格式有误,请勿上传同一个文件');
+                }else{
+                    alert('图片大小有误,请勿上传同一个文件');
+                }
+            }
+        });
+    }
+
+
+
+
+
+
+
 </script>
 
     <!--Contact Section End-->

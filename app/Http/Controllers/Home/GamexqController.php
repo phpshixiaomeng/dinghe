@@ -171,6 +171,9 @@ class GamexqController extends Controller
 
 
     public function shoucang($id){
+    if(empty(session('name'))){
+    return 9;
+    }
     // $data=DB::table('games')->where('id',$id)->first;
     $price=DB::table('games')->where('id',$id)->first()->game_jg;
     $name=DB::table('games')->where('id',$id)->first()->name;
@@ -186,6 +189,9 @@ class GamexqController extends Controller
     }
 
     public function shan($id){
+    if(empty(session('name'))){
+    return 9;
+    }
     $res=DB::table('game_shoucang')->where('gid',$id)->delete();
     if($res){
         echo 1;
@@ -267,7 +273,9 @@ class GamexqController extends Controller
 
 
     public function star($id,$cid){
-
+    if(empty(session('name'))){
+    return 9;
+    }
     $panduan=DB::table('game_pls_star')->where(['game_id'=>$id,'name'=>session('name')])->first();
 
     if(empty($panduan)){

@@ -44,7 +44,7 @@
 											  <th class="danger">订单状态</th>
 											  <th class="info">查看详情/下载</th>
 											</tr>
-                                            @foreach($order as $k=>$v)                
+                                            @foreach($order as $k=>$v)
 											<tr class="text-center">
 											  <td class="active">{{ $v->id }}</td>
 											  <td class="success">{{ $v->order_num }}</td>
@@ -61,7 +61,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
                 <div class="col-lg-4 order-lg-1 order-2">
                     <div class="sidebar-area mt-sm-60 mt-xs-50">
@@ -196,7 +196,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                 
+
                 </div>
             </div>
         </div>
@@ -216,7 +216,7 @@ function lbw(id){
   shade: 0.8,
   area: ['800px', '90%'],
   content: '/home/order/display/'+id //iframe的url
-}); 
+});
 }
 
 </script>

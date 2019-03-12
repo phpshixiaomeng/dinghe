@@ -70,6 +70,9 @@ class GamesNewsController extends Controller
      */
     public function store(Request $request)
     {
+    if(empty(session('name'))){
+    return 3;
+    }else{
         $userid=DB::table('home_users')->where('name',session('name'))->first()->id;
         $nickname=DB::table('users_details')->where('user_id',$userid)->first()->nickname;
         $data=$request->except('_token');
@@ -84,7 +87,7 @@ class GamesNewsController extends Controller
             echo 2;
         }
     }
-
+}
     /**
      * Display the specified resource.
      *
@@ -131,6 +134,10 @@ class GamesNewsController extends Controller
     }
 
     public function zan($id){
+    if(empty(session('name'))){
+    return '<script>alert("即将跳转登录页");window.location.href="/home/login";</script>';
+
+    }else{
         $data=DB::table('new_pls_zans')->where(['pl_id'=>$id,'zan_user'=>session('name')])->first();
         if(empty($data)){
         $zan=(DB::table('news_pls')->where('id',$id)->first()->pzan)+1;
@@ -143,9 +150,14 @@ class GamesNewsController extends Controller
         $buzan=DB::table('news_pls')->where('id',$id)->first()->pzan;
         echo $buzan;
     }
+
+}
     }
 
     public function cai($id){
+        if(empty(session('name'))){
+     return '<script>alert("即将跳转登录页");window.location.href="/home/login";</script>';
+    }else{
         $data=DB::table('new_pls_zans')->where(['pl_id'=>$id,'zan_user'=>session('name')])->first();
         if(empty($data)){
         $cai=(DB::table('news_pls')->where('id',$id)->first()->pcai)+1;
@@ -158,10 +170,15 @@ class GamesNewsController extends Controller
         $buzan=DB::table('news_pls')->where('id',$id)->first()->pcai;
         echo $buzan;
     }
+
+}
     }
 
 
     public function star($id,$cid){
+    if(empty(session('name'))){
+    return 9;
+    }
     $panduan=DB::table('news_pls_star')->where(['news_id'=>$id,'name'=>session('name')])->first();
 
     if(empty($panduan)){
@@ -176,8 +193,8 @@ class GamesNewsController extends Controller
 
 
 
-    }
 
+}
 
 
 

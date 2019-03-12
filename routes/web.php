@@ -24,21 +24,32 @@ Route::post('/home/shensu','Home\LoginController@shensu');//申诉路由
 
 Route::resource('/home/login','Home\LoginController');//登陆路由
 Route::resource('/home/zhuce','Home\ZhuceController');//注册路由
-Route::post('/home/xiugai','Home\GrxxController@gaimima');//修改密码
-Route::resource('/home/grxx','Home\GrxxController');//个人信息
+
 
 //
-Route::resource('/home/games','Home\GamesController');//游戏商品路由
+
+
+Route::group(['middleware'=>'logins'],function(){
 Route::post('/home/gamesnews','Home\GamesNewsController@store');//评论路由
 Route::get('/home/gamesnews/zan/{id}','Home\GamesNewsController@zan');//评论赞
 Route::get('/home/gamesnews/cai/{id}','Home\GamesNewsController@cai');//评论踩
 Route::get('/home/gamesnews/star/{id}/{cid}','Home\GamesNewsController@star');//评星
-Route::resource('/home/{id}/gamesnews','Home\GamesNewsController');//游戏资讯路由
+Route::post('/home/xiugai','Home\GrxxController@gaimima');//修改密码
+Route::post('/home/grxx/upload','Home\GrxxController@upload');//头像缩略图
+Route::resource('/home/grxx','Home\GrxxController');//个人信息
+});
+
+Route::resource('/home/games','Home\GamesController');//游戏商品路由
 Route::resource('/home/video','Home\VideoController');//游戏宣传视频
+
+Route::resource('/home/{id}/gamesnews','Home\GamesNewsController');
+//游戏资讯路由
+
 
 Route::resource('/home/bokelist','Home\BokeListController');//资讯列表
 Route::resource('/home/bizhi','Home\BizhiController');//壁纸
 // 购物车模块
+Route::group(['middleware'=>'logins'],function(){
 Route::get('/home/zhifu/fu/{id}','Home\ZhifuController@zhifu');
 Route::get('/home/zhifu/heji/{id}','Home\ZhifuController@heji');
 Route::get('home/zhifu/jia/{id}','Home\ZhifuController@jia');
@@ -47,7 +58,7 @@ Route::get('/home/zhifu/qx/{id}','Home\ZhifuController@xuan');
 Route::get('/home/zhifu/qu','Home\ZhifuController@qu');
 Route::get('/home/zhifu/shua','Home\ZhifuController@sx');
 Route::resource('/home/zhifu','Home\ZhifuController');//用户支付
-
+});
 Route::resource('/home/contact','Home\ContactController');//联系我们
 
 //后台模板路由
@@ -226,9 +237,11 @@ Route::get('admin/highpei/delete/{id}','admin\PeizrController@shan');
 Route::resource('admin/highpei','admin\PeizrController');
 
 // 游戏详情部分(前台)
+
 Route::get('home/gamexq/star/{id}/{cid}','Home\GamexqController@star');//评星
 Route::get('home/gamexq/cang/{id}','Home\GamexqController@shoucang');
 Route::get('home/gamexq/shan/{id}','Home\GamexqController@shan');
+
 Route::resource('home/gamexq','Home\GamexqController');
 
 // 游戏展示图
@@ -301,21 +314,25 @@ Route::post('/admin/help/add/{id}','admin\HelpController@add');
 Route::post('/admin/help/update/{id}','admin\HelpController@update');
 Route::resource('/admin/help','admin\HelpController');
 //前台帮助和反馈模块
+Route::group(['middleware'=>'logins'],function(){
 Route::get('/home/help','Home\HelpController@index');
 Route::get('/home/help/num','Home\HelpController@num');
 Route::get('/home/help/reply','Home\HelpController@reply');
 Route::get('/home/help/del/{id}','Home\HelpController@del');
 Route::post('/home/help/add','Home\HelpController@add');
+});
 //论坛模块
-Route::get('/home/luntan/zan/{id}','Home\LuntanController@zan');
-Route::get('/home/luntan/cai/{id}','Home\LuntanController@cai');
-Route::get('/home/luntan/num','Home\LuntanController@num');
-Route::get('/home/luntan/xinxi','Home\LuntanController@xinxi');
-Route::post('/home/luntan/huitie','Home\LuntanController@huitie');
-Route::post('/home/luntan/huifu','Home\LuntanController@huifu');
-Route::get('/home/luntan/delete/{id}','Home\LuntanController@delete');
-Route::get('/home/luntan/del/{id}','Home\LuntanController@del');
-Route::get('/home/luntan/deleted/{id}','Home\LuntanController@deleted');
+Route::group(['middleware'=>'logins'],function(){
+    Route::get('/home/luntan/zan/{id}','Home\LuntanController@zan');
+    Route::get('/home/luntan/cai/{id}','Home\LuntanController@cai');
+    Route::get('/home/luntan/num','Home\LuntanController@num');
+    Route::get('/home/luntan/xinxi','Home\LuntanController@xinxi');
+    Route::post('/home/luntan/huitie','Home\LuntanController@huitie');
+    Route::post('/home/luntan/huifu','Home\LuntanController@huifu');
+    Route::get('/home/luntan/delete/{id}','Home\LuntanController@delete');
+    Route::get('/home/luntan/del/{id}','Home\LuntanController@del');
+    Route::get('/home/luntan/deleted/{id}','Home\LuntanController@deleted');
+});
 Route::resource('/home/luntan','Home\LuntanController');
 
 //论坛后台

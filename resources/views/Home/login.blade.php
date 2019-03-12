@@ -10,7 +10,7 @@
 @endif
 @if (session('error'))
     <div  style="position:fixed;top:10%;left:40%;width:20%;" id="alert" class="alert alert-danger alert-dismissible" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span id="button" aria-hidden="true">&times;</span></button>
+    <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span id="button" aria-hidden="true">&times;</span></button> -->
         <strong style="font-size:20px;">{{ session('error') }}</strong>
     </div>
 @endif

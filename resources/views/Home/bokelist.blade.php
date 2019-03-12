@@ -1,6 +1,5 @@
 ﻿@extends('Home/show/head')
 @section('content')
-
     <!--Blog Area Start-->
     <div class="blog-list-area section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-xs-50">
         <div class="container">

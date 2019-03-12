@@ -1,6 +1,5 @@
 ﻿@extends('Home/show/head')
 @section('content')
-
     <!--Games Details Area Start-->
     <div class="games-details-area section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-xs-45">
         <div class="container">
@@ -219,7 +218,7 @@
 
 
 
-                <!--   <form action="/home/gamexq/{{ $gameslist->id }}" method="post">
+                  <form action="/home/gamexq/{{ $gameslist->id }}" method="post">
                       {{ csrf_field() }}
                       {{ method_field('PUT') }}
                       <div style="width:550px;height:300px">
@@ -228,7 +227,7 @@
                         </script>
                         <input id="btn" type="submit" value="评论" class="btn btn-primary btn-sm" style="margin-top: 10px;float:right;">
                       </div>
-                   </form> -->
+                   </form>
 
                    <div class="row">
 
@@ -442,7 +441,9 @@
                               $('#pingjun').text(Math.round(((zongfen*1+res*1)*1/(people*1+1*1)*1)*Math.pow(10,1))/Math.pow(10,1));
                               // Math.round(((zongfen*1+res*1)*1/(people*1+1*1)*1)*Math.pow(10,1))/Math.pow(10,1)
 
-                              }else{
+                              }else if(){
+                              alert("即将跳转登录页");window.location.href="/home/login";
+                            }else{
                                 $('#fail').attr('hidden',false);
                               }
 

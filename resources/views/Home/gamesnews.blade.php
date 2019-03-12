@@ -1,4 +1,4 @@
-﻿@extends('Home/show/head')
+@extends('Home/show/head')
 @section('content')
 
 
@@ -219,7 +219,7 @@
                             $("#form").submit(function(){
                             var Data = new FormData($('#form')[0]);
                             $.ajaxSetup({
-                           headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
+                            headers: { 'X-CSRF-TOKEN' : '{{ csrf_token() }}' }
                             });
 
 
@@ -239,9 +239,9 @@
                                                 window.location.reload();
 
                                               }else{
-                                                alert('评论失败');
+                                              alert("即将跳转登录页");window.location.href="/home/login";
                                               }
-                                      }
+                                  }
 
                                   });
 
@@ -330,8 +330,10 @@
                               $('#pingjun').text(Math.round(((zongfen*1+res*1)*1/(people*1+1*1)*1)*Math.pow(10,1))/Math.pow(10,1));
                               // Math.round(((zongfen*1+res*1)*1/(people*1+1*1)*1)*Math.pow(10,1))/Math.pow(10,1)
 
-                              }else{
+                              }else if(res==6){
                                 $('#fail').attr('hidden',false);
+                              }else{
+                                alert("即将跳转登录页");window.location.href="/home/login";
                               }
 
                           })

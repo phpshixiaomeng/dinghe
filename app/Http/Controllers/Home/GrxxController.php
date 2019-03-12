@@ -27,9 +27,9 @@ class GrxxController extends Controller
 
         $data2=DB::table('users_details')->where('user_id','=',$data->id)->first();
         // dd($data2);
-        if($data2==null){
-            $data2='';
-        }
+        // if($data2==null){
+        //     $data2='';
+        // }
         return view('home/grxx',['vip'=>($data->user_vip),'id'=>($data->id),'data2'=>$data2,'game'=>$game,'i'=>1,'game2'=>$game2]);
     }
 
@@ -61,18 +61,18 @@ class GrxxController extends Controller
 
 
 
-        $res=$request->hasFile('file');
-        if($res){
-        $file = $request->file('file');
-        $ext = $file->extension();
-        // 拼接名称
-        $file_name = time()+rand(1000,9999).'.'.$ext;
-        $re = $file->storeAs('public',$file_name);
-        unset($_POST['file']);
-        $_POST['pic']=$file_name;
-        $ares=DB::table('users_details')->where('user_id','=',$_POST['user_id'])->update($_POST);
-        echo $ares;
-    }else{
+
+    //     if($res){
+    //     $file = $request->file('file');
+    //     $ext = $file->extension();
+    //     // 拼接名称
+    //     $file_name = time()+rand(1000,9999).'.'.$ext;
+    //     $re = $file->storeAs('public',$file_name);
+    //     unset($_POST['file']);
+    //     $_POST['pic']=$file_name;
+    //     $ares=DB::table('users_details')->where('user_id','=',$_POST['user_id'])->update($_POST);
+    //     echo $ares;
+    // }else{
             // echo 1111;
         // echo '111';
         // echo $_POST['user_id'];
@@ -81,7 +81,7 @@ class GrxxController extends Controller
         // exit;
         $bres=DB::table('users_details')->where('user_id','=',$_POST['user_id'])->update($_POST);
         echo $bres;
-    }
+
 
         // echo 111;
     }
@@ -148,4 +148,37 @@ class GrxxController extends Controller
 
 
     }
+
+
+
+    public function upload(Request $request){
+            $type = $_FILES['image']['name'];
+        $ext = strrchr($type,'.');
+        $img = ['.jpg','.jpeg','.png','.gif','.JPG','.JPEG','.PNG','.GIF'];
+        if(!in_array($ext,$img)){
+            $arr = [
+                'msg'=>'error',
+                'path'=>' ',
+            ];
+        }elseif($request->hasFile('image'))
+            {
+                $name=$request->file('image');
+                $zname=$name->extension();
+                $fname=time()+rand('111','999').'.'.$zname;
+                $file_name = $name->storeAs('grxx',$fname);
+                $arr = [
+                    'msg'=>'success',
+                    'path'=>'grxx/'.$fname,
+                ];
+            }else{
+                $arr = [
+                    'msg'=>'errors',
+                    'path'=>' ',
+                ];
+            }
+            return json_encode($arr);
+    }
+
+
+
 }

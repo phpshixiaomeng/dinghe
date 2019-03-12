@@ -1,6 +1,7 @@
 ﻿
 @extends('Home/show/head')
 @section('content')
+
     <!--Checkout Area Start-->
     <div class="checkout-area section pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45">
         <div class="container">
@@ -31,8 +32,8 @@
 
                               @foreach($game_pic as $k=>$v)
                                 <div class="sm-image"><img src="/uploads/{{ $v->game_pic }}" alt="product image thumb"></div>
-                              @endforeach 
-                                    
+                              @endforeach
+
                             </div>
                             <div class="game-description mb-45">
                                <p>游戏价格:<span style="color:red"> ￥{{ $gameslist->game_jg }}</span></p>
@@ -46,7 +47,7 @@
                                <div id="shipping-form">
                                    <h4 class="checkout-title">Shipping Address</h4>
 
-                                   
+
 
                                </div>
 
@@ -79,7 +80,7 @@
                                            <h4><input id="quan" type="checkbox">全选<span><a href="/home/games">继续购物</a></span></h4>
 
 
-                                           
+
                                        </div>
 
                                    </div>
@@ -153,7 +154,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-        
+
             function shan(cid,obj){
               var url = '/home/zhifu/fu/'+cid;
                 $.get(url,function(data){
@@ -167,7 +168,7 @@
                          $('#xj').text(zong);
                          $('#yh').text(Math.floor(0.1*zong*100)/100 );
                          $('#zj').text(Math.floor(0.9*zong*100)/100 );
-                        }    
+                        }
                     }
 
                 },'json');
@@ -184,12 +185,12 @@
                   $.get(url,function(msg){
                     // console.log(msg);
                     $.each(msg,function(index,value){
-                       sum += parseFloat(value); 
+                       sum += parseFloat(value);
                     })
                     $('#xj').text(sum);
                     $('#yh').text(sum/10);
                     $('#zj').text(0.9*sum);
-                  },'json'); 
+                  },'json');
                 }
               }else{
                 $(':checkbox[name=item]').prop('checked',false);
@@ -199,10 +200,10 @@
                     $('#zj').text('00.00');
                 var url = '/home/zhifu/qu';
                 $.get(url,function(){
-                  
+
                 });
               }
-              
+
             })
 
             $(':checkbox[name=item]').click(function(){
@@ -230,7 +231,7 @@
                   $('#xj').text(zong);
                   $('#yh').text(Math.floor(0.1*zong * 100) / 100 );
                   $('#zj').text(Math.floor(0.9*zong*100)/100 );
-                    
+
                 });
               }
             })
@@ -241,7 +242,7 @@
                   var gid = $(this).val();
                   var url = '/home/zhifu/jia/'+gid;
                   $.get(url,function(rem){
-                    
+
                   });
               }else{
                   var gid = $(this).val();
@@ -251,7 +252,7 @@
                   });
               }
            })
-          
+
            $('#btn').click(function(){
               if(!$(':checkbox[name=item]').is(':checked')){
                 alert('请选择想付款的游戏');

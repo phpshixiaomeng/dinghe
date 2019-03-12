@@ -1,6 +1,5 @@
 @extends('Home/show/head')
 @section('content')
-
     <!--Games Area Start-->
     <div class="games-area section pt-85 pt-lg-65 pt-md-55 pt-sm-55 pt-xs-45">
     <div class="container">
@@ -136,6 +135,8 @@ if(res==1){
 $('[shou='+$id+']').attr('class','btn btn-warning');
 $('[shou='+$id+']').html('已被收藏');
 $('#'+$id).attr('hidden',false);
+}else if(res==9){
+alert("即将跳转登录页");window.location.href="/home/login";
 }else{
 $('#'+$id).attr('class','alert alert-danger alert-dismissible');
 $('#'+$id).find("strong").eq(0).text('收藏失败');
@@ -150,6 +151,8 @@ if(res==1){
 $('[shou='+$id+']').attr('class','btn btn-success');
 $('[shou='+$id+']').html('点我收藏');
 
+}else{
+    alert("即将跳转登录页");window.location.href="/home/login";
 }
 })
 
