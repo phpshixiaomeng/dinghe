@@ -183,6 +183,7 @@
                            <div class="review-wrap">
                               <h3>评论（{{ $pl }}）</h3>
                               <!--Single Review Start-->
+                              @if(!empty($reply))
                               @foreach($reply as $g=>$h)
                               <div class="single-review mb-30">
                                 
@@ -205,6 +206,7 @@
                                   </div>
                               </div>
                               @endforeach
+                              @endif
                               <!--Single Review End-->
                              
                               <!--Single Review End-->

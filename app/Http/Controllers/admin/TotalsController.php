@@ -1,64 +1,38 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Home\Cates;
 use DB;
 
-class IndexController extends Controller
+class TotalsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     *
      */
-    public static function  getGameCates()
+    public function index(Request $request)
     {
 
-        $game_nav = DB::table('cates')->where('name','类型')->first();
-        if($game_nav){
-            $game_child = Cates::where('pid',$game_nav->id)->get();
-            return $game_child;
-        }else{
-            $game_child = null;
-            return $game_child;
-        }
-    }
-    public static function  ads()
-    {
-        $ads = DB::table('ads')->where('put','>','0')->orderBy('put','desc')->get();
-        return $ads;
-    }
-    public static function  link()
-    {
-        $links = DB::table('links')->paginate(3);
-        return $links;
-    }
-
-
-
-    public static function  webSite()
-    {
-        $game_nav = DB::table('websites')->where('status','1')->first();
-
-        return $game_nav;
-    }
-    public function index()
-    {
-        // 网站访问量
-        $id = session('id');
+        //
         $res = DB::table('web_totals')->where('id',1)->first();
-        if(!empty($id)){
-            $arr['web_volume'] = $res->web_volume + 1;
-            DB::table('web_totals')->where('id',1)->update($arr);
+        $a = DB::table('games')->select('name')->count();
+        $b = DB::table('home_users')->select('id')->count();
+        $c = DB::table('home_users')->select('user_vip')->get();
+        $d = 0;
+        foreach($c as $k=>$v){
+            $d += $v->user_vip;  
+        }
+        $e = DB::table('orders')->select('id')->count();
+        $f = DB::table('orders')->select('order_amount')->get();
+        $g = 0;
+        foreach($f as $kk=>$vv){
+            $g += $vv->order_amount;
         }
 
-        $num=DB::table('lunbotus')->where('status',1)->count();
-        $data=DB::table('lunbotus')->where('status',1)->get();
-        return view('Home/index',['num'=>$num,'data'=>$data,'i'=>1]);
+        return view('admin.totals.totals',['res'=>$res,'a'=>$a,'b'=>$b,'c'=>$c,'d'=>$d,'e'=>$e,'g'=>$g]);
     }
 
     /**

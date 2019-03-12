@@ -81,6 +81,7 @@ class GamexqController extends Controller
         
         // 前台游戏评论遍历
         $replys = DB::table('games_replys')->where('game_id',$id)->paginate(2);
+        $reply = null;
         foreach($replys as $k=>$val){
             $reply[$k] = DB::table('games_replys')->where('game_id',$val->game_id)->first();
             $reply[$k]->zan = DB::table('zan_cais')->where('user_id',$val->user_id)->where('zan','1')->count();

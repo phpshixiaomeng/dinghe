@@ -44,6 +44,7 @@ Route::get('/home/zhifu/jian/{id}','Home\ZhifuController@jian');
 Route::get('/home/zhifu/qx/{id}','Home\ZhifuController@xuan');
 Route::get('/home/zhifu/qu','Home\ZhifuController@qu');
 Route::get('/home/zhifu/shua','Home\ZhifuController@sx');
+Route::get('/home/zhifu/qing','Home\ZhifuController@qing');
 Route::resource('/home/zhifu','Home\ZhifuController');//用户支付
 
 Route::resource('/home/contact','Home\ContactController');//联系我们
@@ -246,6 +247,11 @@ Route::resource('home/order','Home\OrderController');
 
 /*// 后台订单
 Route::resource('admin/order','admin\OrderController');*/
+
+// 网站统计
+Route::get('admin/totals/del','admin\TotalsController@del');
+Route::resource('admin/totals','admin\TotalsController');
+
 
 
 

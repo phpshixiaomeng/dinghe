@@ -68,7 +68,7 @@
                                                 {{-- 遍历购物车 --}}
 
                                                 @foreach($shop as $k=>$v)
-                                               <li><input name="item" type="checkbox" value="{{ $v->id }}" onclick="" style="position: relative;top:3px;">{{ $v->name }}<span>￥{{ $v->game_jg }}<button type="button" style="margin-left: 5px;" onclick="shan({{ $v->id }},this)"><img src="/assets/images/cart/timg.jpg" style="width:8px;height:8px;"></button></span></li>
+                                               <li><input name="item" type="checkbox" value="{{ $v->id }}" style="position: relative;top:3px;">{{ $v->name }}<span>￥{{ $v->game_jg }}<button type="button" style="margin-left: 5px;" onclick="shan({{ $v->id }},this)"><img src="/assets/images/cart/timg.jpg" style="width:8px;height:8px;"></button></span></li>
                                                 @endforeach
 
                                            </ul>
@@ -76,7 +76,9 @@
                                            <p>小计 <span id="xj">00.00</span></p>
                                            <p>优惠 <span id="yh">00.00</span></p>
                                            <p style="font-size: 18px;">总计<span id="zj">￥00.00</span></p>
+                                           <p style="font-size: 18px;">清空购物车<span><button onclick="qing()" class="btn btn-info btn-sm">清空</button></span></p>
                                            <h4><input id="quan" type="checkbox">全选<span><a href="/home/games">继续购物</a></span></h4>
+
 
 
                                            
@@ -267,6 +269,15 @@
               var url = '/home/zhifu/shua';
                   $.get(url,function(sss){
                   });
+            }
+
+            function qing(){
+              var url = '/home/zhifu/qing';
+              $.get(url,function(biu){
+                if(biu == 1){
+                  $(':checkbox[name=item]').parent().parent().remove();
+                }
+              });
             }
 
     </script>

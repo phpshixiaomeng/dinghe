@@ -201,6 +201,21 @@
 
             </li>
 
+            <li class="now">
+                <div class="nav_m">
+                    <span><a>统计信息</a></span>
+
+                    <i>&nbsp;</i>
+                </div>
+
+              <ul class="erji">
+                 <li>
+                        <span><a href="/admin/totals" target="main">统计列表</a></span>
+                    </li>
+                </ul>
+
+            </li>
+
 
 
 

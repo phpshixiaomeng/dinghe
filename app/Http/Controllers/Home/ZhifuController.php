@@ -187,5 +187,12 @@ class ZhifuController extends Controller
         DB::table('cache')->where('uid',$uid)->delete();
     }
 
+    public function qing()
+    {
+        $qing = DB::table('carts')->delete();
+        if($qing){
+            echo 1;
+        }
+    }
 
 }
