@@ -297,18 +297,25 @@ class LinkController extends Controller
      *@改变状态
      *
      */
-    public function status($id,$status)
+    public function status($id)
     {
-        //将传过来的状态赋给变量
-        $data['status'] = $status;
-        //修改状态
-        $res = DB::table('links')->where('id',$id)->update($data);
-        if($res && $status==1 ){
-            return redirect('/admin/link')->with('error', '审核已禁用');
-        }elseif($res && $status==0 ){
-            return redirect('/admin/link')->with('success', '审核已通过');
+        //查询传过来的id
+        $data = DB::table('links')->where('id',$id)->first();
+        //判断状态
+        if($data->status == 0){
+            $res = DB::table('links')->where('id',$data->id)->update(['status'=>1]);
+            if($res){
+                return '1';
+            }else{
+                return 'error';
+            }
         }else{
-            return back()->with('error', '修改失败请刷新重试');
+            $res = DB::table('links')->where('id',$data->id)->update(['status'=>0]);
+            if($res){
+                return '0';
+            }else{
+                return 'error';
+            }
         }
     }
 

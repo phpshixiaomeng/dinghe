@@ -32,7 +32,7 @@
 @endif
 <div class="forum-area section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50">
     <div class="container" style="margin-bottom:20px;">
-        <div style="float:right;width:20px;height:20px;border-radius:100%;"><span id="cishu" style="color:white;margin-left: 2px;"></span></div><a href="/home/luntan/xinxi" style="font-size:30px;float:right;" class="glyphicon glyphicon-envelope" aria-hidden="true"></a>
+        <div style="float:right;width:20px;height:20px;border-radius:100%;"><span id="cishu" style="color:white;margin-left: 2px;"></span></div><a href="/home/luntan/xinxi" style="float:right;"><img src="/assets/images/xinfeng.jpg"></a>
     </div>
     <div class="container" style="min-height:1000px ;">
         <div class="row">
@@ -63,7 +63,7 @@
       $("#alert").hide();
     });
 
-/*    setInterval("zhannei()", 1000);*/
+    setInterval("zhannei()", 1000);
     function zhannei(){
     $.get("/home/luntan/num", function(msg){
         if(msg == 0){

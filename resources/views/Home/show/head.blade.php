@@ -15,7 +15,6 @@
     <link href="/assets/images/favicon.ico" type="img/x-icon" rel="shortcut icon">
     <!-- All css files are included here. -->
 
-
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/qanto.css">
     <link rel="stylesheet" href="/assets/css/bauhaus93.css">

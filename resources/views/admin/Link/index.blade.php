@@ -72,9 +72,9 @@
                     </td>
                     <td>
                         @if( $val->status == 0 )
-                        	<a href="/admin/link/status/{{ $val->id }}/1"><img style="width:20px" src="/admin_assets/images/links/dui.jpg"></a>
+                        	<img style="width:20px" onclick="status({{ $val->id }},this)"  src="/admin_assets/images/links/dui.jpg">
                         @else
-                            <a href="/admin/link/status/{{ $val->id }}/0"><img style="width:20px" src="/admin_assets/images/links/cuo.jpg"></a>
+                            <img style="width:20px" onclick="status({{ $val->id }},this)" src="/admin_assets/images/links/cuo.jpg">
                         @endif
                     </td>
                     <td>
@@ -140,6 +140,17 @@
 
         });
     }
-
+    function status(id,obj){
+        var url = '/admin/link/status/'+id;
+        $.get(url,function(msg){
+            if(msg == 0){
+                $(obj).attr('src',"/admin_assets/images/links/dui.jpg");
+            }else if(msg == 1){
+                $(obj).attr('src',"/admin_assets/images/links/cuo.jpg");
+            }else{
+                alert('未知错误,请刷新后再试');
+            }
+        });
+    }
 </script>
 @endsection
