@@ -36,7 +36,7 @@
                 <div class="contact-address-wrap">
                     <h2>如有需要人工客服</h2>
                         <li>
-                          <div  style="float:right;width:15px;height:15px;border-radius:100%;"><span id="cishu" style="color:white;margin-left: 4px;"></span></div><a href="/home/help/reply" style="font-size:30px;float:right;" class="glyphicon glyphicon-envelope" aria-hidden="true"></a>
+                          <div  style="float:right;width:15px;height:15px;border-radius:100%;"><span id="cishu" style="color:white;margin-left: 4px;"></span></div><a href="/home/help/reply" style="float:right;" ><img src="/assets/images/xinfeng.jpg"></a>
                         </li>
                     <div class="contact-address">
                         <div class="contact-information">
@@ -79,7 +79,7 @@
         ]
         });
 
-/*    setInterval("zhannei()", 1000);*/
+    // setInterval("zhannei()", 1000);
     function zhannei(){
     $.get("/home/help/num", function(msg){
         if(msg == 0){

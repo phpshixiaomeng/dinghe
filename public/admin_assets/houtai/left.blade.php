@@ -49,10 +49,10 @@
                 </div>
                 <ul class="erji">
                     <li>
-                        <span><a href="/admin/hy_list" target="main">管理员信息</a></span>
+                        <span><a href="/admin/user" target="main">管理员信息</a></span>
                     </li>
                     <li>
-                        <span><a href="/admin/yhxx" target="main">添加管理员</a></span>
+                        <span><a href="/admin/user/create" target="main">添加管理员</a></span>
                     </li>
                 </ul>
             </li>

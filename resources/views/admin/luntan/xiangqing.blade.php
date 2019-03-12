@@ -35,7 +35,7 @@
 <div style="border-bottom:1px dashed grey;">
         <ul>
             <li style="text-align: left;margin-right:10px;">{{ $v->uname }}</li>
-            <li style="text-align: left;margin-right:10px;">{{ $v->content }}</li>
+            <li style="text-align: left;margin-right:10px;">{!! $v->content !!}</li>
             <li style="text-align: right;margin-right:10px;"><a  onclick="del({{ $v->id }},this)">删除</a>
         </ul>
 </div>
