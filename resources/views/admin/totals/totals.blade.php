@@ -18,54 +18,72 @@
             <!--会议列表-->
             <div class="hy_list">
                 <div class="box_t">
-                    <span class="name">统计列表</span>
+                    <span class="name">分类列表</span>
                     <!--当前位置-->
                     <div class="position">
                         <a href=""><img src="../images/icon5.png" alt=""/></a>
-                        <a href="">首页</a>
+                        <a href="">日统计</a>
                         <span><img src="../images/icon3.png" alt=""/></span>
-                        <a href="">统计管理</a>
+                        <a href="">月统计</a>
                         <span><img src="../images/icon3.png" alt=""/></span>
-                        <a href="">统计列表</a>
+                        <a href="">年统计</a>
                     </div>
                     <!--当前位置-->
                 </div>
                 <!--查询-->
-                <!-- <div class="search">
-                    <span>按统计信息查询：</span>
-                    <div class="s_text"><input name="search" type="text" value="{{ $request['search'] or '' }}" placeholder="请输入搜索的关键字"> </div>
-                    <a href="" class="btn btn-info">查询</a>
-                </div> -->
+                <form action="/admin/totals" method="get">
+                    <div class="search">
+                        <span>按分类名称查询：</span>
+                        <div class="s_text">
+                            <input name="search" type="text" value="{{ $request['search'] or '' }}" placeholder="请按1970-01-01日期格式搜索">
+                        </div>
+                            <button type="submit" class="btn btn-info">搜索</button>
+                    </div>
+                </form>
                 <!--查询-->
                 <div class="space_hx">&nbsp;</div>
                 <!--列表-->
                 <form action="" method="post">
                     <table class="search list_hy">
                         <tr>
-                        <th class="xz" scope="col">选择</th>
+                            <th scope="col" style="text-align: center">编号</th>
                             <th scope="col" style="text-align: center">网站访问量</th>
                             <th scope="col" style="text-align: center">游戏数量</th>
                             <th scope="col" style="text-align: center">用户数量</th>
                             <th scope="col" style="text-align: center">vip数量</th>
                             <th scope="col" style="text-align: center">订单数量</th>
                             <th scope="col" style="text-align: center">总收入</th>
-                            <th scope="col" style="text-align: center">操作</th>
+                            <th scope="col" style="text-align: center">统计日期</th>
                         </tr>
+                        
+                        @foreach($totals as $k=>$v)
+                        @if(!empty($v))
                         <tr>
-                            <td class="xz"><input name="" type="checkbox" value=""></td>
-                            <td style="text-align: center">{{ $res->web_volume }}</td>
-                            <td style="text-align: center">{{ $a }}</td>
-                            <td style="text-align: center">{{ $b }}</td>
-                            <td style="text-align: center">{{ $d }}</td>
-                            <td style="text-align: center">{{ $e }}</td>
-                            <td style="text-align: center">{{ $g }}</td>
-                            <td style="text-align: center"></td>
+                            <td style="text-align: center">{{ ++$i }}</td>
+                            <td style="text-align: center">{{ $v->web_volume }}</td>
+                            <td style="text-align: center">{{ $v->game_num }}</td>
+                            <td style="text-align: center">{{ $v->users_total }}</td>
+                            <td style="text-align: center">{{ $v->vip_total }}</td>
+                            <td style="text-align: center">{{ $v->order_total }}</td>
+                            <td style="text-align: center">{{ $v->money }}</td>
+                            <td style="text-align: center">{{ substr($v->web_time,0,10) }}</td>
+                        
                         </tr>
-
-
+                        @endif
+                        @endforeach
                     </table>
                     <!--列表-->
                     <!--右边底部-->
+                    <div class="r_foot">
+                        <div class="r_foot_m">  
+                            <!--分页-->
+                            <div style="float:right;margin-right:100px;margin-top: -17px;">
+                                <a href="" class="prev"><img src="../images/icon7.png" alt=""/></a>
+                               {{ $totals->appends($request)->links() }}
+                            </div>
+                            <!--分页-->
+                        </div>
+                    </div>
                 </form>
                 <!--右边底部-->
             </div>

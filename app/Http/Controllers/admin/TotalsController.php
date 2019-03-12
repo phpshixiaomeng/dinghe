@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Webtotal;
 use DB;
 
 class TotalsController extends Controller
@@ -17,22 +18,10 @@ class TotalsController extends Controller
     {
 
         //
-        $res = DB::table('web_totals')->where('id',1)->first();
-        $a = DB::table('games')->select('name')->count();
-        $b = DB::table('home_users')->select('id')->count();
-        $c = DB::table('home_users')->select('user_vip')->get();
-        $d = 0;
-        foreach($c as $k=>$v){
-            $d += $v->user_vip;  
-        }
-        $e = DB::table('orders')->select('id')->count();
-        $f = DB::table('orders')->select('order_amount')->get();
-        $g = 0;
-        foreach($f as $kk=>$vv){
-            $g += $vv->order_amount;
-        }
-
-        return view('admin.totals.totals',['res'=>$res,'a'=>$a,'b'=>$b,'c'=>$c,'d'=>$d,'e'=>$e,'g'=>$g]);
+        $i = 0;
+        $search = $request->input('search','');
+        $totals = Webtotal::where('web_time','like','%'.$search.'%')->paginate(6);
+        return view('admin.totals.totals',['totals'=>$totals,'request'=> $request->all(),'i'=>$i]);
     }
 
     /**
