@@ -33,9 +33,9 @@
                 <!--查询-->
                 <form action="/admin/totals" method="get">
                     <div class="search">
-                        <span>按分类名称查询：</span>
+                        <span>按时间查询：</span>
                         <div class="s_text">
-                            <input name="search" type="text" value="{{ $request['search'] or '' }}" placeholder="请按1970-01-01日期格式搜索">
+                            <input name="search" type="text" value="{{ $request['search'] or '' }}" placeholder="请输入日期相关词">
                         </div>
                             <button type="submit" class="btn btn-info">搜索</button>
                     </div>
