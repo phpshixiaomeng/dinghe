@@ -102,8 +102,7 @@ class IndexController extends Controller
         $data=DB::table('lunbotus')->where('status',1)->get();
 
         $gameimg = DB::table('games')->orderBy('id','desc')->limit(5)->get();
-        $gamepic = DB::table('games')->orderBy('id','asc')->limit(2)->get();
-        return view('Home/index',['num'=>$num,'data'=>$data,'i'=>1,'gameimg'=>$gameimg,'gamepic'=>$gamepic]);
+        return view('Home/index',['num'=>$num,'data'=>$data,'i'=>1,'gameimg'=>$gameimg]);
            
     }
 

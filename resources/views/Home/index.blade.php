@@ -112,20 +112,20 @@
                 @foreach($gameimg as $a=>$b)
                 <div class="col-4">
                     <!--Single Game Start-->
-                    @foreach($gamepic as $aa=>$bb)
+                    
                     <div class="single-game mb-50">
                         <div class="game-img">
-                            <a href="games-details.html"><img src="/uploads/{{ $bb->game_img }}" alt=""></a>
+                            <a href="games-details.html"><img src="/uploads/{{ $b->game_img }}" alt=""></a>
                         </div>
                         <div class="game-content">
-                            <h4><a href="games-details.html">{{ $bb->name }}</a></h4>
-                            <span>{{ $bb->game_jg }}</span>
+                            <h4><a href="games-details.html">{{ $b->name }}</a></h4>
+                            <span>{{ $b->game_jg }}</span>
                         </div>
                     </div>
-                    @endforeach
+                    
                     <!--Single Game End-->
                 </div>
-                @endforeach   
+                @endforeach
             </div>
         </div>
     </div>
