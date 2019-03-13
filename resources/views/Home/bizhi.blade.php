@@ -11,7 +11,7 @@
                     <!--Single Gallery Start-->
                     <div class="single-gallery mb-30">
                         <div class="gallery-image">
-                            <a class="gallery-popup" href="assets/images/game/game1.jpg"><img src="/uploads/{{ $v->game_img }}" alt=""></a>
+                            <a class="gallery-popup" href="/home/gamexq/{{ $v->id }}"><img src="/uploads/{{ $v->game_img }}" alt=""></a>
                             <div class="gallery-hover">
                                 <h4>{{ $v->gname }}</h4>
                             </div>
