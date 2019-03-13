@@ -86,7 +86,7 @@ class IndexController extends Controller
             $res = DB::table('web_totals')->insert($arr);
         }
 
-        if(!empty($id) && !empty($shijian)){
+        if(!empty($shijian)){
             $arr['game_num'] = $game;
             $arr['order_total'] = $orders;
             $arr['users_total'] = $users;
@@ -100,7 +100,10 @@ class IndexController extends Controller
         // 网站轮播图
         $num=DB::table('lunbotus')->where('status',1)->count();
         $data=DB::table('lunbotus')->where('status',1)->get();
-        return view('Home/index',['num'=>$num,'data'=>$data,'i'=>1]);
+
+        $gameimg = DB::table('games')->orderBy('id','desc')->limit(5)->get();
+        $gamepic = DB::table('games')->orderBy('id','asc')->limit(2)->get();
+        return view('Home/index',['num'=>$num,'data'=>$data,'i'=>1,'gameimg'=>$gameimg,'gamepic'=>$gamepic]);
            
     }
 

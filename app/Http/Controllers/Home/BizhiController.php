@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 class BizhiController extends Controller
 {
@@ -14,7 +15,9 @@ class BizhiController extends Controller
      */
     public function index()
     {
-        return view('Home/bizhi');
+        $wall = DB::table('wallpaper')->orderBy('id','desc')->paginate(12);
+        // dump($wall);
+        return view('Home/bizhi',['wall'=>$wall]);
     }
 
     /**

@@ -245,12 +245,13 @@ Route::resource('admin/gameys','admin\GameysController');
 Route::get('home/order/display/{id}','Home\OrderController@display');
 Route::resource('home/order','Home\OrderController');
 
-/*// 后台订单
-Route::resource('admin/order','admin\OrderController');*/
-
 // 网站统计
 Route::get('admin/totals/del','admin\TotalsController@del');
 Route::resource('admin/totals','admin\TotalsController');
+
+// 游戏壁纸
+Route::get('admin/wall/delete/{id}','admin\WallController@delete');
+Route::resource('admin/wall','admin\WallController');
 
 
 
