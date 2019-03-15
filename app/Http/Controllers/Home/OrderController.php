@@ -96,6 +96,31 @@ class OrderController extends Controller
         }
         // 订单表前台的遍历
         $order = DB::table('orders')->where('user_id',$id)->get();
+        $sum = 0;
+        foreach($order as $n=>$m){
+            $sum = $m->order_amount;
+        }
+        if($sum>=1000 && $sum<2000){
+            $brr['user_vip'] = 1;
+            DB::table('home_users')->where('id',$id)->insert($brr);
+        }elseif($sum>=2000 && $sum<3000){
+            $brr['user_vip'] = 2;
+            DB::table('home_users')->where('id',$id)->insert($brr);
+        }elseif($sum>=3000 && $sum<4000){
+            $brr['user_vip'] = 3;
+            DB::table('home_users')->where('id',$id)->insert($brr);
+        }elseif($sum>=4000 && $sum<5000){
+            $brr['user_vip'] = 4;
+            DB::table('home_users')->where('id',$id)->insert($brr);
+        }elseif($sum>=5000 && $sum<6000){
+            $brr['user_vip'] = 5;
+            DB::table('home_users')->where('id',$id)->insert($brr);
+        }elseif($sum>=6000){
+            $brr['user_vip'] = 6;
+            DB::table('home_users')->where('id',$id)->insert($brr);
+        }
+
+
         return view('Home.order',['order'=>$order]);
     }
 

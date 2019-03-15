@@ -1,23 +1,27 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Webtotal;
 use DB;
 
-class BizhiController extends Controller
+class TotalsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $wall = DB::table('wallpaper')->orderBy('id','desc')->paginate(12);
-        // dump($wall);
-        return view('Home/bizhi',['wall'=>$wall]);
+
+        //
+        $i = 0;
+        $search = $request->input('search','');
+        $totals = Webtotal::where('web_time','like','%'.$search.'%')->paginate(6);
+        return view('admin.totals.totals',['totals'=>$totals,'request'=> $request->all(),'i'=>$i]);
     }
 
     /**

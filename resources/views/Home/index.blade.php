@@ -109,126 +109,23 @@
                 </div>
             </div>
             <div class="row game-slide">
+                @foreach($gameimg as $a=>$b)
                 <div class="col-4">
                     <!--Single Game Start-->
+                    
                     <div class="single-game mb-50">
                         <div class="game-img">
-                            <a href="games-details.html"><img src="assets/images/game/game1.jpg" alt=""></a>
+                            <a href="games-details.html"><img src="/uploads/{{ $b->game_img }}" alt=""></a>
                         </div>
                         <div class="game-content">
-                            <h4><a href="games-details.html">长卷</a></h4>
-                            <span>pc/xbox/ps4</span>
+                            <h4><a href="games-details.html">{{ $b->name }}</a></h4>
+                            <span>{{ $b->game_jg }}</span>
                         </div>
                     </div>
-                    <!--Single Game End-->
-                    <!--Single Game Start-->
-                    <div class="single-game mb-50">
-                        <div class="game-img">
-                            <a href="games-details.html"><img src="assets/images/game/game4.jpg" alt=""></a>
-                        </div>
-                        <div class="game-content">
-                            <h4><a href="games-details.html">长卷</a></h4>
-                            <span>pc/xbox/ps4</span>
-                        </div>
-                    </div>
+                    
                     <!--Single Game End-->
                 </div>
-                <div class="col-4">
-                    <!--Single Game Start-->
-                    <div class="single-game mb-50">
-                        <div class="game-img">
-                            <a href="games-details.html"><img src="assets/images/game/game2.jpg" alt=""></a>
-                        </div>
-                        <div class="game-content">
-                            <h4><a href="games-details.html">长卷l</a></h4>
-                            <span>pc/xbox/ps4</span>
-                        </div>
-                    </div>
-                    <!--Single Game End-->
-                    <!--Single Game Start-->
-                    <div class="single-game mb-50">
-                        <div class="game-img">
-                            <a href="games-details.html"><img src="assets/images/game/game5.jpg" alt=""></a>
-                        </div>
-                        <div class="game-content">
-                            <h4><a href="games-details.html">长卷</a></h4>
-                            <span>pc/xbox/ps4</span>
-                        </div>
-                    </div>
-                    <!--Single Game End-->
-                </div>
-                <div class="col-4">
-                    <!--Single Game Start-->
-                    <div class="single-game mb-50">
-                        <div class="game-img">
-                            <a href="games-details.html"><img src="assets/images/game/game3.jpg" alt=""></a>
-                        </div>
-                        <div class="game-content">
-                            <h4><a href="games-details.html">长卷</a></h4>
-                            <span>pc/xbox/ps4</span>
-                        </div>
-                    </div>
-                    <!--Single Game End-->
-                    <!--Single Game Start-->
-                    <div class="single-game mb-50">
-                        <div class="game-img">
-                            <a href="games-details.html"><img src="assets/images/game/game6.jpg" alt=""></a>
-                        </div>
-                        <div class="game-content">
-                            <h4><a href="games-details.html">长卷</a></h4>
-                            <span>pc/xbox/ps4</span>
-                        </div>
-                    </div>
-                    <!--Single Game End-->
-                </div>
-                <div class="col-4">
-                    <!--Single Game Start-->
-                    <div class="single-game mb-50">
-                        <div class="game-img">
-                            <a href="games-details.html"><img src="assets/images/game/game2.jpg" alt=""></a>
-                        </div>
-                        <div class="game-content">
-                            <h4><a href="games-details.html">长卷</a></h4>
-                            <span>pc/xbox/ps4</span>
-                        </div>
-                    </div>
-                    <!--Single Game End-->
-                    <!--Single Game Start-->
-                    <div class="single-game mb-50">
-                        <div class="game-img">
-                            <a href="games-details.html"><img src="assets/images/game/game5.jpg" alt=""></a>
-                        </div>
-                        <div class="game-content">
-                            <h4><a href="games-details.html">长卷</a></h4>
-                            <span>pc/xbox/ps4</span>
-                        </div>
-                    </div>
-                    <!--Single Game End-->
-                </div>
-                <div class="col-4">
-                    <!--Single Game Start-->
-                    <div class="single-game mb-50">
-                        <div class="game-img">
-                            <a href="games-details.html"><img src="assets/images/game/game1.jpg" alt=""></a>
-                        </div>
-                        <div class="game-content">
-                            <h4><a href="games-details.html">长卷</a></h4>
-                            <span>pc/xbox/ps4</span>
-                        </div>
-                    </div>
-                    <!--Single Game End-->
-                    <!--Single Game Start-->
-                    <div class="single-game mb-50">
-                        <div class="game-img">
-                            <a href="games-details.html"><img src="assets/images/game/game3.jpg" alt=""></a>
-                        </div>
-                        <div class="game-content">
-                            <h4><a href="games-details.html">长卷</a></h4>
-                            <span>pc/xbox/ps4</span>
-                        </div>
-                    </div>
-                    <!--Single Game End-->
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

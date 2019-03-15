@@ -205,11 +205,13 @@
                 <div class="nav_m">
                     <span><a>前台视频</a></span>
 
+
                     <i>&nbsp;</i>
                 </div>
 
               <ul class="erji">
                  <li>
+
                         <span><a href="/admin/video" target="main">视频列表</a></span>
                     </li>
                     <li>
@@ -221,6 +223,34 @@
             </li>
 
 
+            <li class="now">
+                <div class="nav_m">
+                     <span><a>统计信息</a></span>
+                    <i>&nbsp;</i>
+                </div>
+                <ul class="erji">
+                    <li>
+                       <span><a href="/admin/totals" target="main">统计列表</a></span>
+                    </li>
+
+                </ul>
+            </li>
+
+
+            <li class="now">
+                <div class="nav_m">
+                    <span><a>壁纸管理</a></span>
+                    <i>&nbsp;</i>
+                </div>
+                <ul class="erji">
+                    <li>
+                        <span><a href="/admin/wall" target="main">壁纸列表</a></span>
+                    </li>
+                    <li>
+                        <span><a href="/admin/wall/create" target="main">添加壁纸</a></span>
+                    </li>
+                </ul>
+            </li>
 
 
 

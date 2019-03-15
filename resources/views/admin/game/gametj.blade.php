@@ -119,7 +119,6 @@
                                 <div class="li_r xial">
                                     <div class="xial_w xial_l">
                                         <input type="file" name="game_img" id="" style="height:100px">
-
                                     </div>
                                 </div>
                             </li>
