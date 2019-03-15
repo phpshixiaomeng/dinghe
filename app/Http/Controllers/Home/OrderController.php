@@ -32,7 +32,7 @@ class OrderController extends Controller
             }
             $yh = $sum*0.1;
             $zj = $sum*0.9;
-        
+
             // 订单表的添加
             $data['order_num'] = time()+rand(1000,9999);
             $data['user_id'] = $id;
@@ -76,23 +76,23 @@ class OrderController extends Controller
                 $data['order_time'] = time();
                 $res = DB::table('orders')->insertGetId($data);
                 // dump($res);
-                
-                $games = Homeusers::find($id)->cartgame()->get(); 
+
+                $games = Homeusers::find($id)->cartgame()->get();
                 // dd($games);
                 foreach($games as $kk=>$vv){
                     $arr['order_id'] = $res;
                     $arr['game_id'] = $vv->id;
                     $orderid['game_id'] = $vv->id;
-                    $orderid['user_id'] = $id;                
+                    $orderid['user_id'] = $id;
                     $orderid['order_id'] = $res;
                     DB::table('games_replys')->insert($orderid);
-                    $game_id = $vv->id;                
+                    $game_id = $vv->id;
                     $success = DB::table('order_details')->insert($arr);
                     DB::table('carts')->where('user_id',$id)->where('game_id',$vv->id)->delete();
                     $request->session()->forget('gid');
                 }
-            
-             
+
+
         }
         // 订单表前台的遍历
         $order = DB::table('orders')->where('user_id',$id)->get();
@@ -170,6 +170,17 @@ class OrderController extends Controller
         // dump($id);
         $games = Orders::find($id)->gameorder()->get();
         return view('Home.orderzhans',['games'=>$games]);
+    }
+
+
+    public function shan($id){
+    $res=DB::table('orders')->where('id',$id)->delete();
+    if($res==1){
+        echo 1;
+    }else{
+        echo 2;
+    }
+
     }
 
 }

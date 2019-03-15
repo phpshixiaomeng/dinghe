@@ -201,6 +201,25 @@
 
             </li>
 
+            <li class="now">
+                <div class="nav_m">
+                    <span><a>前台视频</a></span>
+
+                    <i>&nbsp;</i>
+                </div>
+
+              <ul class="erji">
+                 <li>
+                        <span><a href="/admin/video" target="main">视频列表</a></span>
+                    </li>
+                    <li>
+                        <span><a href="/admin/video/add" target="main">添加视频</a></span>
+                    </li>
+
+                </ul>
+
+            </li>
+
 
 
 

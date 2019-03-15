@@ -93,7 +93,16 @@
   <h1>这是你最近收藏的商品</h1>
 @if(!empty($game))
 <table class="table table-hover">
+<tr>
+    <th>游戏名</th>
+    <th>游戏缩略图</th>
+    <th>游戏价格</th>
+    <th>购买操作</th>
+    <th>操作</th>
+
+  </tr>
 @foreach($game as $v)
+
   <tr id="{{$v->gid}}">
 
   <td>{{$v->gname}}</td>
@@ -115,10 +124,29 @@
 
 <div class="jumbotron" id="dingdan" hidden>
   <h1>你好！亲爱的会员</h1>
-  <p>...</p>
-  <p>这是订单页</p>
-  <p></p>
-  <p></p>
+  @if(!empty($order))
+<table class="table table-hover">
+<tr>
+  <th>订单号</th>
+  <th>金额</th>
+  <th>购买时间</th>
+  <th>操作</th>
+</tr>
+@foreach($order as $v)
+  <tr id="o{{$v->id}}">
+
+  <td>{{$v->order_num}}</td>
+
+  <td>￥{{$v->order_amount}}</td>
+  <td>{{$v->order_time}}</td>
+  <td><button  onclick="ordershan({{$v->id}})" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></td></tr>
+@endforeach
+</table>
+{{$order->links()}}
+
+@else
+  <p>订单页</p>
+@endif
 </div>
 
 
@@ -463,6 +491,21 @@ url='/home/gamexq/shan/'+$id;
 $.get(url,function(res){
 if(res==1){
 $('#'+$id).remove();
+}
+
+
+
+})
+
+return false;
+}
+
+function ordershan(id){
+$id=id;
+url='/home/order/shan/'+$id;
+$.get(url,function(res){
+if(res==1){
+$('#o'+$id).remove();
 }
 
 

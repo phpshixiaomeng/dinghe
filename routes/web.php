@@ -60,6 +60,11 @@ Route::get('/home/zhifu/shua','Home\ZhifuController@sx');
 Route::resource('/home/zhifu','Home\ZhifuController');//用户支付
 });
 Route::resource('/home/contact','Home\ContactController');//联系我们
+Route::get('/admin/video/add','admin\VideoController@add');//添加视频
+Route::post('/admin/video/upload','admin\VideoController@upload');//
+Route::post('/admin/video/del','admin\VideoController@del');//del
+Route::get('/admin/video/status/{id}/{status}','admin\VideoController@status');//视频状态
+Route::resource('/admin/video','admin\VideoController');//视频列表
 
 //后台模板路由
 
@@ -210,7 +215,7 @@ Route::get('home/gamexq/shan/{id}','Home\GamexqController@shan');
 Route::resource('home/gamexq','Home\GamexqController');
 
 
-
+Route::get('home/order/shan/{id}','Home\OrderController@shan');
 // 前台订单
 Route::get('home/order/display/{id}','Home\OrderController@display');
 Route::resource('home/order','Home\OrderController');
@@ -253,16 +258,17 @@ Route::resource('admin/order','admin\OrderController');*/
 //前台帮助和反馈模块
 Route::group(['middleware'=>'logins'],function(){
 Route::get('/home/help','Home\HelpController@index');
-Route::get('/home/help/num','Home\HelpController@num');
+
 Route::get('/home/help/reply','Home\HelpController@reply');
 Route::get('/home/help/del/{id}','Home\HelpController@del');
 Route::post('/home/help/add','Home\HelpController@add');
 });
+Route::get('/home/help/num','Home\HelpController@num');
 //论坛模块
 Route::group(['middleware'=>'logins'],function(){
     Route::get('/home/luntan/zan/{id}','Home\LuntanController@zan');
     Route::get('/home/luntan/cai/{id}','Home\LuntanController@cai');
-    Route::get('/home/luntan/num','Home\LuntanController@num');
+
     Route::get('/home/luntan/xinxi','Home\LuntanController@xinxi');
     Route::post('/home/luntan/huitie','Home\LuntanController@huitie');
     Route::post('/home/luntan/huifu','Home\LuntanController@huifu');
@@ -270,6 +276,7 @@ Route::group(['middleware'=>'logins'],function(){
     Route::get('/home/luntan/del/{id}','Home\LuntanController@del');
     Route::get('/home/luntan/deleted/{id}','Home\LuntanController@deleted');
 });
+Route::get('/home/luntan/num','Home\LuntanController@num');
 Route::resource('/home/luntan','Home\LuntanController');
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 class VideoController extends Controller
 {
@@ -12,9 +13,17 @@ class VideoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return View('Home/video');
+        $search = $request->input('search','');
+        $data = DB::table('game_videos')->where('title','like','%'.$search.'%')->orderBy('id','asc')->paginate(4);
+        if($search == ''){
+            $select = DB::table('game_videos')->get();
+            $num = count($select);
+        }else{
+            $num = count($data);
+        }
+        return view('Home/video',['data'=>$data,'request'=> $request->all()]);
     }
 
     /**
@@ -82,4 +91,5 @@ class VideoController extends Controller
     {
         //
     }
+
 }

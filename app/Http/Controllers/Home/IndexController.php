@@ -47,11 +47,11 @@ class IndexController extends Controller
     {
         $num=DB::table('lunbotus')->where('status',1)->count();
         $data=DB::table('lunbotus')->where('status',1)->get();
+        $zixun = DB::table('news')->orderBy('fire','desc')->limit(3)->get();
+        // dd($zixun);
+        $video=DB::table('game_videos')->where('status',1)->limit(6)->get();
 
-
-
-
-        return view('Home/index',['num'=>$num,'data'=>$data,'i'=>1]);
+        return view('Home/index',['num'=>$num,'data'=>$data,'i'=>1,'zixun'=>$zixun,'video'=>$video]);
 
     }
 

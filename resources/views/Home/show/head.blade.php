@@ -35,7 +35,7 @@
 <!-- 个人信息 -->
     <link rel="stylesheet" href="/assets/css/lq-score.css">
     <link rel="stylesheet" href="/assets/css/demo.css">
-
+    <link rel="stylesheet" href="/assets/dist/css/ckin.css">
 
     @section('style')
 
@@ -105,7 +105,7 @@
                                     <ul class="sub-menu">
 
                                         <li><a href="/home/bizhi">精美壁纸</a></li>
-                                        <li><a href="/home/zhifu">付款</a></li>
+
 
 
                                         <!-- <li><a href="login/tuichu">退出</a></li> -->
@@ -134,14 +134,14 @@
                                 <li><a href="javascript:if(confirm('确实要退出吗?'))location='/home/zhuce/tui/edit'">退出</a></li>
                                 <li><a href="/home/grxx">个人信息</a></li>
                             @endif
-                                <li class="header-search"><a class="header-search-toggle" href="#"><i class="icofont-search-2"></i></a>
-                                    <div class="header-search-form">
+                                <!-- <li class="header-search"><a class="header-search-toggle" href="#"><i class="icofont-search-2"></i></a> -->
+                                    <!-- <div class="header-search-form">
                                         <form action="#">
                                             <input type="text" placeholder="enter键搜索">
                                             <button><i class="icofont-search"></i></button>
                                         </form>
-                                    </div>
-                                </li>
+                                    </div> -->
+                                <!-- </li> -->
                             </ul>
                         </div>
                     </div>
