@@ -285,7 +285,7 @@ Route::group(['middleware'=>'logins'],function(){
 });
 Route::get('/home/luntan/num','Home\LuntanController@num');
 Route::resource('/home/luntan','Home\LuntanController');
-
+Route::get('/home/luntan/num','Home\LuntanController@num');
 
 
 
@@ -315,9 +315,16 @@ Route::resource('/home/luntan','Home\LuntanController');
 Route::resource('/admin/login','admin\AdminLoginController');
 
 
-Route::group(['middleware'=>'login'],function(){
-
+Route::group(['middleware'=>['login','rbac']],function(){
+//用户个人信息
+Route::resource('/admin/geren','admin\GerenController');
+//用户节点
+Route::get('/admin/nodes/nodeadd','admin\NodesController@nodeadd');
+Route::post('/admin/nodes/insert','admin\NodesController@insert');
+Route::resource('/admin/nodes','admin\NodesController');
 //用户管理后台
+Route::get('/admin/user/role/{id}','admin\UserController@role');
+Route::post('/admin/user/updaterole/{id}','admin\UserController@updaterole');
 Route::resource('/admin/user','admin\UserController');
 
 // 游戏展示图

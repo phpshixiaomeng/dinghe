@@ -34,7 +34,7 @@
                     <span >用户名查询</span>
                     <div class="s_text"><input name="search" type="text"></div>
                     <input class="btn btn-primary" type="submit"  value="搜索">
-                    <span style="float:right; font:18px/1.2 '微软雅黑';margin-right: 100px;margin-top: 20px;" >总共<b style="color:red;" >{{$num}}</b>条管理员</span>
+                    <span style="float:right; font:18px/1.2 '微软雅黑';margin-right: 100px;margin-top: 20px;" >总共<b style="color:red;" >{{$num}}</b>个管理员</span>
                 </div>
             </form>
             <div class="space_hx">&nbsp;</div>
@@ -61,13 +61,16 @@
                     <th>{{ $v->id }}</th>
                     <th>{{ $v->user }}</th>
                     <th>
+                    @if(session('level')>= $v->level)
                         <a style="float:left" class="btn-primary btn" href="/admin/user/{{ $v->id }}/edit">修改</a>
+                    @endif
                     @if($v->level == 0)
                         <form style="float:left" action="/admin/user/{{ $v->id }}" method="post">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                             <input class="btn btn-danger" type="submit"   value="删除">
                         </form>
+                        <a  style="float:left" class="btn btn-warning" href="/admin/user/role/{{ $v->id }}">角色</a>
                     @endif
                     </th>
                 </tr>

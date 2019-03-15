@@ -123,4 +123,30 @@ class UserController extends Controller
             return back()->with('error','未知错误');
         }
     }
+    public function role($id)
+    {
+        $user = DB::table('admin_users')->where('id',$id)->first();
+        $users_roles_data = DB::table('users_roles')->where('uid',$id)->get();
+        $users_roles_rid = [];
+        foreach ($users_roles_data as $key => $value) {
+            $users_roles_rid[] = $value->rid;
+        }
+        $roles_data = DB::table('roles')->get();
+        return view('admin.admin_user.role',['user'=>$user,'roles_data'=>$roles_data,'users_roles_rid'=>$users_roles_rid]);
+    }
+    public function updaterole(Request $request,$id)
+    {
+        $rid = $request->input('rids');
+        DB::table('users_roles')->where('uid',$id)->delete();
+        if($rid){
+            foreach ($rid as $key => $value) {
+                $data = [
+                    'rid'=>$value,
+                    'uid'=>$id
+                ];
+                DB::table('users_roles')->insert($data);
+            }
+        }
+        return redirect('/admin/user')->with('success','修改成功');
+    }
 }

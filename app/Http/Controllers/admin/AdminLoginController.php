@@ -23,9 +23,10 @@ class AdminLoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request->session()->flush();
+        return redirect('/admin/login');
     }
 
     /**
@@ -41,6 +42,22 @@ class AdminLoginController extends Controller
         if($user){
             if(Hash::check($data['password'],$user->password)){
                 session(['admin_user'=>$user->user,'level'=>$user->level]);
+                $admin_nodes =DB::select('select n.cname,n.aname from nodes as n,users_roles as ur,roles_nodes as rn where ur.uid = '.$user->id.' and ur.rid = rn.rid and rn.nid = n.id');
+                $arr = [];
+                foreach ($admin_nodes as $key => $value) {
+                    $arr[$value->cname][] = $value->aname;
+                        if($value->aname == 'create'){
+                            $arr[$value->cname][] = 'store';
+                        }
+                        if($value->aname == 'edit'){
+                            $arr[$value->cname][] = 'update';
+                        }
+                }
+                $arr['indexcontroller'][] = 'index';
+                $arr['gerencontroller'][] = 'index';
+                $arr['gerencontroller'][] = 'create';
+                $arr['gerencontroller'][] = 'store';
+                session(['admin_node_type'=>$arr]);
                 return redirect('/admin')->with('success','登录成功');
             }else{
                 return back()->with('error','密码有误');
