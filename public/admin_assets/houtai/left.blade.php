@@ -30,7 +30,37 @@
 <body>
     <div id="left_ctn">
         <ul class="sidenav">
-
+            <li class="now">
+                <div class="nav_m">
+                    <span><a>个人信息管理</a></span>
+                    <i>&nbsp;</i>
+                </div>
+                <ul class="erji">
+                    <li class="now_li">
+                        <span><a href="/admin/geren" target="main">查看个人信息</a></span>
+                    </li>
+                    <li class="now_li">
+                        <span><a href="/admin/geren/create" target="main">修改密码</a></span>
+                    </li>
+                </ul>
+            </li>
+             <li class="now">
+                <div class="nav_m">
+                    <span><a>权限管理</a></span>
+                    <i>&nbsp;</i>
+                </div>
+                <ul class="erji">
+                    <li class="now_li">
+                        <span><a href="/admin/nodes" target="main">权限列表</a></span>
+                    </li>
+                    <li class="now_li">
+                        <span><a href="/admin/nodes/create" target="main">角色添加</a></span>
+                    </li>
+                    <li class="now_li">
+                        <span><a href="/admin/nodes/nodeadd" target="main">节点添加</a></span>
+                    </li>
+                </ul>
+            </li>
             <li class="now">
                 <div class="nav_m">
                     <span><a>前台用户管理</a></span>
@@ -41,7 +71,7 @@
                         <span><a href="/admin/userlist" target="main">前台用户列表</a></span>
                     </li>
                 </ul>
-            <li>
+            </li>
              <li class="now">
                 <div class="nav_m">
                     <span><a>管理员信息</a></span>

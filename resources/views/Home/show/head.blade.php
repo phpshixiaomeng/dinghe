@@ -175,7 +175,6 @@
                             <div class="hero-content">
                                 <h1 style="font-size: 50px; font-family:'微软雅黑' ;">{{ $vv->gname  }}</h1>
                                 <h2 style="font-size: 50px; font-family:'微软雅黑' ;">{{ $vv->title  }}</h2>
-                                <a class="df-btn" href="">现在购买</a>
                             </div>
                         </div>
                     </div>

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-class LuntanShaituController extends Controller
+use DB;
+use Hash;
+class GerenController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class LuntanShaituController extends Controller
      */
     public function index()
     {
-        return view('Home/luntanshaitu');
+        return view('admin.geren.index');
     }
 
     /**
@@ -24,7 +25,7 @@ class LuntanShaituController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.geren.mima');
     }
 
     /**
@@ -35,7 +36,17 @@ class LuntanShaituController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        if($data['password'] == $data['repassword']){
+            unset($data['repassword']);
+            $data['password'] = Hash::make($data['password']);
+        }
+        $res = DB::table('admin_users')->where('user',session('admin_user'))->update($data);
+        if($res){
+            return redirect('/admin/geren')->with('success','修改成功');
+        }else{
+            return back()->with('error','未知错误');
+        }
     }
 
     /**

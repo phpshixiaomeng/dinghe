@@ -1,24 +1,4 @@
 
-<?php
-//连接数据库 读取管理员信息
-try {
-    $dbh = new PDO('mysql:host=localhost;dbname=scream_game','root','');
-    $dbh = null;
-} catch (PDOException $e) {
-    print "Error!: " . $e->getMessage() . "<br/>";
-    die();
-}
-
-$cz = new PDO('mysql:host=localhost;dbname=scream_game','root','');
-$da=$cz->query('select * from home_users where id=38');
-
-foreach ($da as $value) {
-
-    $data=$value['name'];
-    }
-?>
-
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -30,12 +10,7 @@ foreach ($da as $value) {
 
 <body>
     <div class="head clearfix">
-        <div class="logo">
-
-            <img src="../images/touxiang.jpg" style="width:33px;height:33px">
-            用户名:<?php echo $data ?>
-            <a href="/admin"><img src="../images/logo1.png" alt="汉锐会议"/></a>
-        </div>
+         <span style="font:18px/1.5 '微软雅黑';margin-right:88px; float:right;"><a style="color:white;"  href="/admin/login/create" target="_top">退出</a></span>
     </div>
 </body>
 
