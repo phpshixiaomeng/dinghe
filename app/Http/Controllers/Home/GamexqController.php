@@ -107,6 +107,7 @@ class GamexqController extends Controller
             $reply[$k]->cai = DB::table('zan_cais')->where('user_id',$val->user_id)->where('cai','1')->count();
             $reply[$k]->nickname = DB::table('users_details')->where('user_id',$val->user_id)->select('nickname')->first();
         }
+         // dd($reply);
 
         // 评论总数
         $pl = DB::table('games_replys')->where('game_id',$id)->count();

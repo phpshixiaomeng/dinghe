@@ -36,10 +36,10 @@ header('content-type:text/html;charset=utf-8');
 $sendUrl = 'http://v.juhe.cn/sms/send'; //短信接口的URL
 $yanzhengma=rand(1000,9999);
 $smsConf = array(
-    'key'   => '9504d89d999546993faea8f6649ed37c', //您申请的APPKEY
+    'key'   => '2512e2ab003936fe7da9013b83695740', //您申请的APPKEY
     'mobile'    =>$_GET['phone'], //接受短信的用户手机号码
-    'tpl_id'    => '137798', //您申请的短信模板ID，根据实际情况修改
-    'tpl_value' =>'#code#='.$yanzhengma.'&#company#=我爱你啊大宝' //您设置的模板变量，根据实际情况修改
+    'tpl_id'    => '143815', //您申请的短信模板ID，根据实际情况修改
+    'tpl_value' =>'#code#='.$yanzhengma.'&#company#=' //您设置的模板变量，根据实际情况修改
 );
 //
 function juhecurl($url,$params=false,$ispost=0){

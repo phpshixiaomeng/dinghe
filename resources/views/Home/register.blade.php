@@ -177,7 +177,7 @@ function timekeeping(){
     if(res==0){
         $('#duanxin').html('<font color="green">短信验证法发送成功!</font>');
     }else{
-        $('#duanxin').html('<font color="red">短信验证法发送失败!</font>');
+        $('#duanxin').html('<font color="red">短信验证发送失败!</font>');
     }
 
     })
@@ -391,8 +391,8 @@ $("#youxiang").blur(function(){
                 'password':ps,
                 'phone':phone,
                 'ma':duanxin,
-                'mibao':mibao,
-                'wenti':wenti
+                'youxiang':youxiang
+
             };
             var url='/home/zhuce';
             $.ajaxSetup({

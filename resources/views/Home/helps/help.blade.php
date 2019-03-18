@@ -79,7 +79,7 @@
         ]
         });
 
-    // setInterval("zhannei()", 1000);
+     setInterval("zhannei()", 1000);
     function zhannei(){
     $.get("/home/help/num", function(msg){
         if(msg == 0){

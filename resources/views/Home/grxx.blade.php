@@ -235,7 +235,7 @@
     <label for="exampleInputPassword1">个人简介</label>
     <input type="text" class="form-control" value="" name="profile" placeholder="个人简介">
     <input type="text" class="form-control" name="user_id" value="{{$id}}" hidden>
-    <input type="text" class="form-control" name="pic" value="" hidden>
+    <!-- <input type="text" class="form-control" name="pic" value="" hidden> -->
 
   </div>
 

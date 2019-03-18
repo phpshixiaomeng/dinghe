@@ -45,14 +45,80 @@ class IndexController extends Controller
     }
     public function index()
     {
+
+
         $num=DB::table('lunbotus')->where('status',1)->count();
         $data=DB::table('lunbotus')->where('status',1)->get();
         $zixun = DB::table('news')->orderBy('fire','desc')->limit(3)->get();
         // dd($zixun);
+        $id = session('id');
+        $time = date('Y-m-d',time());
+        $shijian = DB::table('web_totals')->where('web_time',$time)->first();
+        $game = DB::table('games')->select('id')->count();
+        $order = DB::table('orders')->get();
+        foreach($order as $a=>$b){
+            $order_time = date('Y-m-d',$b->order_time);
+            $orders = DB::table('orders')->select('order_time',$order_time)->count();
+        }
+        $users = DB::table('home_users')->select('id')->count();
+        $user_vip = DB::table('home_users')->select('user_vip')->get();
+        $vip = 0;
+        foreach($user_vip as $k=>$v){
+            if($v->user_vip){
+                $vip += $v->user_vip;
+            }else{
+                $vip = 0;
+            }
+        }
 
+        $price = DB::table('orders')->select('order_amount')->get();
+        $amount = 0;
+        foreach($price as $kk=>$vv){
+            if($vv->order_amount){
+                $amount += $vv->order_amount;
+            }else{
+                $amount = 0;
+            }
+        }
+
+
+
+
+        // dd($shijian);
+        if(empty($shijian)){
+            $arr['web_time'] = date('Y-m-d',time());
+            $res = DB::table('web_totals')->insert($arr);
+        }
+
+
+        if(!empty($shijian)){
+            $arr['game_num'] = $game;
+            $arr['order_total'] = $orders;
+            $arr['users_total'] = $users;
+            $arr['vip_total'] = $vip;
+            $arr['money'] = $amount;
+            $arr['web_volume'] = $shijian->web_volume + 1;
+            DB::table('web_totals')->where('web_time',$time)->update($arr);
+            }
+
+
+
+
+        // 网站轮播图
+        $num=DB::table('lunbotus')->where('status',1)->count();
+        $data=DB::table('lunbotus')->where('status',1)->get();
         $video=DB::table('game_videos')->where('status',1)->limit(6)->get();
 
-        return view('Home/index',['num'=>$num,'data'=>$data,'i'=>1,'zixun'=>$zixun,'video'=>$video]);
+        $gameimg = DB::table('games')->orderBy('id','desc')->limit(5)->get();
+        return view('Home/index',['num'=>$num,'data'=>$data,'zixun'=>$zixun,'i'=>1,'gameimg'=>$gameimg]);
+
+
+
+
+
+
+
+        // return view('Home/index',['num'=>$num,'data'=>$data,'i'=>1,'zixun'=>$zixun,'video'=>$video]);
 
     }
 
