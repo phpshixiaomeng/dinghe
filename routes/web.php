@@ -61,11 +61,6 @@ Route::get('/home/zhifu/qing','Home\ZhifuController@qing');
 Route::resource('/home/zhifu','Home\ZhifuController');//用户支付
 });
 Route::resource('/home/contact','Home\ContactController');//联系我们
-Route::get('/admin/video/add','admin\VideoController@add');//添加视频
-Route::post('/admin/video/upload','admin\VideoController@upload');//
-Route::post('/admin/video/del','admin\VideoController@del');//del
-Route::get('/admin/video/status/{id}/{status}','admin\VideoController@status');//视频状态
-Route::resource('/admin/video','admin\VideoController');//视频列表
 
 //后台模板路由
 
@@ -226,8 +221,7 @@ Route::get('admin/totals/del','admin\TotalsController@del');
 Route::resource('admin/totals','admin\TotalsController');
 
 // 游戏壁纸
-Route::get('admin/wall/delete/{id}','admin\WallController@delete');
-Route::resource('admin/wall','admin\WallController');
+
 
 
 
@@ -403,4 +397,12 @@ Route::get('/admin/ads/top/{id}','admin\AdsController@top');
 Route::post('/admin/ads/dels','admin\AdsController@dels');
 Route::post('/admin/ads/upload','admin\AdsController@upload');
 Route::resource('/admin/ads','admin\AdsController');
+Route::get('admin/wall/delete/{id}','admin\WallController@delete');
+Route::resource('admin/wall','admin\WallController');
+Route::get('/admin/video/add','admin\VideoController@add');//添加视频
+Route::post('/admin/video/upload','admin\VideoController@upload');//
+Route::post('/admin/video/del','admin\VideoController@del');//del
+Route::get('/admin/video/status/{id}/{status}','admin\VideoController@status');//视频状态
+Route::resource('/admin/video','admin\VideoController');//视频列表
+
 });
